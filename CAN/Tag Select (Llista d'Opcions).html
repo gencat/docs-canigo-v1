@@ -1,0 +1,271 @@
+<html>
+    <head>
+        <title>Canigó - Espai Privat : Tag Select (Llista d'Opcions)</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+    <body>
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Canigó - Espai Privat : Tag Select (Llista d'Opcions)
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Mar 02, 2011 by <font color="#0050B2">admin</font>.
+				    </div>
+
+				    <p>Permet definir les mateixes propietats que les definides per Struts (<a href="http://struts.apache.org/1.2.9/userGuide/struts-html.html#select" title="Visit page outside Confluence">Tag Select de Struts</a>) i les [].<br/>
+Addicionalment es proporcionen 2 funcionalitats prou importants:</p>
+<ol>
+	<li>Generació d'opcions segons una query de base de dades</li>
+	<li>Generació de les opcions segons el valor escollit en un altre select de forma dinàmica sense refresc de la pàgina</li>
+</ol>
+
+
+<h2><a name="TagSelect%28Llistad%27Opcions%29-Llistad%27OpcionsEst%C3%A0tiques"></a>Llista d'Opcions Estàtiques</h2>
+
+<p>&nbsp;<br/>
+Usar JSTL per a la generació de les opcions incloses.
+<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fkw:select styleId=<span class="code-quote">"..."</span> property=<span class="code-quote">"..."</span>&gt;
+
+&lt;c:forEach items=<span class="code-quote">"$\{nombreLista\}"</span> <span class="code-keyword">var</span>=<span class="code-quote">"item"</span>&gt;
+
+&lt;fwk:option value=<span class="code-quote">"$\{item\}"</span>&gt;$\{item.descripcion\}&lt;/fwk:option&gt;
+
+&lt;/c:forEach&gt;
+
+&lt;/select&gt; </pre>
+</div></div><br clear="all" /></p>
+
+<h2><a name="TagSelect%28Llistad%27Opcions%29-Generaci%C3%B3d%27opcionssegonsquerydebasededades"></a>Generació d'opcions segons query de base de dades</h2>
+
+<p>Si volem mostrar una llista d'opcions que prové d'una base de dades Canigó ofereix la possibilitat de definir la font de les dades.</p>
+
+<p>Per això cal que seguim els següents passos:</p>
+<ul>
+	<li>Definir l'adaptador que s'usarà basat en Hibernate
+<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;bean name=<span class="code-quote">"defaultOptionBaseHibernateAdapter"</span>
+
+class=<span class="code-quote">"net.mlw.vlh.adapter.hibernate3.Hibernate30Adapter"</span>&gt;
+
+&lt;property name=<span class="code-quote">"sessionFactory"</span> ref=<span class="code-quote">"sessionFactory"</span>/&gt;
+
+&lt;property name=<span class="code-quote">"defaultNumberPerPage"</span> value=<span class="code-quote">"5"</span>/&gt;
+
+&lt;property name=<span class="code-quote">"defaultSortColumn"</span> value=<span class="code-quote">"id"</span>/&gt;
+
+&lt;property name=<span class="code-quote">"defaultSortDirection"</span> value=<span class="code-quote">"asc"</span>/&gt;
+
+&lt;property name=<span class="code-quote">"removeEmptyStrings"</span> value=<span class="code-quote">"<span class="code-keyword">true</span>"</span>/&gt;
+
+&lt;/bean&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" /></li>
+	<li>Gestors de les llistes
+<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;bean name=<span class="code-quote">"defaultOptionValueListHandler"</span>
+
+class=<span class="code-quote">"net.mlw.vlh.DefaultValueListHandlerImpl"</span>&gt;
+
+&lt;property name=<span class="code-quote">"config.adapters"</span>&gt;
+
+&lt;map&gt;
+
+&lt;entry key=<span class="code-quote">"categoriesList"</span>&gt;
+
+&lt;bean parent=<span class="code-quote">"defaultOptionBaseHibernateAdapter"</span>&gt;
+
+&lt;property name=<span class="code-quote">"hql"</span>&gt;
+
+&lt;value&gt;
+
+FROM
+
+net.opentrends.openframe.samples.jpetstore.model.Category
+
+AS vo WHERE 1=1
+
+/~descn: AND vo.descn LIKE \{descn\} ~/
+
+/sortColumn: ORDER BY vo.[sortColumn] [sortDirection]/
+
+&lt;/value&gt;
+
+&lt;/property&gt;
+
+&lt;/bean&gt;
+
+&lt;/entry&gt;
+
+&lt;/map&gt;
+
+&lt;/property&gt;
+
+&lt;/bean&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" /></li>
+</ul>
+
+
+<p>A la propietat 'config.adapters' definirem les diferents queries a executar per a recuperar les llistes. Aquestes queries es troben definides en HQL, pel que obtenim objectes.</p>
+<ul>
+	<li>key. Nom de la llista (aquest nom serà utilitzat des de la definició del tag)</li>
+	<li>hql. Definició de la consulta Hibernate per a obtenir la llista de valors
+<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;entry key=<span class="code-quote">"nomLlista"</span>&gt;
+
+&lt;bean parent=<span class="code-quote">"defaultOptionBaseHibernateAdapter"</span>&gt;
+
+&lt;property name=<span class="code-quote">"hql"</span>&gt;
+
+...</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" /></li>
+	<li>Definir la informació de la font de la nostra llista</li>
+</ul>
+
+
+<ol>
+	<li>optionListName: Referència a la definició de la llista definida al pas 2</li>
+	<li>optionLabelName: Atribut de l'objecte recuperat que servirà d'etiqueta de l'opció</li>
+	<li>optionLabelProperty: Atribut de l'objecte recuperat que servirà de valor de l'opció
+<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;bean id=<span class="code-quote">"categoriesOptionListSource"</span> parent=<span class="code-quote">"defaultOptionListSource"</span>&gt;
+&lt;property name=<span class="code-quote">"optionListName"</span> value=<span class="code-quote">"categoriesList"</span>/&gt;
+&lt;property name=<span class="code-quote">"optionLabelName"</span> value=<span class="code-quote">"name"</span>/&gt;
+&lt;property name=<span class="code-quote">"optionLabelProperty"</span> value=<span class="code-quote">"id"</span>/&gt;
+&lt;/bean&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" /></li>
+</ol>
+
+
+<ul>
+	<li>Incorporar la llista al servei d'opcions
+<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;bean id=<span class="code-quote">"optionsListService"</span> class=<span class="code-quote">"net.opentrends.openframe.services.web.taglib.util.options.OptionsListServiceBase"</span>&gt;
+&lt;property name=<span class="code-quote">"optionsListSources"</span>&gt;
+&lt;map&gt;
+&lt;entry key=<span class="code-quote">"categoriesList"</span>&gt;
+&lt;ref bean=<span class="code-quote">"categoriesOptionListSource"</span>/&gt;&lt;/entry&gt;
+&lt;entry key=<span class="code-quote">"animalsList"</span>&gt;
+&lt;ref bean=<span class="code-quote">"animalsOptionListSource"</span>/&gt;&lt;/entry&gt;
+&lt;/map&gt;
+&lt;/property&gt;
+&lt;/bean&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" /></li>
+	<li>Per últim definir a la propietat 'optionsListService' del tag una referència al servei d'opcions (propietat 'optionsListService') i afegir el nom de la llista a la propietat 'optionsListName':</li>
+</ul>
+
+
+<p>&lt;bean id="selectFieldTag" class="net.opentrends.openframe.services.web.struts.taglib.forms.fields.SelectFieldTag"&gt;<br/>
+...<br/>
+&lt;property name="optionsListService" ref="optionsListService"/&gt;<br/>
+...</p>
+
+<p>&lt;bean parent="selectFieldTag"&gt;<br/>
+&lt;property name="key" value="forms.accountForm.field.preferredCategory"/&gt; &lt;property name="styleId" value="preferredCategoryId"/&gt; &lt;property name="optionsListName" value="categoriesList"/&gt;<br/>
+&lt;/bean&gt;</p>
+
+<h2><a name="TagSelect%28Llistad%27Opcions%29-Generaci%C3%B3delesopcionssegonselvalorescollitenunaltreselect%5C"></a>Generació de les opcions segons el valor escollit en un altre select&#42;</h2>
+
+<p>En cas de voler presentar la llista d'opcions d'un select segons la selecció realitzada a un altra selecció, definirem a més del definit en la secció anterior un nou atribut 'selectFieldSource' en el que definirem:</p>
+<ol>
+	<li>source. Nom de la propietat 'styleId' utilitzada en el select font</li>
+	<li>paramName. Nom del paràmetre de la query definit entre {}.</li>
+</ol>
+
+
+<table cellpadding='5' width='85%' cellspacing='8px' class='warningMacro' border="0" align='center'><colgroup><col width='24'><col></colgroup><tr><td valign='top'><img src="./icons/emoticons/forbidden.gif" width="16" height="16" align="absmiddle" alt="" border="0"></td><td><b class="strong">Seleccionable depenent de més d'un valor</b><br />Existeix la possibilitat d'indicar que un seleccionable depengui de més d'un. Per a fer-ho es pot realitzar indicant en el source i el paramName tants identificadors separats per "," com dependències es vulguin. Per exemple:
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;property name=<span class="code-quote">"selectFieldSource"</span>&gt;
+      &lt;map&gt;
+         &lt;entry&gt;
+            &lt;key&gt;&lt;value&gt;source&lt;/value&gt;&lt;/key&gt;
+            &lt;value&gt;selectEntitats,selectIdioma&lt;/value&gt;
+         &lt;/entry&gt;
+         &lt;entry&gt;
+            &lt;key&gt;&lt;value&gt;paramName&lt;/value&gt;&lt;/key&gt;
+            &lt;value&gt;idEntitat,idIdioma&lt;/value&gt;
+         &lt;/entry&gt;
+      &lt;/map&gt;
+&lt;/property&gt;</pre>
+</div></div></td></tr></table>
+<p>Per exemple,  imaginem que volem mostrar la llista d'animals segons la categoria escollida.</p>
+
+<p>Podem definir la hql de la llista 'animalsList' tal i com es mostra a continuació:<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;entry key=<span class="code-quote">"animalsList"</span>&gt;
+&lt;bean parent=<span class="code-quote">"defaultOptionBaseHibernateAdapter"</span>&gt;
+&lt;property name=<span class="code-quote">"hql"</span>&gt;
+&lt;value&gt;
+FROM
+net.opentrends.openframe.samples.jpetstore.model.Product
+AS vo WHERE 1=1
+/~category: AND vo.category.id LIKE \{category\} \~/
+/~sortColumn: ORDER	BY vo.\[sortColumn\]			\[sortDirection\]~/
+&lt;/value&gt;
+&lt;/property&gt;
+&lt;/bean&gt;
+&lt;/entry&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" />
+<br clear="all" /></p>
+
+<p>En aquesta hql apareix el paràmetre {category} dins el LIKE que és el que ens permetrà lligar que se'ns retornin els productes amb la categoria indicada.</p>
+
+<p>Per a que s'envii com a criteri valor dins {category} el valor escollit a la select source definirem com a 'paramName' el valor 'category'.<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;bean parent=<span class="code-quote">"selectFieldTag"</span>&gt;
+&lt;property name=<span class="code-quote">"key"</span> value=<span class="code-quote">"forms.accountForm.field.preferredAnimal"</span>/&gt; &lt;property name=<span class="code-quote">"styleId"</span> value=<span class="code-quote">"preferredAnimalId"</span>/&gt; &lt;property name=<span class="code-quote">"optionsListName"</span> value=<span class="code-quote">"animalsList"</span>/&gt; &lt;property name=<span class="code-quote">"selectFieldSource"</span>&gt;
+&lt;map&gt;
+&lt;entry&gt;
+&lt;key&gt;&lt;value&gt;source&lt;/value&gt;&lt;/key&gt;
+&lt;value&gt;preferredCategoryId&lt;/value&gt;
+&lt;/entry&gt;
+
+&lt;entry&gt;
+&lt;key&gt;&lt;value&gt;paramName&lt;/value&gt;&lt;/key&gt;
+&lt;value&gt;category&lt;/value&gt;
+&lt;/entry&gt;						 		       &lt;/map&gt;
+
+&lt;/property&gt;
+&lt;/bean&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" />
+<br clear="all" /></p>
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="border/border_bottom.gif"><img src="border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Apr 14, 2015 11:50</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

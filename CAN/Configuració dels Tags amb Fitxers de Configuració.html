@@ -1,0 +1,360 @@
+<html>
+    <head>
+        <title>Canigó - Espai Privat : Configuració dels Tags amb Fitxers de Configuració</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+    <body>
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Canigó - Espai Privat : Configuració dels Tags amb Fitxers de Configuració
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 29, 2007 by <font color="#0050B2">xes</font>.
+				    </div>
+
+				    <p>La configuració dels tags es realitza mitjançant el Servei de Configuració com si de classes planes es tractessin. El model inherent a JSP, pel qual és el contenidor qui instancia els tags no ens permet de fer ús directe del patró 'Dependency Injection'. En qualsevol cas, es fa ús dels mecanismes definits pel Servei de Configuració per a inicialitzar els tags.</p>
+
+<p>El procediment seguit per a la inicialització d'un tag és el següent:</p>
+<ol>
+	<li>Es rep la petició de l'usuari (segons per exemple un submit) en el que arriba un paràmetre 'reqCode' que indica el mètode de l'acció Struts que s'executarà. Una vegada finalitzada l'acció aquesta retorna la pàgina JSP que mostrarà el contingut de la resposta.</li>
+</ol>
+
+
+<ol>
+	<li>En la generació del contingut de sortida el contenidor del servidor crida a la inicialització de cadascun dels tags inclosos a la pàgina JSP.</li>
+</ol>
+
+
+<p>Imaginem que a la pàgina JSP tenim un component definit de la següent forma:</p>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:text styleId=<span class="code-quote">"firstname"</span> property=<span class="code-quote">"firstname"</span>/&gt;</pre>
+</div></div>
+<p><b>És obligatori que definim aquestes 2 propietats a les nostres pàgines</b>. L'atribut 'property' és equivalent al que fa servir Struts, que ens permet lligar quin atribut de l'objecte volem presentar. L'atribut 'styleId' servirà per obtenir la configuració del tag des del fitxer de configuració.</p>
+
+<p>El propi tag, dins el seu mètode d'inicialització crida a la classe 'TagUtil' indicant-li quin és el seu 'styleId' per obtenir les seves propietats.</p>
+<ul>
+	<li>La classe TagUtil consulta el fitxer de configuració 'action-servlet.xml' i obté el bloc definit dins l'entrada corresponent al 'reqCode' que ha arribat com a paràmetre i les propietats definides per el 'styleId' del tag.</li>
+</ul>
+
+
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;property name=<span class="code-quote">"tagsConfiguration"</span>&gt;
+
+&lt;map&gt;
+
+&lt;entry key=<span class="code-quote">"*"</span> ?&gt;
+
+&lt;list&gt;
+
+...
+
+&lt;bean id=<span class="code-quote">"..."</span> class=<span class="code-quote">"..."</span>&gt;
+
+&lt;property name=<span class="code-quote">"styleId"</span> 							value=<span class="code-quote">"nombreEstiloId"</span> ?/&gt;
+
+&lt;/bean&gt;
+
+&lt;/list&gt;
+
+&lt;/entry&gt;
+
+&lt;entry key=<span class="code-quote">"reqCode"</span>&gt;
+
+&lt;list&gt;
+
+&lt;bean ...&gt;
+
+&lt;property name=<span class="code-quote">"styleId"</span> 							value=<span class="code-quote">"nombreEstiloId"</span>/&gt;
+
+&lt;/bean&gt;
+
+&lt;/list&gt;
+
+&lt;/entry&gt;
+
+&lt;/map&gt;</pre>
+</div></div>
+<p>Segons el reqCode que arribi com a paràmetre a la url '...?reqCode=...' s'escollirà una entry o una altra per configurar els tags de la pàgina.<br/>
+L'estil indicat lliga amb l'atribut 'styleId' que s'ha definit a la pàgina JSP</p>
+<ul>
+	<li>El tag, mitjançant commons beanutils copia les propietats definides sobre les seves propietats. A continuació realitza la generació de la sortida segons les propietats definides. <div align="center"><img src="Configuració dels Tags amb Fitxers de Configuració_attachments/image005.png" border="0" /></div></li>
+</ul>
+
+
+<h2><a name="Configuraci%C3%B3delsTagsambFitxersdeConfiguraci%C3%B3-Configuraci%C3%B3delsTagsdeformaexternaforadelesJSP"></a>Configuració dels Tags de forma externa fora de les JSP</h2>
+
+<p>A més del tradicional mecanisme de tags JSP en el que dins la pàgina s'especifiquen les propietats del tag, Canigó permet tractar els tags com classes Java normals, a fi que si es vol es puguin injectar les seves propietats mitjançant el Servei de Configuració.</p>
+
+<p>Aquesta opció només existeix pels components d'entrada de formularis, degut a la necessitat que en determinades ocasions es vulgui configurar el seu comportament segons l'acció realitzada.</p>
+
+<p>Canigó fa ús del Servei de Configuració per a definir els diferents comportaments d'una mateixa plana de presentació segons el cas d'ús. Això implica que una mateixa plana JSP pot tenir diferents configuracions de visualització i comportament dinàmic, descrites de manera declarativa. Les nostres pàgines JSP seran molt simples, ja que s'externalitzaran les seves propietats en aquests fitxers de configuració, en els quals podem utilitzar la potència de l'herència per definir propietats comuns.</p>
+
+<p>Per cada acció Struts configurada al fitxer 'action-servlet.xml' definirem la propietat 'tagsConfiguration' on definirem el següent format:</p>
+
+<p>La configuració del Servei de Tags implica els següents passos:</p>
+<ol>
+	<li>Definir la propietat de configuració de l'acció</li>
+	<li>Definir les propietats de cada tag</li>
+</ol>
+
+
+<p>Definició de la configuració per l'acció</p>
+
+<p>La definició de les propietats que s'usaran pels tags d'una pantalla es poden definir per cada acció de l'aplicació. Així, per exemple podríem representar en una creació alguns aspectes de forma diferent.<br/>
+Per definir quines són les propietats dels tags per un reqCode en concret es definirà la propietat 'tagsConfiguration'. Aquesta propietat és un mapa, on:</p>
+<ol>
+	<li>La clau es farà servir com a cerca de la configuració segons el 'reqCode' rebut al paràmetre.</li>
+</ol>
+
+
+<p>Si es defineix amb el valor '*' es considerà com la configuració per defecte, en tant 	que s'aplicarà en els següents casos:</p>
+<ol>
+	<li>No arriba 'reqCode' a la url</li>
+	<li>Si no es troba configuració d'un determinat tag en la configuració segons el 'reqCode' rebut, es cercarà en la configuració per defecte '*'</li>
+	<li>Si la definició específica hereta de la definició realitzada a la configuració per defecte '*'</li>
+</ol>
+
+
+<ol>
+	<li>El valor de l'entrada correspondrà a una llista de beans que definirà les propietats de cadascun dels tags</li>
+</ol>
+
+
+<p>Exemple:</p>
+
+<p>&lt;bean name="/accounts?"<br/>
+class="net.opentrends.openframe.samples.jpetstore.struts.action.AccountAction"&gt;<br/>
+...<br/>
+&lt;property name="tagsConfiguration?"&gt;<br/>
+&lt;map&gt;<br/>
+&lt;entry key="*"?&gt;<br/>
+&lt;list&gt;</p>
+
+<p>&lt;bean id="idForm" ...&gt;<br/>
+&lt;property name="styleId" 								value="actionForm"/&gt;<br/>
+&lt;/bean&gt;</p>
+
+<p>&lt;bean id="idFirstName" ...&gt;<br/>
+&lt;property name="styleId" 								value="firstname"/&gt;<br/>
+&lt;property name="accesskey" 			value="forms.accountForm.field.firstname.accesskey"/&gt;<br/>
+&lt;property name="key" 			value="forms.accountForm.field.firstname"/&gt;				...<br/>
+&lt;/bean&gt;</p>
+
+<p>&lt;entry key="edit"?&gt;<br/>
+&lt;list&gt;<br/>
+&lt;bean id="idFirstName" parent="textFieldTag"&gt;<br/>
+&lt;property name="styleId" 							value="name"/&gt;</p>
+
+<p>&lt;/bean&gt;<br/>
+&lt;/list&gt;<br/>
+&lt;/entry&gt;<br/>
+&lt;/map&gt;<br/>
+&lt;/property&gt;<br/>
+&lt;/bean&gt;</p>
+
+<p>??Acció de Struts amb injecció de les seves propietats (veure document 'Serveis de Presentació' per a més referència).<br/>
+??Definició de la propietat 'tagsConfiguration'<br/>
+??Per qualsevol reqCode es farà servir la configuració dels tags aquí indicada<br/>
+?  En cas que arribés el paràmetre 'reqCode' amb valor 'edit' es farà servir aquesta configuració</p>
+
+<p>Una vegada definida la propietat de configuració de l'acció podem definir les propietats de cadascun dels tags.</p>
+
+<p>Definició de les propietats d'un tag</p>
+
+<p>&lt;bean name="/action"<br/>
+class="....XXXAction"&gt;<br/>
+...<br/>
+&lt;property name="tagsConfiguration"&gt;<br/>
+&lt;map&gt;<br/>
+&lt;entry key="*"&gt;<br/>
+&lt;list&gt;<br/>
+&lt;bean id="" class=""&gt;<br/>
+...<br/>
+&lt;/bean&gt;</p>
+
+<p>La configuració d'un tag és equivalent a la configuració de qualsevol altre element (consultar el document 'Servei de Configuració' per més referència).</p>
+
+<p>A l'atribut 'class' doncs s'especificarà quin és la classe concreta d'implementació del tag que farem servir.</p>
+
+<p>En el cas de Struts farem ús de les següents classes:</p>
+<ol>
+	<li>net.opentrends.openframe.services.web.struts.taglib.forms.fields.FormTag</li>
+	<li>net.opentrends.openframe.services.web.struts.taglib.forms.fields.OptionsFieldTag</li>
+	<li>net.opentrends.openframe.services.web.struts.taglib.forms.fields.ActionTag</li>
+	<li>net.opentrends.openframe.services.web.struts.taglib.forms.fields.TextFieldTag</li>
+	<li>net.opentrends.openframe.services.web.struts.taglib.forms.fields.TextAreaFieldTag</li>
+	<li>net.opentrends.openframe.services.web.struts.taglib.forms.fields.CheckboxFieldTag</li>
+	<li>net.opentrends.openframe.services.web.struts.taglib.forms.fields.FileFieldTag</li>
+	<li>net.opentrends.openframe.services.web.struts.taglib.forms.fields.SelectFieldTag</li>
+	<li>net.opentrends.openframe.services.web.struts.taglib.forms.fields.ActionImageTag</li>
+	<li>net.opentrends.openframe.services.web.struts.taglib.forms.fields.SubmitTag</li>
+	<li>net.opentrends.openframe.services.web.struts.taglib.forms.fields.PasswordFieldTag</li>
+</ol>
+
+
+<p>En tots ells és necessari configurar les següents propietats:</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Propietat</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Descripció</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> styleId </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Identificador del tag. És l'identificador de connexió amb el camp 'styleId' del tag a la pàgina JSP. </td>
+</tr>
+</tbody></table>
+<p>Addicionalment, depenent del tag podrem configurar altres propietats. Tots ells permeten configurar les propietats dels tags en el que es basen. Podem per tant configurar qualsevol dels atributs de Struts mitjançant el fitxer de configuració.</p>
+
+<p>La potència real d'aquesta forma de treballar versus els clàssics tags JSP és que podem usar l'herència i definir propietats genèriques a un grup de tags. Així, podem definir propietats comunes a varis tags mitjançant el Servei de Configuració tal i com es mostra en el següent exemple:</p>
+
+<p>&lt;&#33;<del>&#45; TAG's default configuration &#45;</del>&gt;<br/>
+&lt;bean id="formTag" 	class="net.opentrends.openframe.services.web.struts.taglib.forms.FormTag"/&gt;</p>
+
+<p>&lt;bean id="actionImageTag" class="net.opentrends.openframe.services.web.struts.taglib.forms.ActionImageTag"/&gt;<br/>
+&lt;bean id="submitTag" class="net.opentrends.openframe.services.web.struts.taglib.forms.SubmitTag"/&gt;</p>
+
+<p>&lt;bean id="textFieldTag"	class="net.opentrends.openframe.services.web.struts.taglib.forms.fields.TextFieldTag"&gt;<br/>
+&lt;property name="i18nService" ref="i18nService"/&gt;<br/>
+&lt;property name="validationService" ref="webValidationService"/&gt;<br/>
+&lt;property name="layout" value="true"/&gt;<br/>
+&lt;/bean&gt;<br/>
+...</p>
+
+<p>&lt;bean id="checkboxFieldTag" class="net.opentrends.openframe.services.web.struts.taglib.forms.fields.CheckboxFieldTag"&gt;<br/>
+&lt;property name="i18nService" ref="i18nService"/&gt;<br/>
+&lt;property name="validationService" ref="webValidationService"/&gt;<br/>
+&lt;property name="layout" value="true"/&gt;<br/>
+&lt;/bean&gt;</p>
+
+<p>En aquest exemple, es defineixen les propietats comunes als diferents tipus de components. Així podem fer ús de l'herència per definir els components específics de la nostra aplicació com per exemple:</p>
+
+<p>&lt;bean parent="textFieldTag"&gt;<br/>
+&lt;property name="styleId" value="id"/&gt;					&lt;property name="mode" value="E,I,I"/&gt;<br/>
+&lt;property name="key" value="forms.accountForm.field.id"/&gt;<br/>
+&lt;/bean&gt;</p>
+
+<p>Aquí s'ha eliminat la necessitat de definir el id del tag i s'ha fet ús de l'herència mitjançant el tag 'textFieldTag' que fa referència al '&lt;bean id="textFieldTag"&gt;' que s'ha definit en el fitxer extern.</p>
+
+<p>Podem, per últim, estructurar la següent forma el nostre fitxer de l'aplicació:</p>
+
+<p>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;<br/>
+&lt;&#33;DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"&gt;</p>
+
+<p>&lt;beans&gt;<br/>
+&lt;&#33;<del>&#45; TAG's default configuration &#45;</del>&gt;</p>
+
+<p>&lt;bean id="formTag" 	class="net.opentrends.openframe.services.web.taglib.config.FormTagConfiguration"/&gt;<br/>
+&lt;bean id="fieldTag"&gt;<br/>
+...<br/>
+&lt;/bean&gt;</p>
+
+<p>&lt;bean id="textFieldTag"	class="net.opentrends.openframe.services.web.taglib.config.TextFieldTagConfiguration" parent="fieldTag"&gt;<br/>
+&lt;/bean&gt;</p>
+
+<p>&lt;import resource="action-servlet-accounts.xml"/&gt;<br/>
+&lt;import resource="action-servlet-categories.xml"/&gt;<br/>
+&lt;import resource="action-servlet-products.xml"/&gt;<br/>
+&lt;import resource="action-servlet-items.xml"/&gt;</p>
+
+<p>&lt;/beans&gt;</p>
+
+<p>On mitjançant el tag 'import' es fa referència a diferents fitxers de configuració (grups per acció, per una sola acció, etc.)</p>
+
+<p>A continuació s'ofereix explicació de la configuració de cadascun dels tags.</p>
+
+<h3><a name="Configuraci%C3%B3delsTagsambFitxersdeConfiguraci%C3%B3-Configuraci%C3%B3delTag%27ConfigurationTag%27"></a>Configuració del Tag 'ConfigurationTag'</h3>
+
+<p>Ús: Obligatori, doncs genera les llibreries dels components</p>
+
+<p>El tag Configuration de openFrame s'encarrega de generar totes les llibreries necessàries que requereixen els tags.</p>
+
+<p>Per a generar les llibreries necessàries accedeix al fitxer de propietats de Spring i per cada tag definit obté les seves propietats. Segons els valors d'aquestes propietats genera les llibreries. Per exemple, en el cas de especificar 'showCalendar' a un TextField, generarà les llibreries de calendari, així com la llibreria de literals de calendari de l'idioma de l'usuari entre d'altres.</p>
+
+<p>Atributs:</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Atributs</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Descripció</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> id </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Usar el valor  'configurationTag' </td>
+</tr>
+<tr>
+<td class='confluenceTd'> class </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Usar 'net.opentrends.openframe.services.web.struts.taglib.configuration.ConfigurationTag' </td>
+</tr>
+</tbody></table>
+<p>Propietats:</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Atributs</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Descripció</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> styleId </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Usar el valor  'defaultConfiguration' </td>
+</tr>
+<tr>
+<td class='confluenceTd'> i18nService </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Referència al Servei d'Internacionalització </td>
+</tr>
+</tbody></table>
+<p>Exemple:</p>
+
+<p>&lt;bean id="configurationTag" class="net.opentrends.openframe.services.web.struts.taglib.configuration.ConfigurationTag"&gt;<br/>
+&lt;property name="styleId" value="defaultConfiguration"/&gt;<br/>
+&lt;property name="i18nService" ref="i18nService"/&gt;<br/>
+&lt;/bean&gt;</p>
+
+<p>I a la pàgina JSP (es recomana definir-lo al template de Struts Layout):</p>
+
+<p>&lt;fwk:configuration styleId="defaultConfiguration" /&gt;</p>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Configuració dels Tags amb Fitxers de Configuració_attachments/image005.gif">image005.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Configuració dels Tags amb Fitxers de Configuració_attachments/image005.gif">image005.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Configuració dels Tags amb Fitxers de Configuració_attachments/image005.gif">image005.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Configuració dels Tags amb Fitxers de Configuració_attachments/image005.png">image005.png</a> (image/png)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="border/border_bottom.gif"><img src="border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Apr 14, 2015 11:50</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

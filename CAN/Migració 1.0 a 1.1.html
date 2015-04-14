@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <title>Canigó - Espai Privat : Migració 1.0 a 1.1</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+    <body>
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Canigó - Espai Privat : Migració 1.0 a 1.1
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Feb 10, 2007 by <font color="#0050B2">xavier.escudero</font>.
+				    </div>
+
+				    <h1><a name="Migraci%C3%B31.0a1.1-Actualitzaci%C3%B3delaversi%C3%B31.0.Xalaversi%C3%B31.1"></a>Actualització de la versió 1.0.X a la versió 1.1</h1>
+
+<p>Si teniu una aplicació ja iniciada amb la versió 1.0.x i voleu migrar a la versió 1.1, cal que realitzeu els pasos indicats a continuació:
+<br clear="all" /></p>
+<ol>
+	<li>Descarregar el '<a href="http://canigo.ctti.gencat.net/confluence/download/attachments/540/actualitzacions+1.0.X+a+1.1.zip?version=1" title="actualitzacions 1.0.X a 1.1.zip attached to Migració 1.0 a 1.1">fitxer d'actualització 1.0.x a 1.1</a> ', i reemplaçar alguns fitxers de l'aplicació amb els fitxers continguts</li>
+	<li>Actualitzar les llibreries del framework i altres llibreries externes</li>
+</ol>
+
+
+<h2><a name="Migraci%C3%B31.0a1.1-Desc%C3%A0rregaiActualitzaci%C3%B3deFitxers%26nbsp%3B"></a>Descàrrega i Actualització de Fitxers&nbsp;</h2>
+
+
+<h3><a name="Migraci%C3%B31.0a1.1-Desc%C3%A0rregadelFitxerd%27Actualitzaci%C3%B3"></a>Descàrrega del Fitxer d'Actualització</h3>
+
+<p>Prémer el següent enllaç <a href="http://canigo.ctti.gencat.net/confluence/download/attachments/540/actualitzacions+1.0.X+a+1.1.zip?version=1" title="actualitzacions 1.0.X a 1.1.zip attached to Migració 1.0 a 1.1">fitxer d'actualització 1.0.x a 1.1</a> per descarregar els canvis que cal realitzar.</p>
+
+<h3><a name="Migraci%C3%B31.0a1.1-Actualitzarelsfitxersdel%27aplicaci%C3%B3"></a>Actualitzar els fitxers de l'aplicació</h3>
+
+<p>Abans de fer l'actualització de versió s'aconsella fer una copia de seguretat. <b>Mai fer l'actualització en versions inestables de projectes</b>.</p>
+
+<p>Reemplaçar els fitxers originals de l'aplicació que s'indiquen a continuació pels continguts al fitxer:&nbsp;</p>
+<ul>
+	<li>CSS: Reemplaçar 'webapp/css/openFrame.css', 'webapp/css/openFramePopupSearch.css' pels continguts al fitxer comprimit</li>
+	<li>Javascript: Reemplaçar tot el directori 'webapp/scripts' per tot el subdirectori 'webapp/scripts' contingut al fitxer comprimit</li>
+	<li>Imatges: Incorporar les noves imatges del directori 'images'</li>
+	<li>Actualitzar el contingut dels fitxers 'resources/spring'. Si ja els tenis prèviament creats a la teva aplicació, vigila de mantenir l'anterior contingut i incorporar el contingut dels fitxers descarregats</li>
+</ul>
+
+
+<p>El fitxer openFrame-services-persistence.xml té com a novetat que&nbsp; s'instancia el DAOUniversal. En aquesta versió 1.1 queda deprecat l'ús d'hibernatesynchronizer com a eina i tots el daos concrets que es generen, en favor d'ús del daouniversal, que és el que s'injecta directament als BO. Descarregueu la documentació referent al Servei de Persistència en l'espai '<a href="Documentació de Referència 1.1 (PDF).html" title="Documentació de Referència 1.1 (PDF)">Documentació de Referència 1.1</a>'.</p>
+<ul>
+	<li>Actualitzar el fitxer 'resources/dwr/dwr.xml'</li>
+	<li>Actualitzar el fitxer 'resources/validation/validation-rules.xml'</li>
+</ul>
+
+
+<ul>
+	<li>Afegir el nou fitxer 'webapp/WEB-INF/urlrewrite.xml' i actualitzar 'webapp/WEB-INF/web.xml'</li>
+</ul>
+
+
+<p>Des de la versió 1.1, utilitzant aquests fitxers no cal separar la part estàtica de la dinàmica en el propi codi, sinó que el filtre 'urlrewrite' s'encarregarà de forma automàtica d'afegir el prefix 'AppJava' pel contingut dinàmic. 	&nbsp;</p>
+
+<h2><a name="Migraci%C3%B31.0a1.1-Actualitzaci%C3%B3delesLlibreriesdelFrameworkidelesllibreriesexternes%26nbsp%3B"></a>Actualització de les Llibreries del Framework i de les llibreries externes&nbsp;</h2>
+
+<p>Si utilitza MAVEN simplement només cal canviar el numero de versió a version.openframe a 1.1 en el fitxer project.properties. Executar la tasca generate-classpath per actualitzar tots el jars de la versió 1.1</p>
+
+<p>En cas de no utilitzar Maven es poden descarregar les llibreries de la versió 1.1. de Canigó des del següent enllaç TO DO:
+<br clear="all" /></p>
+
+<p>Una vegada actualitzades les llibreries del framework és important actualitzar també les versions de llibreries externes:&nbsp;</p>
+
+<p>&nbsp; springmodules-validator-0.4.jar<br/>
+&nbsp; ognl-2.6.9.jar<br/>
+&nbsp; urlrewrite-3.0.jar<br/>
+&nbsp; json-lib-0.6.jar<br/>
+&nbsp; htmlparser-1.6.jar<br/>
+&nbsp; dwr-1.1.3.jar<br/>
+&nbsp; commons-validator-1.3.0.jar</p>
+
+<p>Aquestes llibreries estan disponibles al subdirectori 'lib/thirdparty' del fitxer descarregat i també es poden descarregar des del <a href="http://213.27.211.100/repository/" title="Visit page outside Confluence">Repositori</a> via MAVEN.
+<br clear="all" /></p>
+
+<p>&nbsp;&nbsp;</p>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Migració 1.0 a 1.1_attachments/actualitzacions 1.0.X a 1.1.zip">actualitzacions 1.0.X a 1.1.zip</a> (application/x-zip-compressed)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="border/border_bottom.gif"><img src="border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Apr 14, 2015 11:50</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

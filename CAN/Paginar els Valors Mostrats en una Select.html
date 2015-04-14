@@ -1,0 +1,221 @@
+<html>
+    <head>
+        <title>Canigó - Espai Privat : Paginar els Valors Mostrats en una Select</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+    <body>
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Canigó - Espai Privat : Paginar els Valors Mostrats en una Select
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 29, 2007 by <font color="#0050B2">xes</font>.
+				    </div>
+
+				    <p>El pagedSelect permet a l'usuari mostrar una llista paginada de suggeriments pel valor que ha escrit. Aquest només mostra un camp en concret, que és el que és copia al camp de text.<br/>
+L'usuari clickant una de les opcions mostrades li evita escriure i li corrobora que la dada és correcte.</p>
+
+<p>És molt útil per mostrar llistes suggeriments de molts elements, ja que té la paginació.</p>
+
+<p>Aquest pagedSelect és importat de la llibreria ajaxtags 1.1 i s'ha adaptat perquè cridi al servei de cerques del framework i mostri correctament el resultat. Entre el servidor i client viatja una cadena json.</p>
+
+<p>Dependències:</p>
+
+<p>ajaxtags-1.1.jar<br/>
+ajaxtags-openFrame-pagedSelect.js</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Atributs</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Descripció</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> styleId </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Id del component gràfic. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> selectedKey </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Camp de la query que serà la clau de la option </td>
+</tr>
+<tr>
+<td class='confluenceTd'> selectedValue </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Camp de la query que serà el valor de la option </td>
+</tr>
+<tr>
+<td class='confluenceTd'> property </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Nom del component. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> dependentFields </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Camps amb el valor dels queryParameters </td>
+</tr>
+<tr>
+<td class='confluenceTd'> queryParameters </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Paràmetres de la query </td>
+</tr>
+<tr>
+<td class='confluenceTd'> optionsListName </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Nom de la query </td>
+</tr>
+</tbody></table>
+<ul>
+	<li><b>styleId</b></li>
+</ul>
+
+
+<p>Id del component gràfic. Serveix per poder aplicar estils al component i poder-lo configurar a partir d'un xml (action-servlet-xxx.xml).</p>
+<ul>
+	<li><b>selectedKey</b></li>
+</ul>
+
+
+<p>Camp de la query que serà la clau de la option</p>
+<ul>
+	<li><b>selectedValue</b></li>
+</ul>
+
+
+<p>Camp de la query que serà el valor de la option</p>
+<ul>
+	<li><b>property</b></li>
+</ul>
+
+
+<p>Nom del component.</p>
+<ul>
+	<li><b>dependentFields</b></li>
+</ul>
+
+
+<p>Valor que tindran els paràmetres<br/>
+Aquest camp contindrà tots els valors dels paràmetres de la query (queryParameters) separats per comes.</p>
+<ul>
+	<li><b>queryParameters</b></li>
+</ul>
+
+
+<p>Nom dels paràmetres dins la query. En la query es fa referència a aquests noms mitjançant la nomenclatura:</p>
+
+<p>/~nomParametre: ... &#126;/</p>
+
+<p>Aquest camp contindrà tots els paràmetres de la query separats per comes.</p>
+<ul>
+	<li><b>optionsListName</b></li>
+</ul>
+
+
+<p>Nom de la query. Aquesta query estarà definida dins de "openFrame-services-web &#45;list.xml".</p>
+
+<p>Exemple:</p>
+
+<p>openFrame-services-web-list.xml
+<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;bean name=<span class="code-quote">"valueListHandler"</span>
+
+class=<span class="code-quote">"net.mlw.vlh.DefaultValueListHandlerImpl"</span>&gt;
+
+&lt;property name=<span class="code-quote">"config.adapters"</span>&gt;
+
+&lt;map&gt;
+
+&lt;entry key=<span class="code-quote">"categoriesList"</span>&gt;
+
+&lt;bean parent=<span class="code-quote">"baseHibernateAdapter"</span>&gt;
+
+&lt;property name=<span class="code-quote">"hql"</span>&gt;
+
+&lt;value&gt;
+
+FROM
+
+net.opentrends.openframe.samples.jpetstore.model.Category AS vo
+
+WHERE 1=1
+
+/~descn: AND vo.descn LIKE \{descn\} ~/
+
+/sortColumn: ORDER BY vo.[sortColumn] [sortDirection]/
+
+&lt;/value&gt;
+
+&lt;/property&gt;
+
+&lt;/bean&gt;
+
+&lt;/entry&gt;
+
+&lt;/map&gt;
+
+&lt;/property&gt;
+
+&lt;/bean&gt;</pre>
+</div></div><br clear="all" /></p>
+
+<p>JSP:
+<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;input type=<span class="code-quote">"text"</span> name=<span class="code-quote">"depValue"</span> value=<span class="code-quote">"Birds"</span>/&gt;
+
+&lt;fwk:pagedSelect
+
+styleId=<span class="code-quote">"preferredCategory.id"</span>
+
+selectedKey=<span class="code-quote">"id"</span>
+
+selectedValue=<span class="code-quote">"name"</span>
+
+property=<span class="code-quote">"preferredCategory.id"</span>
+
+dependentFields=<span class="code-quote">"depValue"</span>
+
+queryParameters=<span class="code-quote">"descn"</span>
+
+optionsListName=<span class="code-quote">"categoriesList"</span>/&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" /></p>
+
+<p>Exemple amb un sol resultat: <div align="center"><img src="Paginar els Valors Mostrats en una Select_attachments/image037.jpg" border="0" /></div><br/>
+&nbsp;<br/>
+Exemple amb varis resultats (amb paginació): <div align="center"><img src="Paginar els Valors Mostrats en una Select_attachments/image039.jpg" border="0" /></div></p>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Paginar els Valors Mostrats en una Select_attachments/image037.jpg">image037.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Paginar els Valors Mostrats en una Select_attachments/image039.jpg">image039.jpg</a> (image/jpeg)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="border/border_bottom.gif"><img src="border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Apr 14, 2015 11:50</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

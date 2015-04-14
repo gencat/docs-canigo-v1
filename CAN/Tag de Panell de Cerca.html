@@ -1,0 +1,265 @@
+<html>
+    <head>
+        <title>Canigó - Espai Privat : Tag de Panell de Cerca</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+    <body>
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Canigó - Espai Privat : Tag de Panell de Cerca
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 29, 2007 by <font color="#0050B2">xes</font>.
+				    </div>
+
+				    <h3><a name="TagdePanelldeCerca-SearchPanel"></a>Search Panel</h3>
+
+<p>El panell de cerca és una utilitat que permet a l'usuari poder trobar el valor adient d'un camp.<br/>
+La cerca és fa mitjançant mostrant un panell amb un camp per omplir dades a cercar i un botó per engegar la cerca. El resultat és mostra sota del camp de text.</p>
+
+<p>El panell de cerca permet mostrar de les dades que compleixen la condició més dades relacionades. Per exemple si s'estan buscant cognoms de persones, el panell de cerca permet mostrar a part del cognom, el nom, el càrrec que ocupa, centre, etc per tal d'ajudar a l'usuari a escollir correctament i en cas de repetició, poder discriminar.</p>
+
+<p>Aquesta és la gran diferència amb l'autocomplete o els selects, que només mostren un dada en concret.</p>
+
+<p>Les cerques es poden fer tantes com es vulguin, però un cop es seleccioni una dada, el panell s'amagarà. Si es torna a pitjar el botó de cercar, el panell de cerca tornarà a aparèixer amb les dades de la última cerca.</p>
+
+<p>El tag que ofereix aquesta funcionalitat és el searchPanel</p>
+
+<p>Dependències:</p>
+
+<p>ajaxtags-1.1.jar<br/>
+openFrame-ajaxtags-searchPanel.js</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Atributs</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Descripció</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> styleId </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Identificador per lligar amb configuració XML </td>
+</tr>
+<tr>
+<td class='confluenceTd'> source </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Id del component gràfic que escolarà l'event onClick per mostrar el panell. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> popupId </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Identificador del div que conté el panell de cerca. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> target </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Camp de text que es copiarà el valor seleccionat </td>
+</tr>
+<tr>
+<td class='confluenceTd'> optionListName </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Query que executa el panell. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> styleClass </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Estil CSS per aplicar al panell. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> indicator </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Identificador del div que es mostra al fer la petició a servidor. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> tableProperties </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Nom de les propietats del bean que es volen mostrar en la cerca </td>
+</tr>
+<tr>
+<td class='confluenceTd'> selectedProperty </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Propietat a copiar al target </td>
+</tr>
+<tr>
+<td class='confluenceTd'> columnLabel </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Claus dels noms de les propietats internacionalitzades </td>
+</tr>
+<tr>
+<td class='confluenceTd'> method </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Nom del mètode que s'encarregarà de fer la presentació, enlloc de fer la per defecte. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> queryParameter </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Nom del paràmetre de la query. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> services </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Parelles de nom servei:servei . nom servei és l'atribut que conté el servei, i servei és el nom del servei en spring. </td>
+</tr>
+</tbody></table>
+<ul>
+	<li><b>popupId</b></li>
+</ul>
+
+
+<p>Identificador del div que conté el panell de cerques. Va bé per poder definir estils .</p>
+<ul>
+	<li><b>optionsListName</b></li>
+</ul>
+
+
+<p>Nom de la query a executar. Ha d'estar definida en openFrame-services-weblist.xml.</p>
+<ul>
+	<li><b>queryParameter</b></li>
+</ul>
+
+
+<p>Nom del paràmetre de la query que se li associarà el valor del camp entrat a buscar.</p>
+<ul>
+	<li><b>tableProperties</b></li>
+</ul>
+
+
+<p>Llista de propietats del bean que retorna la query. Es permeten propietats relacionades. Per exemple si la query retorna elements R i aquests tenen un relació L que conté elements C, es pot posar L.id, que seria el id de l'element C associat.</p>
+<ul>
+	<li><b>selectedProperty</b></li>
+</ul>
+
+
+<p>Nom de la propietat del bean que retorna la query que es vol copiar al camp de text target.<br/>
+Aquest propietat pot estar dins les tableProperties.</p>
+<ul>
+	<li><b>columnLabel</b></li>
+</ul>
+
+
+<p>Claus de multillenguatge pel nom de les columnes de la taula de resultats. El nombre de columnLabels i de tableProperties ha de ser igual. En cas de no ser-ho el searchPanel avisa del conflicte.</p>
+<ul>
+	<li><b>method</b></li>
+</ul>
+
+
+<p>Nom de mètode javascript que sap fer el pintat del resultats. Aquest paràmetre permet a l'usuari canviar l'aspecte de la presentació de resultats. Aquesta funció ha conèixer el format json que retorna servidor per poder presentar les dades.</p>
+
+<p>Exemple:</p>
+
+<p>openFrame-services-web-list.xml</p>
+
+<p><div class="code"><div class="codeContent">
+<pre class="code-java">&lt;bean name=<span class="code-quote">"valueListHandler"</span>
+
+class=<span class="code-quote">"net.mlw.vlh.DefaultValueListHandlerImpl"</span>&gt;
+
+&lt;property name=<span class="code-quote">"config.adapters"</span>&gt;
+
+&lt;map&gt;
+
+&lt;entry key=<span class="code-quote">"accountList"</span>&gt;
+
+&lt;bean parent=<span class="code-quote">"baseHibernateAdapter"</span>&gt;
+
+&lt;property name=<span class="code-quote">"hql"</span>&gt;
+
+&lt;value&gt;
+
+FROM
+
+net.opentrends.openframe.samples.jpetstore.model.Account
+
+AS vo WHERE 1=1
+
+/~firstname: AND vo.firstname LIKE \{firstname\} ~/
+
+/~lastname: AND vo.lastname LIKE \{lastname\} ~/
+
+/sortColumn: ORDER BY vo.[sortColumn] [sortDirection]/
+
+&lt;/value&gt;
+
+&lt;/property&gt;
+
+&lt;/bean&gt;
+
+&lt;/entry&gt;
+
+&lt;/map&gt;
+
+&lt;/property&gt;
+
+&lt;/bean&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" /></p>
+
+<p>JSP:</p>
+
+<p><div class="code"><div class="codeContent">
+<pre class="code-java">&lt;input type=<span class="code-quote">"button"</span> value=<span class="code-quote">"search"</span> id=<span class="code-quote">"searchPanelButton"</span> /&gt;
+
+&lt;fwk:searchPanel
+
+styleId=<span class="code-quote">"searchPanel"</span>
+
+source=<span class="code-quote">"searchPanelButton"</span>
+
+target=<span class="code-quote">"city"</span>
+
+popupId=<span class="code-quote">"searchPanelDiv"</span>
+
+optionsListName=<span class="code-quote">"accountList"</span>
+
+tableProperties=<span class="code-quote">"firstname,lastname,city"</span>
+
+selectedProperty=<span class="code-quote">"city"</span>
+
+columnLabels=<span class="code-quote">"name.label,lastname.label,city.label"</span>
+
+indicator=<span class="code-quote">"indicator"</span>
+
+queryParameter=<span class="code-quote">"firstname"</span> /&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" /></p>
+
+<p>Per fer servir el searchPanel s'han d'importar els següents scripts:</p>
+
+<p>&lt;&#33;-&#45;  Search panel --&gt;<br/>
+&lt;script<br/>
+src="/openFrame-samples-jPetstore/scripts/ajax/ajaxtags/openFrame-ajaxtags-searchPanel.js"<br/>
+type="text/javascript"&gt;<br/>
+&lt;/script&gt;<br/>
+&lt;script type='text/javascript'<br/>
+src='/openFrame-samples-jPetstore/AppJava/dwr/interface/searchPanelService.js'&gt;&lt;/script&gt; <div align="center"><img src="Tag de Panell de Cerca_attachments/image027.jpg" border="0" /></div></p>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Tag de Panell de Cerca_attachments/image027.jpg">image027.jpg</a> (image/jpeg)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="border/border_bottom.gif"><img src="border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Apr 14, 2015 11:50</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

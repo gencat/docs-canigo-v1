@@ -1,0 +1,158 @@
+<html>
+    <head>
+        <title>Canigó - Espai Privat : Format i Limitació d'Entrada de Dades</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+    <body>
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Canigó - Espai Privat : Format i Limitació d'Entrada de Dades
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 29, 2007 by <font color="#0050B2">xes</font>.
+				    </div>
+
+				    <p>Aquest component permet controlar el format i la limitació de l'entrada de dades d'un camp d'un formulari. Aquest component el podem utilitzar de dues maneres: mitjançant un decorador (<b>fwk:formatKeyStroke</b>) o directament en la configuració del tag text del Framework (<b>fwk:text</b>).<br/>
+És molt habitual el seu ús en números de telèfon, targetes de crèdit, dates, etc.</p>
+
+<p>Dependències:</p>
+
+<p>masks.js</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Atributs</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Descripció</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> mask </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Màscara que es vol aplicar a un camp d'un formulari. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> maskType </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Tipus de màscara que es vol aplicar: text, date, number </td>
+</tr>
+<tr>
+<td class='confluenceTd'> source </td>
+<td class='confluenceTd'> &#42; </td>
+<td class='confluenceTd'> Nom del component. </td>
+</tr>
+</tbody></table>
+<ul>
+	<li><b>mask</b></li>
+</ul>
+
+
+<p>Màscara que volem aplicar a un camp d'un formulari. Depenent del tipus de màscara seguirem un patró o un altre.</p>
+<ul>
+	<li><b>maskType</b></li>
+</ul>
+
+
+<p>Tipus de màscara. Pot ser de 3 tipus:</p>
+
+<p>? Text: màscara de text.<br/>
+Amb aquest tipus de màscara podem aplicar els següents patrons:</p>
+
+<p>x: lletra [a-z].<br/>
+X: lletra [A-Z].<br/>
+&#35;: número [0-9].<br/>
+&#42;: lletra o número [a-z][A-Z][0-9].</p>
+
+<p>Qualsevol altre caràcter que aparegui a la màscara s'escriurà automàticament.</p>
+
+<p>Exemple:</p>
+
+<p>xxxx##  &#45;&gt; hola22<br/>
+(###) #x*-####  &#45;&gt; (614) 7a7-6094<br/>
+telf (##) ###.##.## &#45;&gt; telf (93) 311.34.89</p>
+
+<p>? Date: màscara de data.<br/>
+Amb aquest tipus de màscara podem aplicar els següents patrons:</p>
+
+<p>d: dia [0-9].<br/>
+m: mes [0-9].<br/>
+y: any [0-9].</p>
+
+<p>Exemples:</p>
+
+<p>dd/mm/yyyy &#45;&gt; 24/05/1980<br/>
+m/dd/yyyy  &#45;&gt; 2/05/1980<br/>
+yyyy.mm.dd &#45;&gt; 1972.02.28</p>
+
+<p>? Number: màscara numèrica.</p>
+
+<p>$: indica la moneda (apareix automàticament).<br/>
+&#35;: número [0-9].<br/>
+0: número 0. S'utilitza pels decimals (apareix automàticament).<br/>
+&#43;: Iindicador número positiu (apareix automàticament).<br/>
+&#45;: Iindicador número negatiu (apareix automàticament).<br/>
+,: Separador dels milers, milions, etc.. (apareix automàticament).<br/>
+.: Indica on comencen els decimals.<br/>
+(: principi parèntesis (apareix automàticament).<br/>
+): fi parèntesis (apareix automàticament).</p>
+
+<p>Exemples:</p>
+
+<p>0#####.##  &#45;&gt; 000534.23<br/>
+&#43;##,###.##  &#45;&gt; &#43;534.23<br/>
+(-#,###.##)  &#45;&gt; (-534.23)</p>
+
+<p>&#42; Per defecte el tipus de màscara és "text".</p>
+<ul>
+	<li><b>source</b></li>
+</ul>
+
+
+<p>Id del camp al qual volem aplicar la màscara. Només aplicable al decorador formatKeyStroke, ja que en el tag Text el camp al qual es vol aplicar la màscara és ell mateix.</p>
+
+<p>Exemple amb decorador (fwk:formatKeyStroke):
+<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:text
+
+styleId=<span class="code-quote">"firstname"</span>
+
+property=<span class="code-quote">"firstname"</span>/&gt;
+
+&lt;fwk:formatKeyStroke
+
+source=<span class="code-quote">"firstname"</span>
+
+mask=<span class="code-quote">"xxxx##"</span>/&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" /></p>
+
+<p>Exemple sense decorador (fwk:text):<br/>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:text
+
+styleId=<span class="code-quote">"firstname"</span>
+
+property=<span class="code-quote">"firstname"</span>
+
+mask=<span class="code-quote">"xxxx##"</span>/&gt;</pre>
+</div></div><br clear="all" /></p>
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="border/border_bottom.gif"><img src="border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Apr 14, 2015 11:50</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

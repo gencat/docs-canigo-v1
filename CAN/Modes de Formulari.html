@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <title>Canigó - Espai Privat : Modes de Formulari</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+    <body>
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Canigó - Espai Privat : Modes de Formulari
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 29, 2007 by <font color="#0050B2">xes</font>.
+				    </div>
+
+				    <p>Quan desenvolupem una aplicació en la que intervenen formularis que es poden mostrar de manera diferenciada segons els privilegis de l'usuari o l'acció escollida existeixen 2 formes tradicionals de definir-los:<br/>
+1. Creant una pàgina JSP per cada possible presentació del mateix formulari<br/>
+2. Imbricant codi condicional que faci el control (segons els privilegis, el paràmetre de la url, etc.) i executi la creació dels tags de diferents maneres</p>
+
+<p>Tant una com l'altra solució requereixen d'un esforç massa gran. En la primera opció, un canvi que impliqui afegir un camp o retocar un ja existent pot requerir de la necessitat de modificar vàries pàgines JSP, mentre que en la segona solució la pàgina es fa molt difícil de llegir i mantenir.</p>
+
+<p>Canigó permet l'ús de modes de formulari que s'aplicaran als components continguts en ell. Segons el mode especificat, els components es mostraran d'una o un altra forma (ocults, editables, no editables, etc.).</p>
+
+<h2><a name="ModesdeFormulari-ComespecificarelmodeaunFormulari"></a>Com especificar el mode a un Formulari</h2>
+
+
+<h3><a name="ModesdeFormulari-Especificaci%C3%B3del%26nbsp%3B%27mode%27altag%27form%27"></a>Especificació del&nbsp; 'mode' al tag 'form'</h3>
+
+<p>S'ha d'indicar un valor a la propietat 'mode' amb 3 parts separades per ','. La primera indica en quin mode apareixerà el component si el mode del formulari és de creació, la segona part en quin mode ha d'aparèixer si el mode del formulari és d'edició i la tercera part en quin mode ha d'aparèixer si el mode del formulari és de consulta.</p>
+
+<p>Exemple: 'E,E,I'</p>
+
+<p>&nbsp;Però com especifico si el formulari surt amb un o altre mode?</p>
+
+<p>Especificació del Mode del Formulari</p>
+
+<p>En la configuració dels components d'entrada de formulari s'ha explicat com podem mostrar-los de forma diferents segons el mode del formulari. Aquest mode de formulari pot canviar-se mitjançant la crida:</p>
+<div class="code"><div class="codeContent">
+<pre class="code-java">FormUtils.setFormDisplayMode(request, actionForm,mode);</pre>
+</div></div>
+<p>On mode pot ser un dels següents valors:</p>
+
+<p>&#45; FormUtils.INSPECT_MODE. Mode de consulta<br/>
+&#45; FormUtils.EDIT_MODE. Mode d'edició<br/>
+&#45; FormUtils.CREATE_MODE. Mode de creació</p>
+
+<p><b>? NOTA:</b><br/>
+Canigó, dins la seva classe 'ActionExtendedSupport' (classe pare de les nostres action) efectua aquesta tasca per a que no ens haguem de preocupar. Per a això utilitza un <em>resolver</em>que segons el reqCode que arribi per paràmetre decidirà el model del formulari. A continuació es mostra una taula amb els modes usats segons el reqCode:</p>
+
+<p>public static final String EDIT_METHOD_PREFIX = "edit";<br/>
+public static final String SEARCH_METHOD_PREFIX = "search";<br/>
+public static final String NEW_METHOD_PREFIX = "create";<br/>
+public static final String DELETE_METHOD_PREFIX = "delete";<br/>
+public static final String SAVE_METHOD_PREFIX = "save";<br/>
+public static final String VIEW_METHOD_PREFIX = "view";</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>reqCode</b> </td>
+<td class='confluenceTd'> <b>Mode utilitzat</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> <b>edit</b> </td>
+<td class='confluenceTd'> FormUtils.EDIT_MODE </td>
+</tr>
+<tr>
+<td class='confluenceTd'> search </td>
+<td class='confluenceTd'> FormUtils.INSPECT_MODE </td>
+</tr>
+<tr>
+<td class='confluenceTd'> create </td>
+<td class='confluenceTd'> FormUtils.CREATE_MODE </td>
+</tr>
+<tr>
+<td class='confluenceTd'> view </td>
+<td class='confluenceTd'> FormUtils.INSPECT_MODE </td>
+</tr>
+<tr>
+<td class='confluenceTd'> En altres casos </td>
+<td class='confluenceTd'> FormUtils.EDIT_MODE </td>
+<td class='confluenceTd'> <br clear="all" /> </td>
+<td class='confluenceTd'><br clear="all" /></td>
+</tr>
+</tbody></table>
+
+<h3><a name="ModesdeFormulari-Especificaci%C3%B3delModedelsComponentsInclososalFormulari"></a>Especificació del Mode dels Components Inclosos al Formulari</h3>
+
+<p>El mode dels camps permet especificar si un camp "input" ha de ser editable, de lectura, ocult o que no aparegui en el formulari segons el mode de display del formulari. Això permet per exemple que un camp que forma part de la clau primària només sigui editable durant la creació, o mostrar camps calculats només quan es visualitza la informació i no quan s'edita.</p>
+
+<p>El comportament per defecte és que els camps es mostrin editables si el mode del formulari es CREATE o EDIT, i es mostrin de lectura (valor text pla sense component HTML i un hidden amb el valor del camp) si el mode del formulari és INSPECT.</p>
+
+<p>Aquest comportament per defecte pot alterar-se en els camps mitjançant l'atribut 'mode'. El valor que s'ha d'assignar a aquest atribut ha de seguir el patró 'X,Y,Z'; on X és el comportament que tindrà el camp en cas que el mode del formulari sigui 'FormUtils.CREATE_MODE', Y el comportament en el mode edició ('FormUtils.EDIT_MODE') i Z en mode de consulta ('FormUtils.INSPECT_MODE'). Els valors possibles per X,Y i Z són:</p>
+<ol>
+	<li>E: editable</li>
+	<li>I: inspeccionable (de consulta), amb un camp ocult corresponent</li>
+	<li>S: mostrar, igual que 'I' però no es genera camp ocult</li>
+	<li>N: no es mostra</li>
+	<li>P: present (com 'S' si el valor del camp no és null i com 'N' si el valor del camp és nul)</li>
+	<li>H: ocult (no es mostra, però sí es genera un camp ocult)</li>
+	<li>R : de lectura (es genera el camp però amb l'atribut 'readonly')</li>
+	<li>D: desactivat (es genera el camp amb l'atribut 'disabled')</li>
+</ol>
+
+
+<p>Una vegada especificat en quin mode funcionarà el formulari, els components apareixeran segons el mode especificat, sense que per això s'hagi de generar codi JSP addicional.</p>
+
+<p>S'ha d'indicar un valor amb 3 parts separades per ','. La primera indica en quin mode apareixerà el component si el mode del formulari és de creació, la segona part en quin mode ha d'aparèixer si el mode del formulari és d'edició i la tercera part en quin mode ha d'aparèixer si el mode del formulari és de consulta.</p>
+
+<p>Exemple: 'E,E,I'</p>
+
+<p>A continuació s'ofereix més detall dels valors possibles i del seu ús.</p>
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="border/border_bottom.gif"><img src="border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Apr 14, 2015 11:50</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

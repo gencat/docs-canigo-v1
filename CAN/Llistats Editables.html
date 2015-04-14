@@ -1,0 +1,563 @@
+<html>
+    <head>
+        <title>Canigó - Espai Privat : Llistats Editables</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+    <body>
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Canigó - Espai Privat : Llistats Editables
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 29, 2007 by <font color="#0050B2">xes</font>.
+				    </div>
+
+				    <p>Els llistats editables es basen en el suport de les propietats indexades. Per poder donar aquest suport s'han construït un seguit de tags per tal que es pugui fer un gestió correcte d'aquesta informació.</p>
+
+<h3><a name="LlistatsEditables-Introducci%C3%B3"></a>Introducció</h3>
+
+<p>Una propietat indexada és:
+<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:text styleId=<span class="code-quote">"city"</span> property=<span class="code-quote">"direccions[0].ciutat"</span> /&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" />
+Aquest camp mostra de la llista de direccions del bean pare, la ciutat de la primera direcció.
+<br clear="all" />
+<br clear="all" />
+<br clear="all" /></p>
+
+<p>En la versió 1.0 openFrame sap renderitzar aquesta propietat, però no sap construir aquesta llista de direccions en la baixada del submit dins el bean pare.</p>
+
+<p>El problema principal que hi ha per construir la col?lecció de direccions, és que ningú coneix quins objectes ha de tenir dins. Per poder informar a openFrame d'aquesta tasca s'ha construït un tag anomenat <b>DefinePropertyTag</b>. Tota llista del bean que és vol materialitzar en la baixa és necessari que estigui definida amb aquest tag.</p>
+
+<p>Les col?leccions editables poden provenir de moltes fonts.</p>
+
+<p>Un cas típic es que en el load del bean del formulari es carreguin també seves col?leccions  per després mostrar en pantalla.</p>
+
+<p>Un altra cas seria aquell on les col?leccions tenen molts elements. Aquí és molt aconsellable fer servir la ValueList ja que dona suport a la paginació, i navegació entre pàgines de manera amigable. La gran diferència amb el model primer, es que aquesta llista es carrega mitjançant una query definida en openFrame-web-lists.xml. Per tal que els tags de propietats indexades es renderitzin correctament, s'ha de enganxar-li al bean del formulari la col?lecció que ha vingut de la valueList. Aquest enganxament es pot fer amb el <b>SetListTag</b>, on se li ha d'indicar quina és la propietat indexada del bean del form, i on és la llista ha afegir.</p>
+
+<p>El suport a llistats editables també ofereix el poder afegir, seleccionar i esborrar elements d'un llistat. Aquests<br/>
+pressuposen que el llistat està contingut dins una table de HTML.</p>
+
+<h3><a name="LlistatsEditables-SetListTag"></a>SetListTag</h3>
+
+<p>El tag SetListTag és un component que permet omplir els elements d'una llista del Bean d'un formulari amb els d'una llista que tenim guardada en qualsevol scope de la pàgina. Per exemple, si les dades provenen d'una valuelist, haurem d'omplir la llista del Form Bean amb la propietat 'list' de l'scope 'page':</p>
+
+<p>&lt;fwk:setList listProperty="accounts" scopeKey="list" scope="page"/&gt;</p>
+
+<p>Aquest exemple mostra com agafar la llista provinent de la ValueList i l'afegeix a la propietat accounts del bean del formulari.</p>
+
+<p>Les propietats d'aquest tag són les següents:</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Propietat</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Valor</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> listProperty </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Nom de la llista en el Form Bean. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> scopeKey </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Clau que té la llista en l'scope seleccionat. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> scope </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Scope on es troba la llista amb la clau definida a 'scopeKey'. </td>
+</tr>
+</tbody></table>
+<ul>
+	<li><b>listProperty</b></li>
+</ul>
+
+
+<p>Nom de la propietat indexada en el bean del formulari.</p>
+<ul>
+	<li><b>scopeKey</b></li>
+</ul>
+
+
+<p>Nom de la clau que conté la llista a afegir al bean del formulari.</p>
+<ul>
+	<li><b>scope</b></li>
+</ul>
+
+
+<p>Aquesta propietat només accepta 3 possibles valors:<br/>
+? page<br/>
+? request<br/>
+? session</p>
+
+<h3><a name="LlistatsEditables-DefinePropertyTag"></a>DefinePropertyTag</h3>
+
+<p>El tag DefinePropertyTag serveix per informar a openFrame quins tipus de classe conté la col.lecció definir la classe que tenen els objectes continguts en la llista del Form Bean. Això es fa per poder fer el 'binding' dels nous objectes que es creïn a l'editar el llistat amb el Form Bean.</p>
+
+<p>Les propietats d'aquest tag són les següents:</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Propietat</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Valor</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> listProperty </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Nom de la llista del bean del formulari. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> itemsClass </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Classe dels objectes continguts en la llista del bena del formulari. </td>
+</tr>
+</tbody></table>
+<p>&lt;fwk:defineProperty listProperty="accounts" itemsClass="net.opentrends.openframe.samples.jpetstore.model.Account"/&gt;</p>
+
+<p>Aquest tag crearà dos inputs ocults amb el següent format:</p>
+
+<p><em>&lt;input type="hidden" name="</em><em>Metadata.nom_llista. itemsClass</em><em>" value="classe_items_llista"/&gt;</em><br/>
+<em>&lt;input type="hidden" name="</em><em>Metadata.nom_llista. lastIndex</em><em>" value="tamany_llista"/&gt;</em></p>
+
+<p>Exemple:</p>
+
+<p>&lt;input type="hidden" name="&#95;<em>Metadata.accounts.itemsClass</em>&#95;" value="net.openframe.samples.model.Account"/&gt;<br/>
+&lt;input type="hidden" name="&#95;<em>Metadata.accounts.lastIndex</em>&#95;" value="2"/&gt;</p>
+
+<h3><a name="LlistatsEditables-SelectionTag"></a>SelectionTag</h3>
+
+<p>El tag SelectionTag  serveix per seleccionar i deseleccionar tots els elements d'un llistat editable.</p>
+
+<p>Les propietats d'aquest tag són les següents:</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Propietat</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Valor</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> listName </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Nom de la llista en el Form Bean. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> selectionProperty </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Nom de la propietat de selecció. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> source </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Nom de l'element disparador de l'event. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> target </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Id de la taula que conté el llista editable </td>
+</tr>
+<tr>
+<td class='confluenceTd'> action </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Acció de selecció o deselecció. </td>
+</tr>
+</tbody></table>
+<ul>
+	<li><b>selectionProperty</b></li>
+</ul>
+
+
+<p>Aquesta propietat defineix el camp del Form Bean que indicarà si el registre al qual pertany està seleccionat. El camp ha de ser un valor booleà i es representarà amb un element 'checkbox'.</p>
+<ul>
+	<li><b>source</b></li>
+</ul>
+
+
+<p>Aquesta propietat defineix l'id de l'element al qual s'hi s'assignarà l'event 'onclick' que dispararà la funció de seleccionar o deseleccionar tots els 'checkbox' de la taula.</p>
+<ul>
+	<li><b>target</b></li>
+</ul>
+
+
+<p>Els llistats editables es faràn sobre taules. La taula que contingui els registres haurà de tenir un id. Aquest id és el que hem d'indicar en la propietat 'target'.</p>
+<ul>
+	<li><b>selectionProperty</b></li>
+</ul>
+
+
+<p>Acció que s'ha d'executar. Els possibles valors són:<br/>
+? selectAll (seleccionar tots els registres)<br/>
+? unselectAll (deseleccionar tots els registres)</p>
+
+<p>Un exemple de la seva utilització podria ésser el següent:
+<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:selection source=<span class="code-quote">"selectionButton"</span> target=<span class="code-quote">"taulaId"</span> listName=<span class="code-quote">"accounts"</span> selectionProperty=<span class="code-quote">"selected"</span> action=<span class="code-quote">"selectAll"</span>/&gt;&lt;fwk:selection source=<span class="code-quote">"unselectionButton"</span> target=<span class="code-quote">"taulaId"</span> listName=<span class="code-quote">"accounts"</span> selectionProperty=<span class="code-quote">"selected"</span> action=<span class="code-quote">"unselectAll"</span>/&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" />
+En l'exemple anterior s'assigna a 2 botons (selectionButton i unselectionButton) les funcions de seleccionar i deseleccionar tots els registres de la taula (amb id 'taulaId') respectivament.
+<br clear="all" />
+<br clear="all" />
+<br clear="all" /></p>
+
+<h3><a name="LlistatsEditables-DeleteRowsTag"></a>DeleteRowsTag</h3>
+
+<p>El tag DeleteRowsTag serveix per eliminar els elements seleccionats d'un llistat editable.</p>
+
+<p>Les propietats d'aquest tag són les següents:</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Propietat</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Valor</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> listName </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Nom de la llista en el Form Bean. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> selectionProperty </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Nom de la propietat de selecció. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> source </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Nom de l'element disparador de l'event. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> target </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Id de la taula que conté el llista editable. </td>
+</tr>
+</tbody></table>
+<ul>
+	<li><b>selectionProperty</b></li>
+</ul>
+
+
+<p>Aquesta propietat defineix el camp del Form Bean que indicarà si el registre al qual pertany està seleccionat. El camp ha de ser un valor booleà i es representarà amb un element 'checkbox'. Tots els 'checkbox' seleccionats indicaran els registres a esborrar.</p>
+<ul>
+	<li><b>source</b></li>
+</ul>
+
+
+<p>Aquesta propietat defineix l'id de l'element al qual s'hi s'assignarà l'event 'onclick' que dispararà la funció de esborrar tots els registres seleccionats.</p>
+<ul>
+	<li><b>target</b></li>
+</ul>
+
+
+<p>Id de la taula on s'esborraran els registres.</p>
+
+<p>Exemple:<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:deleterows source=<span class="code-quote">"deleteRowsButton"</span> target=<span class="code-quote">"taulaId"</span> listName=<span class="code-quote">"accounts"</span> selectionProperty=<span class="code-quote">"selected"</span>/&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" />  <div align="center"><img src="Llistats Editables_attachments/image041.jpg" border="0" /></div><br/>
+En l'exemple anterior s'assigna al botó amb id 'deleteRowsButton' la funció d'eliminar tots els registres seleccionats de la taula.
+<br clear="all" />
+<br clear="all" />
+<br clear="all" /></p>
+
+<h3><a name="LlistatsEditables-AddRowTag"></a>AddRowTag</h3>
+
+<p>El tag AddRowTag serveix per afegir nous registres a un llistat editable.</p>
+
+<p>Funcionament</p>
+
+<p>Aquest fa una única petició a servidor d'obtenir la plantilla de fila nova. En aquesta es podran posar en els camps el valors per defecte de cada camp.</p>
+
+<p>Aquesta petició es fa amb el reqCode addRowEditList. Si l'action hereta del DispatchActionSuport en té un de genèric. Aquest construeix el bean pare buit amb la col.lecció indexada amb un element buit, i llavors fa el forward indicat per a que es construeixi la plantilla de fila nova. Aquest mètode es pot redefinit per tal que es creï un element dins la col?lecció amb els valors per defecte desitjats.</p>
+
+<p>La plantilla de fila nova té unes característiques especials.</p>
+
+<p>Les propietats indexades han de fer referència a l'element 0 de la col?lecció. Això és causa ja que openFrame abans de renderitzar la plana omple la col?lecció amb un bean buit. Si és fes referència a un element superior a 0 en la plantilla sortirà una excepció.</p>
+
+<p>La variable {rowIndex} es reemplaça just en el pintat per la posició que ocupar en la llista indexada del bean. És molt útil per poder fer referència a component dins la mateixa fila, com és el cas de les validacions.</p>
+
+<p>Per tal que els components caixes de text es pintin és necessita que estiguin dins un formulari. I aquest tingui dins un table amb un tr, que és el que es pintarà com a plantilla de fila nova.</p>
+
+<p>Per tal que les validacions obligatòries de submit funcionin, es necessita que aquest formulari tingui el mateix identificador intern que el que conté el llistat editable. Per fer això s'ha d'afegir al formulari de la plantilla nova el següent:</p>
+
+<p> <b>generateId="&lt;%=request.getParameter("formIdent")%&gt;"</b></p>
+
+<p>Un cop el navegador té la plantilla de fila nova del servidor, a cada petició d'afegir fila nova el que fa és copia aquesta plantilla i li reemplaça la propietat indexada amb el valor 0 pel que li correspon en aquell moment en el llistat editable.</p>
+
+<p>Propietats del tag</p>
+
+<p>Les propietats d'aquest tag són les següents:</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Propietat</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Valor</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> listName </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Nom de la llista en el Form Bean. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> source </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Nom de l'element disparador de l'event. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> target </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Id de la taula que conté el llista editable. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> insertInRow </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Posició dins la taula en la qual volem afegir els nous registres. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> startIndex </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Índex a partir del qual afegirem nous registres en la llista. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> url </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Url on es troba l'action que retornarà la jsp que conté la plantilla del TR a afegir. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> reqCode </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Nom de la funció dins l'Action indicada en la propietat 'url'. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> parameters </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Paràmetres addicionals per afegir a la url. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> forward </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Nom del forward que s'executarà en la funció de la Action. </td>
+</tr>
+</tbody></table>
+<ul>
+	<li><b>source</b></li>
+</ul>
+
+
+<p>Aquesta propietat defineix l'id de l'element al qual s'assignarà l'event 'onclick' que dispararà la funció d'afegir un nou registre.</p>
+<ul>
+	<li><b>target</b></li>
+</ul>
+
+
+<p>Id de la taula on es crearan els nous registres.</p>
+<ul>
+	<li><b>insertInRow</b></li>
+</ul>
+
+
+<p>Posició gràfica de la taula on afegirem les noves plantilles. Els possibles valors poden ser:<br/>
+? first<br/>
+? second<br/>
+? third<br/>
+? last<br/>
+? penultimate<br/>
+? qualsevol nombre enter, tenint en compte que 0 és la primera posició i que les nombres negatius són el número de fila començant pel final de la taula. Així, si la propietat val &#45;1, s'afegiran els nous registres a la penúltima posició de la taula, si val &#45;2, l'avantpenúltima, etc..</p>
+<ul>
+	<li><b>startIndex</b></li>
+</ul>
+
+
+<p>Índex de la propietat indexada a partir del qual s'aniran renombrant les noves files. Lo més habitual és que l'startIndex sigui el nombre d'elements de lllista. Com que normalment no es sap s'ha d'emprar un variable que faci de comptador dins el jsp.</p>
+
+<p>url</p>
+
+<p>Els nous registres(o TRs) que s'han d'afegir a la taula es crearan a partir una plantilla. Aquesta plantilla serà una jsp on les propietats indexades sempre tindran index 0. El tag ja s'encarregarà de substituir el 0 per l'índex apropiat. La propietat 'url' indica la Action on es troba aquesta jsp, que contindrà una taula amb el TR que vulguem definir i que haurà de tenir la mateixa estructura que tots els altres registres (o <ins>TRs</ins>) de la taula.<br/>
+Exemple:
+<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;table&gt;
+&lt;tr onmouseover=<span class="code-quote">"<span class="code-keyword">this</span>.className='selected';"</span> onmouseout=<span class="code-quote">"<span class="code-keyword">this</span>.className='zebra0';"</span>&gt;
+&lt;td&gt;
+&lt;input type=<span class="code-quote">"checkbox"</span> name=<span class="code-quote">"accounts\[0\].selected"</span>/&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;input type=<span class="code-quote">"text"</span> name=<span class="code-quote">"accounts\[0\].lastname"</span>/&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" />
+En l'exemple anterior definim una taula que conté la plantilla dels nous registres. Si en el tag hem informat la propietat 'startIndex' amb el valor 2, en afegir un nou registre el tag substituirà 'accounts[0]' per 'accounts[2]'; si n'afegim un altre, ho farà per 'accounts[3]', etc..
+<br clear="all" />
+<br clear="all" />
+<br clear="all" /></p>
+<ul>
+	<li><b>reqCode</b></li>
+</ul>
+
+
+<p>Nom de la funció dins la Action definida en 'url' que gestionarà l'enviament de la plantilla jsp.</p>
+<ul>
+	<li><b>forward</b></li>
+</ul>
+
+
+<p>Nom del forward que envia la plantilla jsp. Per defecte serà 'success'.</p>
+
+<p>Exemple:
+<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:addrow url=<span class="code-quote">"/openFrame-samples-jPetstore/AppJava/accounts.<span class="code-keyword">do</span>"</span>
+target=<span class="code-quote">"taulaId"</span>
+source=<span class="code-quote">"triggerButton"</span>
+listName=<span class="code-quote">"accounts"</span>
+startIndex=<span class="code-quote">"$\{count\}"</span>
+insertInRow=<span class="code-quote">"penultimate"</span>
+reqCode=<span class="code-quote">"addRowEditList"</span>/&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" />
+En l'exemple anterior s'assigna al botó amb id 'triggerButton'  la funció d'afegir els nous registres de la taula.
+<br clear="all" />
+<br clear="all" />
+<br clear="all" /></p>
+
+<p>Exemple complet de llistat editable amb valuelist:<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;%@ include file=<span class="code-quote">"/WEB-INF/jsp/includes/fwkTagLibs.jsp"</span> %&gt;
+&amp;nbsp;&lt;br&gt;
+&lt;script src=<span class="code-quote">"/openFrame-samples-jPetstore/scripts/ajax/ajaxtags/openFrame-ajaxtags-editList.js"</span>   type=<span class="code-quote">"text/javascript"</span>&gt;&lt;/script&gt;
+&lt;script src=<span class="code-quote">"/openFrame-samples-jPetstore/scripts/ajax/json/json.js"</span>   type=<span class="code-quote">"text/javascript"</span>&gt;&lt;/script&gt;
+
+&lt;c:set <span class="code-keyword">var</span>=<span class="code-quote">"count"</span> value=<span class="code-quote">"0"</span>/&gt;
+
+&lt;fwk:vlhroot value=<span class="code-quote">"list"</span> url=<span class="code-quote">"accounts.<span class="code-keyword">do</span>?"</span> includeParameters=<span class="code-quote">"reqCode"</span> configName=<span class="code-quote">"vlConfig"</span>&gt;
+&lt;fwk:form styleId=<span class="code-quote">"actionForm"</span> action=<span class="code-quote">"accounts.<span class="code-keyword">do</span>"</span> reqCode=<span class="code-quote">"search"</span>&gt;
+&lt;fwk:setList listProperty=<span class="code-quote">"accounts"</span> scopeKey=<span class="code-quote">"list"</span> scope=<span class="code-quote">"page"</span>/&gt;
+&lt;fwk:defineProperty listProperty=<span class="code-quote">"accounts"</span> itemsClass=<span class="code-quote">"net.opentrends.openframe.samples.jpetstore.model.Account"</span>/&gt;
+
+&lt;table width=<span class="code-quote">"450"</span> align=<span class="code-quote">"center"</span> border=<span class="code-quote">"0"</span>&gt;
+&lt;\!-\- pagination section --&gt;
+&lt;tr&gt;
+&lt;td align=<span class="code-quote">"left"</span> nowrap=<span class="code-quote">"<span class="code-keyword">true</span>"</span>&gt;&lt;c:out
+value=<span class="code-quote">"$\{list.valueListInfo.totalNumberOfEntries\}"</span> /&gt; &lt;fmt:message key=<span class="code-quote">"jsp.accounts.accountList.total"</span>/&gt; - &lt;fmt:message key=<span class="code-quote">"jsp.accounts.accountList.page"</span>/&gt;
+(&lt;c:out value=<span class="code-quote">"$\{list.valueListInfo.pagingPage\}"</span> /&gt; &lt;fmt:message key=<span class="code-quote">"jsp.accounts.accountList.of"</span>/&gt; &lt;c:out
+value=<span class="code-quote">"$\{list.valueListInfo.totalNumberOfPages\}"</span> /&gt;)&lt;/td&gt;
+&lt;td &gt;&lt;table border=<span class="code-quote">"0"</span> align=<span class="code-quote">"right"</span>&gt;&lt;tr&gt;&lt;td&gt;&lt;fwk:vlhpaging /&gt;&lt;/td&gt;&lt;/table&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;\!-\- end of Pagination --&gt;
+&lt;tr&gt;
+&lt;td colspan=<span class="code-quote">"2"</span>&gt;
+&lt;table width=<span class="code-quote">"100%"</span> class=<span class="code-quote">"classicLook"</span> cellspacing=<span class="code-quote">"0"</span>
+cellpadding=<span class="code-quote">"0"</span> id=<span class="code-quote">"taulaId"</span>&gt;
+&lt;tbody&gt;
+&lt;%
+<span class="code-object">String</span> displayProvider = (request.getAttribute(<span class="code-quote">"displayProvider"</span>)\!=*<span class="code-keyword">null</span>*)?request.getAttribute(<span class="code-quote">"displayProvider"</span>).toString():"";
+%&gt;
+&lt;fwk:vlhrow bean=<span class="code-quote">"account"</span> display=<span class="code-quote">"&lt;%=displayProvider%&gt;"</span>&gt;
+
+&lt;vlh:attribute name=<span class="code-quote">"onmouseover"</span>&gt;<span class="code-keyword">this</span>.className='selected';&lt;/vlh:attribute&gt;
+&lt;vlh:attribute name=<span class="code-quote">"onmouseout"</span>&gt;<span class="code-keyword">this</span>.className='zebra0';&lt;/vlh:attribute&gt;
+&lt;fwk:vlhcolumn titleKey=<span class="code-quote">"jsp.accounts.accountList.lastname"</span> property=<span class="code-quote">"lastname"</span>&gt;
+&lt;fwk:checkbox property=<span class="code-quote">"accounts\[$\{count\}\].selected"</span> styleId=<span class="code-quote">"accounts\[$\{count\}\].selected"</span> layout=<span class="code-quote">"<span class="code-keyword">false</span>"</span>/&gt;
+&lt;/fwk:vlhcolumn&gt;
+&lt;fwk:vlhcolumn titleKey=<span class="code-quote">"jsp.accounts.accountList.id"</span> property=<span class="code-quote">"id"</span>&gt;
+&lt;fwk:vlhaction url=<span class="code-quote">"editAccount.<span class="code-keyword">do</span>?"</span>&gt;
+&lt;fwk:vlhaddParam name=<span class="code-quote">"reqCode"</span> value=<span class="code-quote">"edit"</span> temp=<span class="code-quote">"<span class="code-keyword">false</span>"</span> /&gt;
+&lt;fwk:vlhaddParam name=<span class="code-quote">"id"</span> property=<span class="code-quote">"id"</span> temp=<span class="code-quote">"<span class="code-keyword">false</span>"</span> /&gt;
+&lt;c:out value=<span class="code-quote">"$\{account.id\}"</span>&gt;&lt;/c:out&gt;
+&lt;/fwk:vlhaction&gt;
+&lt;/fwk:vlhcolumn&gt;
+&lt;fwk:vlhcolumn titleKey=<span class="code-quote">"jsp.accounts.accountList.firstname"</span> property=<span class="code-quote">"firstname"</span>/&gt;
+&lt;fwk:vlhcolumn titleKey=<span class="code-quote">"jsp.accounts.accountList.lastname"</span> property=<span class="code-quote">"lastname"</span>&gt;
+&lt;fwk:text property=<span class="code-quote">"accounts\[$\{count\}\].lastname"</span> styleId=<span class="code-quote">"accounts\[$\{count\}\].lastname"</span> layout=<span class="code-quote">"<span class="code-keyword">false</span>"</span>/&gt;
+&lt;/fwk:vlhcolumn&gt;
+&lt;fwk:vlhcolumn titleKey=<span class="code-quote">"forms.accountForm.field.preferredCategory"</span> property=<span class="code-quote">"preferredCategory.id"</span>&gt;
+&lt;fwk:select styleId=<span class="code-quote">"preferredCategory.id"</span> property=<span class="code-quote">"preferredCategory.id"</span>/&gt;
+&lt;/fwk:vlhcolumn&gt;
+&lt;c:set <span class="code-keyword">var</span>=<span class="code-quote">"count"</span> value=<span class="code-quote">"$\{count + 1\}"</span>/&gt;
+&lt;/fwk:vlhrow&gt;
+&lt;tr&gt;
+&lt;td colspan=<span class="code-quote">"4"</span> style=<span class="code-quote">"text-align:right"</span>&gt;
+&lt;table align=<span class="code-quote">"right"</span>&gt;&lt;tr&gt;&lt;td style=<span class="code-quote">"border: 0px"</span>&gt;&lt;fmt:message key=<span class="code-quote">"jsp.common.export"</span>/&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td style=<span class="code-quote">"border: 0px"</span>&gt;&lt;html:link page=<span class="code-quote">"/accounts.<span class="code-keyword">do</span>?reqCode=searchExportPDF"</span> target=<span class="code-quote">"_blank"</span>&gt;&lt;img src=<span class="code-quote">"&lt;%=request.getContextPath()%&gt;/images/icono_acrobat.gif"</span>   border=<span class="code-quote">"0"</span>/&gt;&lt;/html:link&gt;&lt;/td&gt;
+&lt;td style=<span class="code-quote">"border: 0px"</span>&gt;&lt;html:link page=<span class="code-quote">"/accounts.<span class="code-keyword">do</span>?reqCode=searchExportExcel"</span> target=<span class="code-quote">"_blank"</span>&gt;&lt;img src=<span class="code-quote">"&lt;%=request.getContextPath()%&gt;/images/icono_excel.gif"</span>   border=<span class="code-quote">"0"</span>/&gt;&lt;/html:link&gt;&lt;/td&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;input type=<span class="code-quote">"button"</span> name=<span class="code-quote">"triggerButton"</span> id=<span class="code-quote">"triggerButton"</span> value=<span class="code-quote">"Add Row"</span>/&gt;
+&lt;input type=<span class="code-quote">"button"</span> name=<span class="code-quote">"selectionButton"</span> id=<span class="code-quote">"selectionButton"</span> value=<span class="code-quote">"Select All"</span>/&gt;
+&lt;input type=<span class="code-quote">"button"</span> name=<span class="code-quote">"unselectionButton"</span> id=<span class="code-quote">"unselectionButton"</span> value=<span class="code-quote">"Unselect All"</span>/&gt;
+&lt;input type=<span class="code-quote">"button"</span> name=<span class="code-quote">"deleteRowsButton"</span> id=<span class="code-quote">"deleteRowsButton"</span> value=<span class="code-quote">"Delete selecteds"</span>/&gt;
+
+&lt;br&gt;
+
+&lt;fwk:selection source=<span class="code-quote">"selectionButton"</span> target=<span class="code-quote">"taulaId"</span> listName=<span class="code-quote">"accounts"</span> selectionProperty=<span class="code-quote">"selected"</span> action=<span class="code-quote">"selectAll"</span>/&gt;
+&lt;fwk:selection source=<span class="code-quote">"unselectionButton"</span> target=<span class="code-quote">"taulaId"</span> listName=<span class="code-quote">"accounts"</span> selectionProperty=<span class="code-quote">"selected"</span> action=<span class="code-quote">"unselectAll"</span>/&gt;
+
+&lt;fwk:deleterows source=<span class="code-quote">"deleteRowsButton"</span> target=<span class="code-quote">"taulaId"</span> listName=<span class="code-quote">"accounts"</span> selectionProperty=<span class="code-quote">"selected"</span>/&gt;
+
+&lt;fwk:addrow url=<span class="code-quote">"/openFrame-samples-jPetstore/AppJava/accounts.<span class="code-keyword">do</span>"</span>
+target=<span class="code-quote">"taulaId"</span>
+source=<span class="code-quote">"triggerButton"</span>
+listName=<span class="code-quote">"accounts"</span>
+startIndex=<span class="code-quote">"$\{count\}"</span>
+insertInRow=<span class="code-quote">"penultimate"</span>
+reqCode=<span class="code-quote">"addRowEditList"</span>/&gt;
+
+&lt;fwk:submit value=<span class="code-quote">"submit"</span> styleId=<span class="code-quote">"submit"</span> reqCode=<span class="code-quote">"save"</span>/&gt;
+
+&lt;/fwk:form&gt;
+&lt;/fwk:vlhroot&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" />  <div align="center"><img src="Llistats Editables_attachments/image043.jpg" border="0" /></div><br clear="all" />
+<br clear="all" />
+<br clear="all" /></p>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Llistats Editables_attachments/image041.jpg">image041.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Llistats Editables_attachments/image043.jpg">image043.jpg</a> (image/jpeg)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="border/border_bottom.gif"><img src="border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Apr 14, 2015 11:50</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

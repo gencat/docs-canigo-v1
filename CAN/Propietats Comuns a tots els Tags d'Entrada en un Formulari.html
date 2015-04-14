@@ -1,0 +1,240 @@
+<html>
+    <head>
+        <title>Canigó - Espai Privat : Propietats Comuns a tots els Tags d'Entrada en un Formulari</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+    <body>
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Canigó - Espai Privat : Propietats Comuns a tots els Tags d'Entrada en un Formulari
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 29, 2007 by <font color="#0050B2">xes</font>.
+				    </div>
+
+				    <p>Tots els tags inclosos dins un tag de formulari (form) tenen a més de les propietats de Struts:&nbsp;</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Propietat</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Valor</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> key </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Clau del literal a generar com a 'label' del component. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> layout </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Indicar 'false' si no es volen generar els tags '&lt;tr&gt;','&lt;td&gt;' per als components. Per defecte és 'true' si no indiquem aquesta propietat </td>
+</tr>
+<tr>
+<td class='confluenceTd'> accessKey </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Permet fer ús d'accés per teclat al component. <br clear="all" />
+S'ha d'especificar la clau del fitxer d'internacionalització que defineix el caràcter que ha de subratllar (del valor del 'key' definit) i considerar per generar l'event de focus si es fa servir 'ALT+valor key' </td>
+</tr>
+<tr>
+<td class='confluenceTd'> <b>mode</b> </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Mode de visualització del component segons el mode que s'hagi assignat al formulari.S'ha d'indicar un valor amb 3 parts separades per ','. La primera indica en quin mode apareixerà el component si el mode del formulari és de creació, la segona part en quin mode ha d'aparèixer si el mode del formulari és d'edició i la tercera part en quin mode ha d'aparèixer si el mode del formulari és de consulta.<br clear="all" />
+Exemple: 'E,E,I' </td>
+</tr>
+</tbody></table>
+<p>A continuació s'ofereix més detall dels valors possibles i del seu ús.&#124;</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> required </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Mostrar el camp com obligatori. No cal definir-lo si s'ha definit al 'Servei de Validació' que el camp és obligatori. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> tooltipKey, tooltipTitleKey i tooltipOptions </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Permeten generar un tooltip d'ajuda al component </td>
+</tr>
+</tbody></table>
+
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> selectOnFocus </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> En rebre el focus el component tindrà tot el seu contingut seleccionat. Especificar 'false' si no es vol utilitzar aquest comportament per defecte. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> i18nService </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Referència al servei d'internacionalització </td>
+</tr>
+<tr>
+<td class='confluenceTd'> validationService </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Referència al servei de validació </td>
+</tr>
+</tbody></table>
+<ol>
+	<li><b>'key' i 'layout '(Generació de etiquetes i layout als components)</b></li>
+</ol>
+
+
+<p>En tota aplicació Web hem d'utilitzar formularis. Aquests solen estar estructurats mitjançant una graella en la que es mostren els components de formulari (camps d'entrada de dades, de selecció, botons d'opció, etc.) i a l'esquerra una etiqueta associada al camp.</p>
+
+<p>Mitjançant Struts, JSTL i l'ús del tag '&lt;label&gt;' (descuidat per molts desenvolupadors però existent a l'estàndard HTML fa molt de temps) la realització d'un component implicaria el següent codi:</p>
+
+<p><div class="code"><div class="codeContent">
+<pre class="code-java">&lt;tr&gt;&lt;td&gt;
+
+&lt;label <span class="code-keyword">for</span>=<span class="code-quote">"id"</span> ...&gt;
+
+&lt;fmt:message key=<span class="code-quote">"key.id "</span>/&gt;
+
+&lt;/label&gt;
+
+&lt;html:text property=<span class="code-quote">"id"</span> size=<span class="code-quote">"20"</span> maxlength=<span class="code-quote">"20"</span>/&gt;
+
+&lt;/td&gt;&lt;/tr&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" />
+Resulta obvi que a mesura que anem afegint components a la nostra pàgina JSP aquesta es fa feixuga de llegir, ja que incorpora gran quantitat de layout i etiquetes. Per què no un tag que generi tot aquest codi i fos senzill d'utilitzar? Amb el nou tag proporcionat per openFrame el codi equivalent seria:<br/>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:text styleId=<span class="code-quote">"id"</span> property=<span class="code-quote">"id"</span>/&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" />
+Exemple:<br/>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;bean parent=<span class="code-quote">"textFieldTag"</span>&gt;
+
+&lt;property name=<span class="code-quote">"styleId"</span> value=<span class="code-quote">"firstname"</span>/&gt;
+
+...
+
+&lt;property name=<span class="code-quote">"key"</span> value=<span class="code-quote">"forms.accountForm.field.firstname"</span>/&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" />
+<br clear="all" />
+<br clear="all" /></p>
+<ol>
+	<li><b>accessKey (accés per teclat)</b></li>
+</ol>
+
+
+<p>Per a poder accedir mitjançant el teclat a qualsevol camp, podem usar l'atribut 'accesskey'. Mitjançant HTML podríem crear el següent codi:</p>
+
+<p>&lt;label for="nombre"&gt;&lt;u&gt;N&lt;/u&gt;ombre&lt;/label&gt;<br/>
+&lt;input type="text" accesskey="n" id="nombre" name="nombre"&gt;</p>
+
+<p><b>Mode tradicional</b></p>
+
+<p>Canigó genera de forma automàtica el codi d'accés als components. En conjunció amb el servei de internacionalització defineix quina és la clau que defineix quin és el caràcter a subratllar.</p>
+
+<p>Exemple:</p>
+
+<p><div class="code"><div class="codeContent">
+<pre class="code-java">&lt;bean parent=<span class="code-quote">"textFieldTag"</span>&gt;
+
+&lt;property name=<span class="code-quote">"styleId"</span> value=<span class="code-quote">"firstname"</span>/&gt;
+
+&lt;property name=<span class="code-quote">"accesskey"</span>
+
+value=<span class="code-quote">"forms.accountForm.field.firstname.accesskey"</span>/&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" />
+<br clear="all" />
+<br clear="all" /></p>
+<ol>
+	<li><b>mode</b></li>
+</ol>
+
+
+<p>El mode dels camps permet especificar si un camp "input" ha de ser editable, de lectura, ocult o que no aparegui en el formulari segons el mode de display del formulari. Això permet per exemple que un camp que forma part de la clau primària només sigui editable durant la creació, o mostrar camps calculats només quan es visualitza la informació i no quan s'edita.</p>
+
+<p>El comportament per defecte és que els camps es mostrin editables si el mode del formulari es CREATE o EDIT, i es mostrin de lectura (valor text pla sense component HTML i un hidden amb el valor del camp) si el mode del formulari és INSPECT.</p>
+
+<p>Aquest comportament per defecte pot alterar-se en els camps mitjançant l'atribut 'mode'. El valor que s'ha d'assignar a aquest atribut ha de seguir el patró 'X,Y,Z'; on X és el comportament que tindrà el camp en cas que el mode del formulari sigui 'FormUtils.CREATE_MODE', Y el comportament en el mode edició ('FormUtils.EDIT_MODE') i Z en mode de consulta ('FormUtils.INSPECT_MODE'). Els valors possibles per X,Y i Z són:</p>
+<ol>
+	<li>E: editable</li>
+	<li>I: inspeccionable (de consulta), amb un camp ocult corresponent</li>
+	<li>S: mostrar, igual que 'I' però no es genera camp ocult</li>
+	<li>N: no es mostra</li>
+	<li>P: present (com 'S' si el valor del camp no és null i com 'N' si el valor del camp és nul)</li>
+	<li>H: ocult (no es mostra, però sí es genera un camp ocult)</li>
+	<li>R : de lectura (es genera el camp però amb l'atribut 'readonly')</li>
+	<li>D: desactivat (es genera el camp amb l'atribut 'disabled')</li>
+</ol>
+
+
+<p>Una vegada especificat en quin mode funcionarà el formulari, els components apareixeran segons el mode especificat, sense que per això s'hagi de generar codi JSP addicional.</p>
+<ol>
+	<li><b>required</b></li>
+</ol>
+
+
+<p>Es pot especificar que es mostri una imatge o text al principi de l'etiqueta per indicar que un camp és requerit si especifiquem el valor 'true' per la propietat 'required'.</p>
+
+<p>Aquesta propietat <b>no és necessària</b> especificar-la si en el Servei de Validació s'ha configurat que el camp és obligatori. El tag accedeix al servei i pregunta si el camp associat és requerit. Per a que això funcioni cal que s'especifiqui la propietat 'validationService' al tag.</p>
+
+<p>El comportament proporcionat per openFrame crea el contingut '<br/>
+'&lt;span class='required'&gt;*&lt;/span&gt;' abans del tag HTML '&lt;label&gt;' . Aquest comportament està definit al fitxer 'scripts/ajax/behaviour/openFrame-behaviours.js'. En cas de voler canviar aquest comportament podem accedir al fitxer i fer els canvis necessaris al codi:</p>
+
+<p>Podem configurar l'estil de l'asterisc modificant al fitxer d'estils la següent entrada:</p>
+
+<p>label span.required { color: #c32; }</p>
+<ol>
+	<li><b>tooltipKey, tooltipTitleKey y tooltipOptions</b></li>
+</ol>
+
+
+<p>Aquestes 3 propietats ens permeten especificar l'ajuda contextual als camps.</p>
+<ol>
+	<li>tooltipKey. Clau del literal del missatge a mostrar dins el tooltip</li>
+	<li>tooltipTitleKey. Clau del literal a mostrar si volem mostrar un títol com a capçalera del tooltip</li>
+	<li>tooltipOptions. Opcions aplicades segons la implementació (en el cas actual sota DOM Tooltip).</li>
+</ol>
+
+
+<p>Per a ser utilitzat el tag 'Configuration' importa el fitxer js 'scrips/ajax/ajaxtags/openFrame&#45; ajaxtags.js'. Si es vol canviar el comportament per defecte es poden fer els canvis necessaris a aquest fitxer.</p>
+
+<p>En aquest codi es genera de forma automàtica el link que mostrarà el tooltip en passar per sobre. Addicionalment podem configurar els estils dels tooltips segons la definició dels estils mostrats a continuació:</p>
+
+<p><div class="code"><div class="codeContent">
+<pre class="code-java">a.tooltip:link \{text-decoration: none; \}
+
+a.tooltip:visited \{text-decoration: none; \}
+
+a.tooltip:hover \{text-decoration: none; cursor:help; \}
+
+a.tooltip:active \{\}</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />
+<br clear="all" />
+Un dels estils més útils és 'cursor:help' dins a hover, ja que ens apareixerà el cursor d'ajuda quan passem per sobre de l'etiqueta del component.
+<br clear="all" />
+NOTA: El cursor d'ajuda no apareix en el gràfic
+<br clear="all" />
+<br clear="all" /></p>
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="border/border_bottom.gif"><img src="border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Apr 14, 2015 11:50</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

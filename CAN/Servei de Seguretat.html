@@ -1,0 +1,2852 @@
+<html>
+    <head>
+        <title>Canigó - Espai Privat : Servei de Seguretat</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+    <body>
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Canigó - Espai Privat : Servei de Seguretat
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Feb 07, 2007 by <font color="#0050B2">admin</font>.
+				    </div>
+
+				    <p><br clear="all" /></p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Framework Corporatiu J2EE</b><br clear="all" />
+ <br clear="all" />
+<b>Servei de Seguretat</b><br clear="all" />
+<b>Versió 1.1</b><br clear="all" />
+ <br clear="all" />
+Barcelona, 2 / octubre / 2006<br clear="all" /> </td>
+<td class='confluenceTd'><br clear="all" />
+ </td>
+</tr>
+</tbody></table>
+
+<p><b>Històric de modificacions</b></p>
+
+<p> </p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> Data </td>
+<td class='confluenceTd'> Autor </td>
+<td class='confluenceTd'> Comentaris </td>
+<td class='confluenceTd'> Versió </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 05/01/2006 </td>
+<td class='confluenceTd'> Atos Origin, sae<br clear="all" />
+openTrends </td>
+<td class='confluenceTd'> Versió inicial del document </td>
+<td class='confluenceTd'> 1.0 </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 02/10/2006 </td>
+<td class='confluenceTd'> Atos Origin </td>
+<td class='confluenceTd'> Versió 1.1 openFrame </td>
+<td class='confluenceTd'> &nbsp;&nbsp; 1.1 </td>
+</tr>
+<tr>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+</tbody></table>
+<p> </p>
+
+<p> </p>
+
+<p><b>Llegenda de Marcadors</b>
+<br clear="all" /> <b>Índex</b></p>
+
+<p> <br clear="all" />
+1. Introducció.....................................................................................................................5</p>
+
+<p>1.1. Propòsit........................................................................................................................5</p>
+
+<p>1.2. Context i Escenari d'ús...................................................................................................6</p>
+
+<p>1.3. Versions i Dependències...................................................................................................6</p>
+
+<p>1.3.1. Versions...................................................................................................................6</p>
+
+<p>1.3.2. Dependències...........................................................................................................6</p>
+
+<p>1.4. A qui es dirigeix...............................................................................................................7</p>
+
+<p>1.5. Documents i Fonts de Referència......................................................................................7</p>
+
+<p>1.6. Glossari........................................................................................................................7</p>
+
+<p>2. Descripció Detallada...................................................................................................8</p>
+
+<p>2.1. Arquitectura Bàsica.......................................................................................................8</p>
+
+<p>2.1.1. Accés a una url no protegida......................................................................................8</p>
+
+<p> .......................................................................................................................................8</p>
+
+<p>2.1.2. Accés a urls protegides............................................................................................10</p>
+
+<p>2.1.3. Accés a urls protegides si usuari autentificat..............................................................11</p>
+
+<p>2.2. Interfícies i Components Genèrics...................................................................................12</p>
+
+<p>2.2.1. Interfícies Principals.................................................................................................12</p>
+
+<p>2.2.2. Model de Classes de Seguretat.................................................................................14</p>
+
+<p>2.3. Instal- lació i Configuració............................................................................................16</p>
+
+<p>2.3.1. Configuració de la Base de Dades.............................................................................17</p>
+
+<p>2.3.2. Configuració dels filtres de l'Aplicació Web................................................................22</p>
+
+<p>2.3.3. Configuració de la font de dades de Seguretat............................................................23</p>
+
+<p>2.3.4. Configuració de l'Autentificació..................................................................................24</p>
+
+<p>2.3.5. Configuració de l'Autorització....................................................................................30</p>
+
+<p>2.3.6. Configuració del Servei d'Accés a Informació General.................................................33</p>
+
+<p>2.4. Utilització del Servei....................................................................................................34</p>
+
+<p>2.4.1. Autentificació per Formulari......................................................................................34</p>
+
+<p>2.4.2. Utilització de l'Autorització en les nostres pàgines JSP..............................................38</p>
+
+<p>2.4.3. Obtenció d'Informació de Seguretat amb API.............................................................39</p>
+
+<p>2.4.4. Gestió dels ACLs mitjançant la API...........................................................................40</p>
+
+<p>2.5. Eines de Suport.............................................................................................................41</p>
+
+<p>2.5.1. Servidor LDAP de proves: openLDAP........................................................................41</p>
+
+<p>2.5.2. Jxplorer...................................................................................................................44</p>
+
+<p>3. Exemples........................................................................................................................45</p>
+
+<p>3.1. Exemple de configuració d'autentificació amb BBDD, SACE i LDAP...................................45</p>
+
+<p>3.1.1. Exemple de configuració amb autentificació SACE.....................................................45</p>
+
+<p>3.1.2. Autentificació per BBDD amb una BBDD ja existent...................................................46</p>
+
+<p>3.2. Exemple de formulari de login amb JSTL i Struts............................................................47</p>
+
+<p>3.3. Exemple de configuració d'ACLs.....................................................................................49
+<br clear="all" />
+ </p>
+
+<p> </p>
+
+<p> </p>
+
+<h1><a name="ServeideSeguretat-1.%26nbsp%3B%26nbsp%3BIntroducci%C3%B3"></a>1.&nbsp;&nbsp; Introducció</h1>
+
+
+<h2><a name="ServeideSeguretat-.1.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B..."></a>1.1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Propòsit</h2>
+
+<p> </p>
+
+<p>El Servei de Seguretat té com a propòsit principal gestionar l'autentificació i l'autorització dels usuaris de les nostres aplicacions. L'objectiu de l'autentificació és comprovar que l'usuari és qui diu ser, mentre que l'autorització s'encarrega&nbsp; de comprovar que realment té accés al recurs sol&#45; licitat.</p>
+
+<p> </p>
+
+<p>NOTA:</p>
+
+<p> </p>
+
+<p>L'especificació <font color="black">JAAS</font>(Java <font color="black">Authorization</font> <font color="black">and</font><font color="black">Authentication</font>) de J2EE proporciona els mecanismes necessaris de seguretat. Cada servidor d'aplicacions pot implementar l'estàndard però <font color="black">ho fa</font> de diferents formes produint problemes de compatibilitat.<br/>
+L'especificació <font color="black">JAAS</font> s'orienta principalment a temes d'autentificació, mentre que els temes d'autorització pateixen de moltes carències.</p>
+
+<p> </p>
+
+<p>Actualment, i a causa del seu grau de maduresa i facilitat <font color="black">openFrame</font> recomana l'ús de '<font color="black">Acegi</font>' com <font color="black">framework</font>base i les extensions que <font color="black">openFrame</font>proporciona.</p>
+
+<p> </p>
+
+<p>Per a l'ús d'aquest servei i la lectura del present document es necessiten com a prerequisits els següens aspectes:</p>
+
+<p> </p>
+
+<p>1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coneixements sobre bases de dades</p>
+
+<p><font color="black">2)</font><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>Coneixements bàsics sobre <font color="black">LDAP</font></p>
+
+<p><font color="black">3)</font><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>Coneixements bàsics sobre Filtres <font color="black">Servlet</font> i llibreries de tags <font color="black">JSP</font></p>
+
+<p>4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coneixements bàsics amb Spring</p>
+
+<p> </p>
+
+<p><br clear="all" /></p>
+
+<h2><a name="ServeideSeguretat-1.2.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BContextiEscenarid%27%C3%BAs"></a>1.2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Context i Escenari d'ús</h2>
+
+<p>El Servei de Seguretat és un servei general d'<font color="black">openFrame</font>.</p>
+
+<p> </p>
+
+<p> </p>
+
+<h2><a name="ServeideSeguretat-1.3.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BVersionsiDepend%C3%A8ncies"></a>1.3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Versions i Dependències</h2>
+
+<p> </p>
+
+<h3><a name="ServeideSeguretat-.3.1.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbs..."></a>1.3.1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Versions</h3>
+
+<p> </p>
+
+<p>En la versió 1.1 no hi ha canvis funcionals respecte la&nbsp; versió 1.0. En aquest document s'han reeamplaçat els bean.message per fmt:message i bean:write per c:out.</p>
+
+<p> </p>
+
+<h3><a name="ServeideSeguretat-.3.2.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbs..."></a>1.3.2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dependències</h3>
+
+<p> </p>
+
+<p>En el&nbsp;<font color="black">present</font> apartat es mostren les versions i dependències necessàries per a l'ús del Servei.</p>
+
+<p> <br/>
+NomTipusVersióDescripcióservlet-apijar2.4 | jsp-api | jar | 2.0 | <a href="http://java.sun.com/products/jsp" title="Visit page outside Confluence">http://java.sun.com/products/jsp</a> |</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> acegi-security </td>
+<td class='confluenceTd'> jar </td>
+<td class='confluenceTd'> 0.8.3 </td>
+<td class='confluenceTd'> <a href="http://acegisecurity.sourceforge.net" title="Visit page outside Confluence">http://acegisecurity.sourceforge.net</a> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> spring </td>
+<td class='confluenceTd'> jar </td>
+<td class='confluenceTd'> 1.2.5 </td>
+<td class='confluenceTd'> <a href="http://www.springframework.org" title="Visit page outside Confluence">http://www.springframework.org</a> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> commons-collections </td>
+<td class='confluenceTd'> jar </td>
+<td class='confluenceTd'> 3.1 </td>
+<td class='confluenceTd'> <a href="http://jakarta.apache.org/commons" title="Visit page outside Confluence">http://jakarta.apache.org/commons</a> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> commons-codec </td>
+<td class='confluenceTd'> jar </td>
+<td class='confluenceTd'> 1.3 </td>
+<td class='confluenceTd'> <a href="http://jakarta.apache.org/commons" title="Visit page outside Confluence">http://jakarta.apache.org/commons</a> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> commons-lang </td>
+<td class='confluenceTd'> jar </td>
+<td class='confluenceTd'> 2.1 </td>
+<td class='confluenceTd'> <a href="http://jakarta.apache.org/commons" title="Visit page outside Confluence">http://jakarta.apache.org/commons</a> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> ehcache </td>
+<td class='confluenceTd'> jar </td>
+<td class='confluenceTd'> 1.1 </td>
+<td class='confluenceTd'> <a href="http://ehcache.sourceforge.net" title="Visit page outside Confluence">http://ehcache.sourceforge.net</a> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> oro </td>
+<td class='confluenceTd'> jar </td>
+<td class='confluenceTd'> 2.0.8 </td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<td class='confluenceTd'> jstl </td>
+<td class='confluenceTd'> jar </td>
+<td class='confluenceTd'> 1.0.6 </td>
+<td class='confluenceTd'> <a href="http://jakarta.apache.org/taglibs/" title="Visit page outside Confluence">http://jakarta.apache.org/taglibs/</a> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> standard </td>
+<td class='confluenceTd'> jar </td>
+<td class='confluenceTd'> 1.0.6 </td>
+<td class='confluenceTd'> <a href="http://jakarta.apache.org/taglibs/" title="Visit page outside Confluence">http://jakarta.apache.org/taglibs/</a> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> xercesImpl </td>
+<td class='confluenceTd'> jar </td>
+<td class='confluenceTd'> 2.6.2 </td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+<tr>
+<td class='confluenceTd'> xml-apis </td>
+<td class='confluenceTd'> jar </td>
+<td class='confluenceTd'> 2.0.2 </td>
+<td class='confluenceTd'> <a href="http://xml.apache.org/commons/" title="Visit page outside Confluence">http://xml.apache.org/commons/</a> </td>
+</tr>
+</tbody></table>
+<p> </p>
+
+<h2><a name="ServeideSeguretat-1.4.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BAquiesdirigeix"></a>1.4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A qui es dirigeix</h2>
+
+<p>Aquest document es dirigeix als perfils següents:</p>
+
+<p> </p>
+
+<p><font color="black">&#45;</font> <font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>Arquitecte. Per a definir una estratègia de seguretat i la seua implementació amb <font color="black">Acegi</font></p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Programador. Per a configurar el servei de seguretat de cada aplicació web</p>
+
+<p> </p>
+
+<h2><a name="ServeideSeguretat-1.5.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BDocumentsiFontsdeRefer%C3%A8ncia"></a>1.5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Documents i Fonts de Referència</h2>
+
+<p> </p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> Guió de referència <br clear="all" />
+D'Acegi </td>
+<td class='confluenceTd'> <a href="http://acegisecurity.sourceforge.net/reference.html" title="Visit page outside Confluence">http://acegisecurity.sourceforge.net/reference.html</a> </td>
+</tr>
+<tr>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> Introducció   d'Acegi </td>
+<td class='confluenceTd'> <a href="http://javahispano.net/frs/download.php/120/SeguridadnointrusivaSpring.pdf" title="Visit page outside Confluence">http://javahispano.net/frs/download.php/120/SeguridadnointrusivaSpring.pdf</a> </td>
+</tr>
+</tbody></table>
+
+<h2><a name="ServeideSeguretat-.6.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B..."></a>1.6.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Glossari</h2>
+
+<p> </p>
+
+<p><b>ACLs (Access Control List)</b></p>
+
+<p> </p>
+
+<p>Les llistes de control d'accés o ACLs permeten gestionar les autoritzacions de cada rol o usuari a nivell de dades o instàncies de lògica de negoci. Per a cada instància es poden especificar diferents dret: lectura, escriptura, esborrat, creació.</p>
+
+<p> </p>
+
+<h1><a name="ServeideSeguretat-2.%26nbsp%3B%26nbsp%3BDescripci%C3%B3Detallada"></a>2.&nbsp;&nbsp; Descripció Detallada</h1>
+
+
+<h2><a name="ServeideSeguretat-2.1.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BArquitecturaB%C3%A0sica"></a>2.1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arquitectura Bàsica</h2>
+
+<p>En el present apartat es mostren els diagrames de seqüència associats al tractament de peticions i cóm el servei de seguretat activarà el pas o no al recurs sol&#45; licitat.</p>
+
+<p> </p>
+
+<h3><a name="ServeideSeguretat-2.1.1.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BAcc%C3%A9saunaurlnoprotegida"></a>2.1.1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accés a una url no protegida</h3>
+
+<p>Si hi ha un accés a una url que no s'ha configurat com a protegida (veure apartat 'Configuració') es segueixen els següents pasos:</p>
+
+<p> </p>
+
+<p>1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;S'activen uns filtres que comproven si l'usuari està autentificat</p>
+
+<p>2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Donat que la url no és protegdia, el servei tramita la petició amb el filtre "anonymousProcessingFilter" i assigna a la sessió l'usuari 'ANONYMOUS' i el rol 'ROLE_ANONYMOUS'</p>
+
+<p>3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L'usuari a partir d'aquest moment es troba autentificat i pot accedir a totes les urls no protegides</p>
+
+<h3><a name="ServeideSeguretat-%26nbsp%3B"></a>&nbsp;</h3>
+
+<p> </p>
+
+<p> </p>
+
+<h3><a name="ServeideSeguretat-%C2%A0"></a> </h3>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> <br clear="all" />
+ </p>
+
+<h3><a name="ServeideSeguretat-2.1.2.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BAcc%C3%A9saurlsprotegides"></a>2.1.2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accés a urls protegides</h3>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p>Si s'accedeix a una url protegida, el funcionament és:</p>
+
+<p> </p>
+
+<p>1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;El servei executa una seqüència de filtres per comprovar l'autentificació.</p>
+
+<p>2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Com la url és protegida, el servei gestiona la petició amb el filtre "authenticationProcessingFilter" y llença una excepció de tipus AuthenticationException (usuari no autentficat).</p>
+
+<p>3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Es redirecciona l'usuari a la pàgina de Login.</p>
+
+<p>4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;De&nbsp; nou, s'executen uns filtres per tramitar la petició d'autentificació</p>
+
+<p>5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Es crida al mètode 'authenticate()'. El authenticationManager comprova els noms d'usuaris /password contra una seqüència d'autentificació (SACE / LDAP / BBDD).</p>
+
+<p>6)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finalment l'usuari es troba autentificat (i configurat amb el seu(s) rol(s)) i se li redirigeix a la pàgina inicialment sol&#45; licitada</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h3><a name="ServeideSeguretat-2.1.3.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BAcc%C3%A9saurlsprotegidessiusuariautentificat"></a>2.1.3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accés a urls protegides si usuari autentificat</h3>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p>Si el mateix usuari amb un rol 1 intenta accedir a una url restringida pel rol 2, la seqüència és:</p>
+
+<p> </p>
+
+<p>1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Donat que la url és protegida, es tramita la petició amb el filtre "authenticationProcessingFilter" per comprovar que l'usuari està autentificat.</p>
+
+<p>2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Es fa un crida al mètode decide() dels voters configurats. Com la url és protegida pel rol 2 (per exemple 'ROLE_USER') i l'usuari només té el rol 2 (per exemple 'ROLE_ADMIN'), es llença una excepció de tipus BadCredentialsException</p>
+
+<p>3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Se li redirigeix a una pàgina de HTTP 403 d'error (es configurar en el fitxer web.xml)</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> <br clear="all" />
+ </p>
+
+<h2><a name="ServeideSeguretat-2.2.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BInterf%C3%ADciesiComponentsGen%C3%A8rics"></a>2.2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Interfícies i Components Genèrics</h2>
+
+
+<h3><a name="ServeideSeguretat-2.2.1.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BInterf%C3%ADciesPrincipals"></a>2.2.1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Interfícies Principals</h3>
+
+<p> </p>
+
+<p> </p>
+
+<p>Només la interfície 'SecurityService' serà visible des de les classes desenvolupades per les aplicacions, les restants classes s'usaran per definir mitjançant la configuració el comportament dessitjat per la seguretat.</p>
+
+<p> <br/>
+ComponentPackageDescripció| SecurityService | net.opentrends.openframe<br clear="all" />
+.services<br clear="all" />
+.security | Proporciona mètodes d'accés a informació de   context de seguretat (veure si l'usuari està autenticat, és d'un rol   determinat, etc.) |</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> AuthenticationSecurityConfiguration </td>
+<td class='confluenceTd'> net.opentrends.openframe<br clear="all" />
+.services<br clear="all" />
+.security </td>
+<td class='confluenceTd'> Classe de configuració de l'autentificació </td>
+</tr>
+<tr>
+<td class='confluenceTd'> AbstractAuthenticationConfiguration </td>
+<td class='confluenceTd'> net.opentrends.openframe<br clear="all" />
+.services<br clear="all" />
+.security </td>
+<td class='confluenceTd'> Superclasse de les classes de configuració de   l'autentificació&nbsp; dels usuaris per base   de dades, LDAP, etc ... </td>
+</tr>
+<tr>
+<td class='confluenceTd'> SACEAuthenticationConfiguration </td>
+<td class='confluenceTd'> net.opentrends.openframe<br clear="all" />
+.services<br clear="all" />
+.security </td>
+<td class='confluenceTd'> Classe de configuració de l'autentificació per   SACE </td>
+</tr>
+<tr>
+<td class='confluenceTd'> DatabaseAuthenticationConfiguration </td>
+<td class='confluenceTd'> net.opentrends.openframe<br clear="all" />
+.services<br clear="all" />
+.security </td>
+<td class='confluenceTd'> Classe de configuració de l'autentificació per   base de dades </td>
+</tr>
+<tr>
+<td class='confluenceTd'> LDAPAuthenticationConfiguration </td>
+<td class='confluenceTd'> net.opentrends.openframe<br clear="all" />
+.services<br clear="all" />
+.security </td>
+<td class='confluenceTd'> Classe   de configuració de l'autentificació per LDAP </td>
+</tr>
+<tr>
+<td class='confluenceTd'> AuthorizationSecurityConfiguration </td>
+<td class='confluenceTd'> net.opentrends.openframe<br clear="all" />
+.services<br clear="all" />
+.security </td>
+<td class='confluenceTd'> Classe de configuració de l'autorització </td>
+</tr>
+<tr>
+<td class='confluenceTd'> SequentialProviderManager </td>
+<td class='confluenceTd'> net.opentrends.openframe<br clear="all" />
+.services<br clear="all" />
+.security.acegi </td>
+<td class='confluenceTd'> Classe que permet una autentificació amb una   o&nbsp; diverses fonts de dades (BBDD, LDAP)   en seqüència </td>
+</tr>
+<tr>
+<td class='confluenceTd'> ValueListFilteringProvider </td>
+<td class='confluenceTd'> net.opentrends.openframe<br clear="all" />
+.services<br clear="all" />
+.security.acegi </td>
+<td class='confluenceTd'> Classe que filtra les llistes d'instància i   elimina aquelles instàncies a què l'usuari no pot accedir pels seus permisos. </td>
+<td class='confluenceTd'><br clear="all" />
+ </td>
+</tr>
+</tbody></table>
+
+<h3><a name="ServeideSeguretat-2.2.2.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BModeldeClassesdeSeguretat"></a>2.2.2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Model de Classes de Seguretat</h3>
+
+<p> </p>
+
+<p>El model a continuació mostrat és el model de representació de la informació de la seguretat en relació al model de persones, rols, usuaris i grups.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> <br/>
+ClasePackageDescripció| Party | net.opentrends.openframe<br clear="all" />
+.services<br clear="all" />
+.security.model | Implementació del patró de disseny 'Party' per   representar les relacions entre persones i organitzacions (veure <a href="http://www.tdan.com/i021ht04.htm" title="Visit page outside Confluence">http://www.tdan.com/i021ht04.htm</a> per més referència) |</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> PartyRelationship </td>
+<td class='confluenceTd'> net.opentrends.openframe<br clear="all" />
+.services<br clear="all" />
+.security.model </td>
+<td class='confluenceTd'> Asociació entre 2 "Party" (Group o User) </td>
+</tr>
+<tr>
+<td class='confluenceTd'> PartyRelationshipTypeEnum </td>
+<td class='confluenceTd'> net.opentrends.openframe<br clear="all" />
+.services<br clear="all" />
+.security.model </td>
+<td class='confluenceTd'> Tipus de la relació. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> PartyGroup </td>
+<td class='confluenceTd'> net.opentrends.openframe<br clear="all" />
+.services<br clear="all" />
+.security.model </td>
+<td class='confluenceTd'> Grup d'usuaris. Pot tenir associats un o més   rols i un grup pot també pertànyer a un grup pare. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> Role </td>
+<td class='confluenceTd'> net.opentrends.openframe<br clear="all" />
+.servicesl<br clear="all" />
+.security.model </td>
+<td class='confluenceTd'> Representació de Rols i subrols. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> UserLogin </td>
+<td class='confluenceTd'> net.opentrends.openframe<br clear="all" />
+.services<br clear="all" />
+.security.model </td>
+<td class='confluenceTd'> Dades de l'usuari de les aplicacions. Serà la   informació d'entrada a les aplicacions associada a un usuari o grup </td>
+</tr>
+<tr>
+<td class='confluenceTd'> ACL </td>
+<td class='confluenceTd'> net.opentrends.openframe<br clear="all" />
+.services<br clear="all" />
+.security.model </td>
+<td class='confluenceTd'> Autoritzacions a nivell d'instància de la lógica de   negoci. </td>
+</tr>
+</tbody></table>
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<h2><a name="ServeideSeguretat-%C2%A0"></a> </h2>
+
+<p><br clear="all" /></p>
+
+<h2><a name="ServeideSeguretat-2.3.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BInstal%5Claci%C3%B3iConfiguraci%C3%B3"></a>2.3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instal&#45; lació i Configuració</h2>
+
+<p>Prerequisit: Per al funcionament correcte d'aquest servei és important haver realitzat prèviament les configuracions especificades de la part 'Configuració Bàsica' del document 'Servei de Presentació'.</p>
+
+<p> </p>
+
+<p>Per a la instal&#45; lació del Servei de Seguretat <font color="black">necessitem</font> usar el fitxer '<font color="black">openFrame-services-security</font>.<font color="black">jar</font>' i les dependències indicades en l'apartat 'Versions i Dependències'.</p>
+
+<p> </p>
+
+<p>La configuració del servei de seguretat es descompon en les parts següents:</p>
+
+<p> </p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuració de la Base de Dades</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuració dels Filtres de l'Aplicació Web</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuració de la Font de Dades de l'Esquema de Seguretat</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuració de l'Autentificació</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuració de l'Autorització</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuració del Servei d'Accés a la Informació de l'Usuari. Aquesta configuració ens permetrà fer ús d'una interfície per obtenir dades de l'usuari connectat (si és d'un rol determinat, ...)</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p>El Servei de Seguretat d'<font color="black">openFrame</font> <font color="black">encapsula</font>la complexitat de "<font color="black">Acegi</font>" per mitjà d'una&nbsp; configuració simplificada i centralitzada en dos <font color="black">beans</font>:&nbsp;authenticationConfiguration i&nbsp;authorizationConfiguration.</p>
+
+<p> </p>
+
+<p><font color="maroon"><b>NOTA prèvia:</b></font></p>
+
+<p><font color="maroon">Acegi</font> <font color="maroon"><b>no funciona</b></font> <font color="maroon">si s'usen caràcters de retorn en les definicions de les propietats de tipus "&lt;list&gt;"</font><font color="maroon">&nbsp;</font><font color="maroon">per als beans de seguretat.</font></p>
+
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <br clear="all" /> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> <br clear="all" /> </td>
+<td class='confluenceTd'>&nbsp;</td>
+<td class='confluenceTd'> <br clear="all" /> <font color="maroon">Exemple:</font></td>
+</tr>
+</tbody></table>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"authorizationConfiguration"</font><font color="#7f007f">&nbsp;</font> <font color="#7f007f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">class</font><font color="black">=</font><font color="#2a00ff">"net.opentrends.openframe.services.security.</font><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="black">&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#2a00ff">AuthorizationSecurityConfiguration"</font><font color="teal">&gt;</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...</p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"beanNamesPatternList"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">list</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font></p>
+
+<p><font color="teal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="red">Ê</font><font color="black">businessService</font><font color="teal">&lt;/</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font></p>
+
+<p><font color="teal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">list</font><font color="teal">&gt;</font></p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">property</font><font color="teal">&gt;</font></p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">bean&gt;</font><br/>
+ </p>
+
+<p>Per a més informació sobre el <font color="black">framework</font> "<font color="black">Acegi</font>", consultar la pàgina 'http://acegisecurity.sourceforge.net/suggested.html'
+<br clear="all" />  </p>
+
+<h3><a name="ServeideSeguretat-2.3.1.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BConfiguraci%C3%B3delaBasedeDades"></a>2.3.1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuració de la Base de Dades</h3>
+
+<p>Per l'ús de la seguretat openFrame utilitza, per defecte, l'esquema de base de dades mostrat a continuació:</p>
+
+<p> </p>
+
+<p> </p>
+
+<p><font color="maroon"><b>i</b></font> <font color="maroon"><b>NOTA:</b></font></p>
+
+<p><font color="maroon">Si la base de dades d'usuaris ja existeix en el moment d'implantació d'openFrame, no cal crear les taules d'autentificació 'USER_LOGIN', 'PARTY_ROLE' i 'ROLE'. Haurem d'indicar les query per a obtenir el nom d'usuari,</font><font color="maroon">&nbsp;</font><font color="maroon">password i rol.</font><font color="maroon">&nbsp;</font></p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p><br clear="all" />
+<b>Taules d'Autentificació</b></p>
+
+<p> </p>
+
+<p><b>1)</b><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><b>USER_LOGIN</b></p>
+
+<p> </p>
+
+<p>Els camps de la taula "<font color="black">USER_LOGIN</font>" són:</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"party_id":&nbsp; clau primària</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"<font color="black">username</font>":&nbsp;clau primària, representa el nom de l'usuari.</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"<font color="black">password</font>: representa la contrasenya, que&nbsp; pot ser codificada</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"<font color="black">enabled</font>": Indica si l'usuari està habilitat o no</p>
+
+<p> </p>
+
+<p><b>2)</b><b>&nbsp;&nbsp;&nbsp;&nbsp;</b><b>ROLE</b></p>
+
+<p> </p>
+
+<p>Els camps de la taula "ROLE" són:</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"role_id": clau primària.</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"role_id_parent": clau foránia, representa el rol pare (opcional)</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"role_name", nom del rol. El seu nom ha de començar amb el prefix "ROLE_". Exemple: <font color="black">ROLE_USUARIO</font>, <font color="black">ROLE_GESTOR</font>, ...</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"role_description", representa la descripció del rol.</p>
+
+<p> </p>
+
+<p><b>3)</b><b>&nbsp;&nbsp;&nbsp;&nbsp;</b><b>PARTY_ROLE</b></p>
+
+<p> </p>
+
+<p>Els camps de la taula "PARTY_ROLE" són:</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"username":&nbsp; clau primària, representa el nom de l'usuari</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"authority": nom del rol de l'usuari. El seu nom ha de començar amb el prefix "ROLE_". Exemple: <font color="black">ROLE_USUARIO</font>, <font color="black">ROLE_GESTOR</font>, ...</p>
+
+<p> </p>
+
+<p> </p>
+
+<p><br clear="all" />
+<b>Taules d'Autorització</b></p>
+
+<p> </p>
+
+<p>Les taules d'autorització <font color="black">només</font> són necessàries si <font color="black">necessitem</font>gestionar les autoritzacions a nivell d'instàncies de la lògica de negoci (ACLs).</p>
+
+<p> </p>
+
+<p><b>1)</b><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><b>ACL_OBJECT_IDENTITY</b></p>
+
+<p> </p>
+
+<p>La taula "<font color="black">ACL_OBJECT_IDENTITY</font>"&nbsp; ens permet identificar els objectes de la lògica de negoci. Els seus camps són:</p>
+
+<p> </p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": identificador i clau primària</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"<font color="black">object_identity</font>":&nbsp;identificador <font color="black">String</font> de l'objecte. Es seguirà com a convenció '<font color="black">nomClasse</font>:id', on <font color="black">nomClasse</font> correspon al nom 'full <font color="black">qualified</font>' de la classe de negoci i id al valor de l'identificador de l'objecte. Exemple: "com.<font color="black">business</font>.<font color="black">domain</font>.<font color="black">DomainObject</font>:1"</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"<font color="black">parent_object</font>". Aquest camp permet especificar l'objecte pare de l'objecte actual. D'aquesta manera, en cas de no disposar d'autoritzacions (en la taula <font color="black">ACL_PERMISSION</font>)&nbsp; associades a l'objecte s'usaran les autoritzacions que s'hagin definit per al seu pare.</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"<font color="black">acl_class</font>". En aquest valor sempre haurem d'introduir "net.sf.<font color="black">acegisecurity</font>.<font color="black">acl</font>.<em>basic</em>.<font color="black">SimpleAclEntry</font>"</p>
+
+<p> </p>
+
+<p> </p>
+
+<p><b>2)</b><b>&nbsp;&nbsp;&nbsp;&nbsp;</b><b>ACL_PERMISSION</b></p>
+
+<p> </p>
+
+<p>La taula ACL_PERMISSION conté els permisos que s'apliquin als usuaris o rols per a cada objecte de la lògica de negoci. Conté els camps següents:</p>
+
+<p> </p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":identificador&nbsp; i clau primària.</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"acl_object_identity": clau forània, que referència a una fila de la taula 'ACL_OBJECT_IDENTITY'</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"recipient": Cadena que representa els noms d'usuari o noms de rols als què s'aplica el permís. Cada nom ha de ser separat per ','. Es poden representar un conjunt de noms i rols d'usuari de forma conjunta i barrejada.</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mask": representa la màscara del permís que s'aplica a l'objecte. En la taula&nbsp; següent es&nbsp;presenta la llista de valors possibles:</p>
+
+<p> <br/>
+Valor Permisos| 0 | No té   permisos a l'objecte |</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> 1 </td>
+<td class='confluenceTd'> '<font color="black">ADMIN</font>' (Permisos d'administració) </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 2 </td>
+<td class='confluenceTd'> 'READ'   (Permís de lectura) </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 4 </td>
+<td class='confluenceTd'> '<font color="black">WRITE</font>'   (Permís d'escriptura) </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 6 </td>
+<td class='confluenceTd'> 'READ + <font color="black">WRITE</font> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 8 </td>
+<td class='confluenceTd'> '<font color="black">CREATE</font>'   (Permís de creació) </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 14 </td>
+<td class='confluenceTd'> 'READ + <font color="black">WRITE</font> + <font color="black">CREATE</font>' </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 16 </td>
+<td class='confluenceTd'> '<font color="black">DELETE</font>'   (Permís d'esborrat) </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 22 </td>
+<td class='confluenceTd'> READ + <font color="black">WRITE</font> + <font color="black">DELETE</font> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 30 </td>
+<td class='confluenceTd'> READ + <font color="black">WRITE</font> + <font color="black">CREATE</font> + <font color="black">DELETE</font> </td>
+</tr>
+</tbody></table>
+<p> </p>
+
+<p>Per a la creació de l'esquema podem fer <font color="black">ús</font> del <em>script</em>següent per Oracle:</p>
+
+<p> </p>
+
+<p>DROP SEQUENCE ACL_PERMISSION_SEQ;</p>
+
+<p>DROP SEQUENCE ACL_OBJECT_SEQ;</p>
+
+<p>DROP SEQUENCE PARTY_OBJECT_SEQ;</p>
+
+<p>DROP SEQUENCE ROLE_OBJECT_SEQ;</p>
+
+<p> </p>
+
+<p>create sequence ROLE_OBJECT_SEQ</p>
+
+<p>start with 1</p>
+
+<p>increment by 1;</p>
+
+<p> </p>
+
+<p>create sequence ACL_OBJECT_SEQ</p>
+
+<p>start with 1</p>
+
+<p>increment by 1;</p>
+
+<p> </p>
+
+<p>create sequence ACL_PERMISSION_SEQ</p>
+
+<p>start with 1</p>
+
+<p>increment by 1;</p>
+
+<p> </p>
+
+<p>create sequence PARTY_OBJECT_SEQ</p>
+
+<p>start with 1</p>
+
+<p>increment by 1;</p>
+
+<p> </p>
+
+<p> </p>
+
+<p>DROP TABLE ACL_PERMISSION;</p>
+
+<p>DROP TABLE ACL_OBJECT_IDENTITY;</p>
+
+<p>DROP TABLE PARTY CASCADE CONSTRAINTS;</p>
+
+<p>DROP TABLE GROUP_ROLE CASCADE CONSTRAINTS;</p>
+
+<p>DROP TABLE PARTY_GROUP CASCADE CONSTRAINTS;</p>
+
+<p>DROP TABLE PARTY_RELATIONSHIP CASCADE CONSTRAINTS;</p>
+
+<p>DROP TABLE PARTY_ROLE CASCADE CONSTRAINTS;</p>
+
+<p>DROP TABLE ROLE CASCADE CONSTRAINTS;</p>
+
+<p>DROP TABLE USER_LOGIN CASCADE CONSTRAINTS;</p>
+
+<p> </p>
+
+<p>CREATE TABLE acl_object_identity (</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp; id NUMBER PRIMARY KEY,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp; object_identity VARCHAR2(250) NOT NULL,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp; parent_object INTEGER,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp; acl_class VARCHAR2(250) NOT NULL,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp; CONSTRAINT unique_object_identity UNIQUE(object_identity),</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp; FOREIGN KEY (parent_object) REFERENCES acl_object_identity(id)</p>
+
+<p>);</p>
+
+<p> </p>
+
+<p>CREATE TABLE acl_permission (</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp; id NUMBER PRIMARY KEY,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp; acl_object_identity NUMBER NOT NULL,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp; recipient VARCHAR2(100) NOT NULL,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp; mask NUMBER NOT NULL,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp; CONSTRAINT unique_recipient UNIQUE(acl_object_identity, recipient),</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp; FOREIGN KEY (acl_object_identity) REFERENCES acl_object_identity(id)</p>
+
+<p>);</p>
+
+<p> </p>
+
+<p>CREATE TABLE PARTY (</p>
+
+<p>&nbsp; PARTY_ID NUMBER NOT NULL,</p>
+
+<p>&nbsp; PARTY_TYPE_ID NUMBER,</p>
+
+<p>&nbsp; EXTERNAL_ID VARCHAR2(20),</p>
+
+<p>&nbsp; CREATED_DATE VARCHAR2(255),</p>
+
+<p>&nbsp; CREATED_BY_USER_LOGIN VARCHAR2(255),</p>
+
+<p>&nbsp; LAST_MODIFIED_DATE VARCHAR2(255),</p>
+
+<p>&nbsp; LAST_MODIFIED_BY_USER_LOGIN VARCHAR2(255),</p>
+
+<p>&nbsp; LAST_UPDATED_STAMP VARCHAR2(255),</p>
+
+<p>&nbsp; LAST_UPDATED_TX_STAMP VARCHAR2(255),</p>
+
+<p>&nbsp; CREATED_STAMP VARCHAR2(255),</p>
+
+<p>&nbsp; CREATED_TX_STAMP VARCHAR2(255),</p>
+
+<p>&nbsp; CONSTRAINT PK_PARTY_ID UNIQUE(PARTY_ID)</p>
+
+<p>)</p>
+
+<p>;</p>
+
+<p> </p>
+
+<p>CREATE TABLE PARTY_GROUP (</p>
+
+<p>&nbsp; PARTY_ID NUMBER NOT NULL,</p>
+
+<p>&nbsp; GROUP_PARENT_ID NUMBER NULL,</p>
+
+<p>&nbsp; GROUP_NAME VARCHAR2(255) NOT NULL,</p>
+
+<p>&nbsp; CONSTRAINT PK_PARTY_GROUP UNIQUE(PARTY_ID)</p>
+
+<p>)</p>
+
+<p>;</p>
+
+<p> </p>
+
+<p>CREATE TABLE PARTY_RELATIONSHIP (</p>
+
+<p>&nbsp; PARTY_ID_FROM NUMBER NOT NULL,</p>
+
+<p>&nbsp; PARTY_ID_TO NUMBER NOT NULL,</p>
+
+<p>&nbsp; TYPE NUMBER NULL,</p>
+
+<p>&nbsp; CONSTRAINT PK_PARTY_RELATIONSHIP UNIQUE(PARTY_ID_FROM, PARTY_ID_TO),</p>
+
+<p>&nbsp; FOREIGN KEY (PARTY_ID_FROM) REFERENCES PARTY(PARTY_ID),</p>
+
+<p>&nbsp; FOREIGN KEY (PARTY_ID_TO) REFERENCES PARTY(PARTY_ID)</p>
+
+<p>)</p>
+
+<p>;</p>
+
+<p> </p>
+
+<p>CREATE TABLE ROLE (</p>
+
+<p>&nbsp; ROLE_ID NUMBER NOT NULL,</p>
+
+<p>&nbsp; ROLE_ID_PARENT NUMBER,</p>
+
+<p>&nbsp; ROLE_NAME VARCHAR2(50) NOT NULL,</p>
+
+<p>&nbsp; ROLE_DESCRIPTION VARCHAR2(255),</p>
+
+<p>&nbsp; CONSTRAINT PK_ROLE UNIQUE(ROLE_ID),</p>
+
+<p>&nbsp; FOREIGN KEY (ROLE_ID_PARENT) REFERENCES ROLE(ROLE_ID)</p>
+
+<p>)</p>
+
+<p>;</p>
+
+<p> </p>
+
+<p>CREATE TABLE USER_LOGIN (</p>
+
+<p>&nbsp; USER_LOGIN_ID VARCHAR2(50) NOT NULL,</p>
+
+<p>&nbsp; PARTY_ID NUMBER NOT NULL,</p>
+
+<p>&nbsp; PASSWORD VARCHAR2(50) NOT NULL,</p>
+
+<p>&nbsp; CONSTRAINT PK_USER_LOGIN UNIQUE(USER_LOGIN_ID),</p>
+
+<p>&nbsp; FOREIGN KEY (PARTY_ID) REFERENCES PARTY_GROUP(PARTY_ID)</p>
+
+<p>)</p>
+
+<p>;</p>
+
+<p> </p>
+
+<p>CREATE TABLE PARTY_ROLE (</p>
+
+<p>&nbsp; USER_LOGIN_ID VARCHAR2(50) NOT NULL,</p>
+
+<p>&nbsp; ROLE_ID NUMBER NOT NULL,</p>
+
+<p>&nbsp; CONSTRAINT PK_PARTY_ROLE UNIQUE(USER_LOGIN_ID, ROLE_ID),</p>
+
+<p>&nbsp; FOREIGN KEY (USER_LOGIN_ID) REFERENCES USER_LOGIN(USER_LOGIN_ID),</p>
+
+<p>&nbsp; FOREIGN KEY (ROLE_ID) REFERENCES ROLE(ROLE_ID)</p>
+
+<p>)</p>
+
+<p>;</p>
+
+<p> </p>
+
+<p>CREATE TABLE GROUP_ROLE (</p>
+
+<p>&nbsp; PARTY_ID NUMBER NOT NULL,</p>
+
+<p>&nbsp; ROLE_ID NUMBER NOT NULL,</p>
+
+<p>&nbsp; CONSTRAINT PK_GROUP_ROLE UNIQUE(PARTY_ID, ROLE_ID),</p>
+
+<p>&nbsp; FOREIGN KEY (PARTY_ID) REFERENCES PARTY_GROUP(PARTY_ID),</p>
+
+<p>&nbsp; FOREIGN KEY (ROLE_ID) REFERENCES ROLE(ROLE_ID)</p>
+
+<p>)</p>
+
+<p>;</p>
+
+<p> </p>
+
+<p>CREATE OR REPLACE TRIGGER ACL_OBJ_TRIGGER</p>
+
+<p>before insert on ACL_OBJECT_IDENTITY</p>
+
+<p>for each row</p>
+
+<p>begin</p>
+
+<p>select ACL_OBJECT_SEQ.nextval into :new.id from dual;</p>
+
+<p>end;</p>
+
+<p> </p>
+
+<p>CREATE OR REPLACE TRIGGER ACL_PERMISSION_TRIGGER</p>
+
+<p>before insert on ACL_PERMISSION</p>
+
+<p>for each row</p>
+
+<p>begin</p>
+
+<p>select ACL_PERMISSION_SEQ.nextval into :new.id from dual;</p>
+
+<p>end;</p>
+
+<p> </p>
+
+<p>CREATE OR REPLACE TRIGGER PARTY_OBJECT_SEQ_TRIGGER</p>
+
+<p>before insert on PARTY_GROUP</p>
+
+<p>for each row</p>
+
+<p>WHEN (new.PARTY_ID is null)</p>
+
+<p>begin</p>
+
+<p>select PARTY_OBJECT_SEQ.nextval into :new.PARTY_ID from dual;</p>
+
+<p>end;</p>
+
+<p> </p>
+
+<p>CREATE OR REPLACE TRIGGER OPENFRAME.ROLE_OBJECT_SEQ_TRIGGER</p>
+
+<p>before insert on ROLE</p>
+
+<p>for each row</p>
+
+<p>WHEN (new.ROLE_ID is null)</p>
+
+<p>begin</p>
+
+<p>select ROLE_OBJECT_SEQ.nextval into :new.ROLE_ID from dual;</p>
+
+<p>end;<br/>
+ </p>
+
+<h3><a name="ServeideSeguretat-2.3.2.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BConfiguraci%C3%B3delsfiltresdel%27Aplicaci%C3%B3Web"></a>2.3.2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuració dels filtres de l'Aplicació Web</h3>
+
+<p> </p>
+
+<p><b><em>Fitxer de configuració: web.xml</em></b></p>
+
+<p><em>Ubicació proposada: &lt;PROJECT_ROOT&gt;/src/main/webapp/WEB-INF/web.xml</em></p>
+
+<p> </p>
+
+<p>Acegi usa un conjunt de filtres per a detectar aspectes de l'autorització i autentificació. Per a usar-los definirem en el fitxer 'WEB-INF/web.xml el codi següent:</p>
+
+<p> </p>
+
+<p>&lt;&#33;-&#45; Filter ACEGI, using a FilterChainProxy makes it easier to configure</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; different Filters in the Spring application context configuration file--&gt;</p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">filter</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">filter-name</font><font color="teal">&gt;</font><font color="black">Acegi Filter Chain Proxy</font><font color="teal">&lt;/</font><font color="#3f7f7f">filter-name</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">filter-class</font><font color="teal">&gt;</font></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; net.sf.acegisecurity.util.FilterToBeanProxy</p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">filter-class</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">init-param</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">param-name</font><font color="teal">&gt;</font><font color="black">targetClass</font><font color="teal">&lt;/</font><font color="#3f7f7f">param-name</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">param-value</font><font color="teal">&gt;</font></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; net.sf.acegisecurity.util.FilterChainProxy</p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">param-value</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">init-param</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">filter</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">filter-mapping</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">filter-name</font><font color="teal">&gt;</font><font color="black">Acegi Filter Chain Proxy</font><font color="teal">&lt;/</font><font color="#3f7f7f">filter-name</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">url-pattern</font><font color="teal">&gt;</font><font color="black">/&#42;</font><font color="teal">&lt;/</font><font color="#3f7f7f">url-pattern</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">filter-mapping</font><font color="teal">&gt;</font><br/>
+ </p>
+
+<p>Per a més informació consultar la&nbsp; pàgina <a href="http://acegisecurity.sourceforge.net/docbook/acegi.html#security-filters" title="Visit page outside Confluence">http://acegisecurity.sourceforge.net/docbook/acegi.html#security-filters</a></p>
+
+<p> </p>
+
+<h3><a name="ServeideSeguretat-2.3.3.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BConfiguraci%C3%B3delafontdedadesdeSeguretat"></a>2.3.3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuració de la font de dades de Seguretat</h3>
+
+<p><b><em>Fitxer de configuració:</em></b> <font color="black"><b><em>openFrame-services-security</em></b></font><b><em>.</em></b><font color="black"><b><em>xml</em></b></font></p>
+
+<p><em>Ubicació proposada: &lt;PROJECT_ROOT&gt;/src/main/_<font color="black"><em>resources</em></font></em>/spring_</p>
+
+<p> </p>
+
+<p>El Servei de Seguretat necessita conèixer com connectar-se a l'esquema de base de dades que defineix les taules anteriorment comentades. Per a això, hem d'especificar un bean 'dataSource' en el que configurarem les propietats de la base de dades. Es recomana l'ús de JNDI per a definir la font de dades.</p>
+
+<p> </p>
+
+<p>Exemple amb <font color="black">jndi</font>:</p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#3f7f7f">&nbsp;&nbsp;</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"dataSource"</font> <font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#2a00ff">&nbsp;</font> <font color="#7f007f">class</font><font color="black">=</font><font color="#2a00ff">"org.springframework.jndi.JndiObjectFactoryBean"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#3f7f7f">&nbsp;&nbsp;</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"jndiName"</font><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#2a00ff">&nbsp;</font> <font color="#7f007f">value</font><font color="black">=</font><font color="#2a00ff">"</font><font color="#2a00ff">java</font><font color="black">:</font><font color="#2a00ff">comp/env/JNDISource...</font><font color="#2a00ff">"</font><font color="teal">/&gt;</font></p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">bean</font><font color="teal">&gt;</font><br/>
+ </p>
+
+<p>Exemple amb jdbc:</p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"dataSource"</font></p>
+
+<p><font color="#7f007f">class</font><font color="black">=</font><font color="#2a00ff">"org.springframework.jdbc.datasource.DriverManagerDataSource"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font><font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"driverClassName"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font><font color="black">${jdbc.driverClassName}</font><font color="teal">&lt;/</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">property</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font><font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"url"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font><font color="black">${jdbc.url}</font><font color="teal">&lt;/</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">property</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font><font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"username"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font><font color="black">${jdbc.username}</font><font color="teal">&lt;/</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">property</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font><font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"password"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font><font color="black">${jdbc.password}</font><font color="teal">&lt;/</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">property</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">bean</font><font color="teal">&gt;</font></p>
+
+<h3><a name="ServeideSeguretat-%C2%A0"></a> </h3>
+
+
+<h3><a name="ServeideSeguretat-2.3.4.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BConfiguraci%C3%B3del%27Autentificaci%C3%B3"></a>2.3.4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuració de l'Autentificació</h3>
+
+<p> </p>
+
+<p>En la configuració de l'Autentificació tindrem en consideració:</p>
+
+<p> </p>
+<ul>
+	<li>Seleccionar la      configuració de la font en que es realitza l'autentificació (per base de      dades, per LDAP, per servei integrador al servidor corporatiu basat en      HTTPS, ...)</li>
+</ul>
+
+
+<ul>
+	<li>Configurar el      formulari d'autentificació web i la seqüència de cerca on ha de      realitzar-se l'autentificació (primer un LDAP, després una BD, etc.)</li>
+</ul>
+
+
+<p> </p>
+
+<p>Configuració de la Font d'Autorització per Base de Dades<br/>
+ </p>
+
+<p><b><em>Fitxer de configuració:</em></b> <font color="black"><b><em>openFrame-services-security</em></b></font><b><em>.</em></b><font color="black"><b><em>xml</em></b></font></p>
+
+<p><em>Ubicació proposada: &lt;PROJECT_ROOT&gt;/src/main/_<font color="black"><em>resources</em></font></em>/spring_</p>
+
+<p> </p>
+
+<p>La configuració de l'autentificació per mitjà de base de dades es realitza per mitjà del <font color="black">bean</font>de la classe '<font color="#2a00ff">net.opentrends.openframe.services.</font></p>
+
+<p><font color="#2a00ff">security.acegi.DatabaseAuthenticationConfiguration',</font> per a la que podem definir les següents <font color="black">propietats</font>:</p>
+
+<p> <br/>
+PropietatRequeritDescripciópasswordEncoderClassSíAquesta    propietat permet especificar quina encriptació ha de realitzar-se delspasswords. És a dir, si elpasswords'emmagatzema per exemple en la base de    dades de forma encriptada, el servei de seguretat hauria d'encriptar elpasswordintroduït per l'usuari icomparar-hoamb el de la base de dades.La llista de possibles valors és: <del>       BaseDigestPasswordEncoder,</del>       BasePasswordEncoder,<del>       Md5PasswordEncoder,</del>       PlaintextPasswordEncoder,-         ShaPasswordEncoder| <font color="#2a00ff">usersByUserNameQuery</font> | No | Aquesta propietat permet especificar una <font color="black">query</font> <font color="black">SQL</font> per a l'obtenció d'un usuari. Serveix per a poder usar un esquema   d'usuaris&nbsp; diferent al proposat en el   present document (per exemple si ja existia abans de la implantació de   openFrame).<br clear="all" /> <br clear="all" />
+S'ha de seguir el   següent patró:<br clear="all" />
+ <br clear="all" />
+&nbsp;"SELECT <em><div class="error"><span class="error">Unknown macro: {Nom_usuario_}</span> <p>, <em><div class="error"><span class="error">Unknown macro: {contrassenya}</span> </div></em> FROM <em><div class="error"><span class="error">Unknown macro: {usuaris}</span> </div></em> WHERE {<em>Nom_usuario</em>} =? <br clear="all" />
+ <br clear="all" />
+On <font color="black">Nom_usuario</font> correspon al nom del camp de la taula que conté el nom de l'usuari,   contrassenya, al nom del camp que conté el <font color="black">password</font>&nbsp; i 'usuaris' al nom de la taula d'usuaris. |</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <font color="#2a00ff">authoritiesbyUserNameQuery</font> </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Aquesta   propietat permet especificar on es troba la informació dels rols. El seu ús   ens permet usar un esquema de rols diferent al proposat en el present   document.<br clear="all" />
+ <br clear="all" />
+&nbsp;"SELECT _</td>
+</tr>
+</tbody></table></div>, _<div class="error"><span class="error">Unknown macro: {rol}</span> <p>_ FROM <em><div class="error"><span class="error">Unknown macro: {taula_rols}</span> </div></em> WHERE {<em>Nom_usuario</em>} =? |<br/>
+ </p>
+
+<p>Exemple:</p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"databaseAuthenticationConfiguration1"</font></p>
+
+<p><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">class</font><font color="black">=</font><font color="#2a00ff">"net.opentrends.openframe.services.security.</font></p>
+
+<p><font color="#3f7f7f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#2a00ff">DatabaseAuthenticationConfiguration"</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p> </p>
+
+<p>&nbsp; <font color="red">&lt;&#33;<del>&#45; Propietats obligatóries &#45;</del>&gt;</font></p>
+
+<p><font color="teal">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#3f7f7f">&nbsp;&nbsp;</font></p>
+
+<p><font color="#3f7f7f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">name</font><font color="#7f007f">&nbsp;&nbsp;</font> <font color="black">=</font><font color="#2a00ff">"passwordEncoderClass"</font><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">value</font><font color="#7f007f">&nbsp;</font> <font color="black">=</font><font color="#2a00ff">"</font><font color="#2a00ff">net.sf.acegisecurity.providers.encoding.</font></p>
+
+<p><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#2a00ff">PlaintextPasswordEncoder</font><font color="#2a00ff">"</font> <font color="teal">/&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></p>
+
+<p><font color="red">&nbsp;</font> <font color="red">&lt;&#33;<del>&#45; Propietats opcionals &#45;</del>&gt;</font></p>
+
+<p><font color="teal">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#3f7f7f">&nbsp;&nbsp;</font> <font color="#7f007f">name</font><font color="#7f007f">&nbsp;&nbsp;</font> <font color="black">=</font><font color="#2a00ff">"usersByUserNameQuery"</font><font color="#3f7f7f">&gt;</font> <font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;value</font><font color="#3f7f7f">&gt;</font></p>
+
+<p><font color="#3f7f7f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="blue"><b>SELECT</b></font> <font color="blue"><b><em>{Nombre_usuario</em></b></font><font color="blue"><b>},</b></font> <font color="blue"><b><em>{contraseña}</em></b></font><font color="blue"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></font> <font color="blue"><b>FROM</b></font> <font color="blue"><b><em>{usuarios}</em></b></font></p>
+
+<p><font color="blue"><b><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em></b></font> <font color="blue"><b>WHERE {</b></font><font color="blue"><b><em>Nombre_usuario</em></b></font><font color="blue"><b>} =?</b></font></p>
+
+<p><font color="#3f7f7f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/value</font><font color="#3f7f7f">&gt;</font></p>
+
+<p><font color="teal">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">property&gt;</font></p>
+
+<p> </p>
+
+<p> </p>
+
+<p><font color="teal">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#3f7f7f">&nbsp;&nbsp;</font> <font color="#7f007f">name</font><font color="#7f007f">&nbsp;&nbsp;</font> <font color="black">=</font><font color="#2a00ff">"authoritiesbyUserNameQuery"</font><font color="#3f7f7f">&gt;</font> <font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;value</font><font color="#3f7f7f">&gt;</font></p>
+
+<p><font color="#3f7f7f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="blue"><b>SELECT</b></font> <font color="blue"><b><em>{Nombre_usuario</em></b></font><font color="blue"><b>},</b></font> <font color="blue"></font>{*}{_}</p></div></em>{*}<font color=""><font color="blue"></font>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</font> <font color="blue"><b>FROM</b></font> <font color="blue"><b><em>{privilegios}</em></b></font></p>
+
+<p><font color="blue"><b><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em></b></font> <font color="blue"><b>WHERE {</b></font><font color="blue"><b><em>Nombre_usuario</em></b></font><font color="blue"><b>} =?</b></font></p>
+
+<p><font color="#3f7f7f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/value</font><font color="#3f7f7f">&gt;</font></p>
+
+<p><font color="teal">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">property&gt;</font></p>
+
+<p><font color="teal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></p>
+
+<p> </p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">bean</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p> <br/>
+ </p>
+
+<p>Configuració de la Font d'Autorització per <font color="black">LDAP</font><br/>
+ </p>
+
+<p><b><em>Fitxer de configuració:</em></b> <font color="black"><b><em>openFrame-services-security</em></b></font><b><em>.</em></b><font color="black"><b><em>xml</em></b></font></p>
+
+<p><em>Ubicació proposada: &lt;PROJECT_ROOT&gt;/src/main/_<font color="black"><em>resources</em></font></em>/spring_</p>
+
+<p> </p>
+
+<p>En el cas que es requereixi configurar l'autentificació per mitjà de <font color="black">crides</font> directes a <font color="black">LDAP</font> podem fer <font color="black">ús</font>d'una classe diferent.</p>
+
+<p> </p>
+
+<p>Per a realitzar les <font color="black">proves</font> en desenvolupament podem instal&#45; lar un servidor <font color="black">LDAP</font> senzill (veure l'apartat 'Eines de Suport' per a més referència).</p>
+
+<p> </p>
+
+<p>La configuració de l'accés al <font color="black">LDAP</font> es fa per mitjà d'un <font color="black">bean</font>de la classe '<font color="#2a00ff">net.opentrends.openframe.services.</font></p>
+
+<p><font color="#2a00ff">security.acegi.LDAPAuthenticationConfiguration',</font> per a la que podrem definir les propietats següents:</p>
+
+<p> <br/>
+PropietatRequeritDescripció| <font color="#2a00ff">ldapURL</font> | Sí | Url del servidor LDAP. Per exemple:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ldap://dir.mycompany.com:389/dc=mycompany,dc=com |</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <font color="#2a00ff">usernameFormat</font> </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> El patró del nom d'usuari usat pel <font color="black">LDAP</font>.<br clear="all" />
+ Per <font color="black">exemple</font>, per a <font color="black">openLDAP</font>:<br clear="all" />
+"uid=<div class="error"><span class="error">Unknown macro: {0}</span> <p>,<font color="black">ou=people</font>,<font color="black">dc=mycompany</font>,<font color="black">dc=com</font>" |</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <font color="#2a00ff">userLookupNameFormat</font> </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> El patró del nom d'usuari usat pel LDAP   per a fer cerques. Per exemple, per a openLDAP:<br clear="all" />
+uid=</td>
+</tr>
+</tbody></table></div>,ou=people </td>
+</tr>
+</tbody></table>
+<p> </p>
+
+<p>Exemple:</p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#3f7f7f">&nbsp;&nbsp;</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"ldapAuthenticationConfiguration"</font></p>
+
+<p><font color="#7f007f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">class</font><font color="black">=</font><font color="#2a00ff">"</font><font color="#2a00ff">net.opentrends.openframe.services.security.</font></p>
+
+<p><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#2a00ff">LDAPAuthenticationConfiguration</font><font color="#2a00ff">"</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p>&nbsp; <font color="red">&lt;&#33;<del>&#45; Propietats obligatóries &#45;</del>&gt;</font></p>
+
+<p><font color="teal">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font></p>
+
+<p><font color="#3f7f7f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">name</font><font color="#7f007f">&nbsp;&nbsp;</font> <font color="black">=</font><font color="#2a00ff">"ldapURL"</font><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">value</font><font color="#7f007f">&nbsp;</font> <font color="black">=</font><font color="#2a00ff">"</font><font color="#2a00ff"><b>ldap://localhost:389/dc=mycompany,dc=com</b></font><font color="#2a00ff">"</font><font color="teal">/&gt;</font></p>
+
+<p><font color="black">&nbsp;</font></p>
+
+<p><font color="teal">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#3f7f7f">&nbsp;&nbsp;</font></p>
+
+<p><font color="#3f7f7f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">name</font><font color="#7f007f">&nbsp;&nbsp;</font> <font color="black">=</font><font color="#2a00ff">"usernameFormat"</font></p>
+
+<p><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">value</font><font color="#7f007f">&nbsp;</font> <font color="black">=</font><font color="#2a00ff">"</font><font color="#2a00ff"><b>u</b></font><font color="#2a00ff"><b>id={0},ou=people,dc=mycompany,dc=com</b></font><font color="#2a00ff">"</font> <font color="teal">/&gt;</font></p>
+
+<p> </p>
+
+<p><font color="red">&nbsp;</font> <font color="red">&lt;&#33;<del>&#45; Propietats opcionals &#45;</del>&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font></p>
+
+<p><font color="#7f007f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">name</font><font color="#7f007f">&nbsp;&nbsp;</font> <font color="black">=</font><font color="#2a00ff">"userLookupNameFormat"</font></p>
+
+<p><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">value</font><font color="#7f007f">&nbsp;</font> <font color="black">=</font><font color="#2a00ff">"</font><font color="#2a00ff"><b>uid={0},ou=peopl</b></font><font color="#2a00ff"><b>e</b></font><font color="#2a00ff">"</font> <font color="teal">/&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#3f7f7f">&nbsp;&nbsp;</font></p>
+
+<p><font color="#3f7f7f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">name</font><font color="#7f007f">&nbsp;&nbsp;</font> <font color="black">=</font><font color="#2a00ff">"roleAttribute"</font></p>
+
+<p><font color="#3f7f7f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">value</font><font color="#7f007f">&nbsp;</font> <font color="black">=</font><font color="#2a00ff">"</font><font color="#2a00ff"><b>t</b></font><font color="#2a00ff"><b>itle</b></font><font color="#2a00ff">"</font> <font color="teal">/&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> &lt;/<font color="#3f7f7f">bean</font>&gt;
+<br clear="all" /> Configuració de la Font d'Autorització per <font color="black">SACE</font><br/>
+ </p>
+
+<p><b><em>Fitxer de configuració:</em></b> <font color="black"><b><em>openFrame-services-security</em></b></font><b><em>.</em></b><font color="black"><b><em>xml</em></b></font></p>
+
+<p><em>Ubicació proposada: &lt;PROJECT_ROOT&gt;/src/main/_<font color="black"><em>resources</em></font></em>/spring_</p>
+
+<p> </p>
+
+<p>En el cas que es requereixi configurar l'autentificació per mitjà de <font color="black">crides</font> directes a <font color="black">SACE</font> podem fer <font color="black">ús</font>d'una classe diferent.</p>
+
+<p> </p>
+
+<p>Per a realitzar les <font color="black">proves</font>en desenvolupament podem instal&#45; lar un VPN Client <b>per connectar-se al servidor SACE</b> (consultar el document 'Directori Corporatiu de la Generalitat de Catalunya - Guia d'integració d'aplicacions v3.7').</p>
+
+<p> </p>
+
+<p>La configuració de l'accés al <font color="black">SACE</font> es fa per mitjà d'un <font color="black">bean</font>de la classe '<font color="#2a00ff">net.opentrends.openframe.services.</font></p>
+
+<p><font color="#2a00ff">security.acegi.SACEAuthenticationConfiguration',</font> per a la que podrem definir les següents propietats:</p>
+
+<p> <br/>
+PropietatRequeritDescripció| <font color="#2a00ff">urlSACE</font> | Sí | <font color="black">Url</font> del servidor <font color="black">SACE</font>. <br clear="all" />
+<b>Per exemple, la url del servidor de   pre-producció és:</b><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> https://sace.prepdc.gencat.intranet/SACE/SACE_Logon.aspx?XMLIn=\\
+ <br clear="all" />
+Segons l'entorn podem canviar el valor   d'aquesta url:<br clear="all" />
+&#45;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dc,   per producció<br clear="all" />
+&#45;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prepdc,   per pre-producció<br clear="all" />
+&#45;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; desenvdc,   per desenvolupament |</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <font color="#2a00ff">userNameFormat</font> </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> <font color="black">Format del campo 'user name'. Els 2 valors possibles   són::</font><br clear="all" />
+<font color="black">&#45;</font><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="black">INTERNAL_CODE, codi intern</font><br clear="all" />
+<font color="black">&#45;</font><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="black">NIF</font> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> <font color="#2a00ff">authoritiesbyUserNameQuery</font> </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Aquesta propietat permet especificar la query   SQL per a recollir els rols dels usuaris. <br clear="all" />
+ <br clear="all" />
+Per exemple, "SELECT <div class="error"><span class="error">Unknown macro: {Nombre_usuario}</span> <p>, <div class="error"><span class="error">Unknown macro: {rol}</span> </div>   FROM <div class="error"><span class="error">Unknown macro: {privilegios}</span> </div> WHERE </p></div> =? </td>
+</tr>
+</tbody></table>
+<p> </p>
+
+<p>Exemple:</p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#3f7f7f">&nbsp;&nbsp;</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"SACEAuthenticationConfiguration"</font></p>
+
+<p><font color="#7f007f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">class</font><font color="black">=</font><font color="#2a00ff">"</font><font color="#2a00ff">net.opentrends.openframe.services.security.</font></p>
+
+<p><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#2a00ff">SACEAuthenticationConfiguration</font><font color="#2a00ff">"</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font></p>
+
+<p><font color="#3f7f7f">&nbsp;</font> <font color="#7f007f">name</font><font color="#7f007f">&nbsp;&nbsp;</font> <font color="black">=</font><font color="#2a00ff">"urlSACE"</font><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">value</font><font color="#3366ff">&nbsp;</font> =<font color="blue">"</font><font color="blue">https</font><font color="blue"><b>://sace.prepdc.gencat.intranet/SACE/SACE_Logon.aspx?XMLIn=</b></font><font color="blue">"</font><font color="teal">/&gt;</font></p>
+
+<p><font color="black">&nbsp;</font></p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">property</font></p>
+
+<p><font color="#3f7f7f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">name</font><font color="#7f007f">&nbsp;&nbsp;</font> <font color="black">=</font><font color="#2a00ff">"userNameFormat"</font><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">value</font><font color="#3366ff">&nbsp;</font> =<font color="blue">"NIF"</font><font color="teal">/&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">bean</font><font color="teal">&gt;</font><br/>
+ </p>
+
+<p>Configuració del Formulari d'Autentificació i la Seqüència d'Autentificació<br/>
+ </p>
+
+<p><b><em>Fitxer de configuració:</em></b> <font color="black"><b><em>openFrame-services-security</em></b></font><b><em>.</em></b><font color="black"><b><em>xml</em></b></font></p>
+
+<p><em>Ubicació proposada: &lt;PROJECT_ROOT&gt;/src/main/_<font color="black"><em>resources</em></font></em>/spring_</p>
+
+<p> </p>
+
+<p>Una vegada definides les fonts d'autentificació configurarem quin és el formulari d'autentificació i com ha de realitzar-se l'autentificació, potser en més d'una font. Per exemple, podriem considerar que en primer lloc s'autentifiqui en un esquema de base de dades i si no es troba en aquesta <font color="black">comprovar-ho</font> en un <font color="black">LDAP</font> corporatiu, etc.</p>
+
+<p> </p>
+
+<p>Per a configurar el formulari i la seqüència es farà <font color="black">ús</font> d'un <font color="black">bean</font> de la classe '<font color="#2a00ff">net.opentrends.openframe.services.</font></p>
+
+<p><font color="#2a00ff">security.acegi.AuthenticationSecurityConfiguration'</font> en un fitxer <font color="black">XML</font>"<font color="black">application</font>&nbsp;context" de Spring. La taula següent detalla&nbsp; les propietats:</p>
+
+<p> <br/>
+PropietatRequeritDescripció| <font color="#2a00ff">loginFormUrlValue</font> | Sí | Url del   formulari d'autentificació. El formulari ha de seguir unes normatives tal com   es defineix en l'apartat 'Autentificació per Formulari' de la secció   'Utilització del Servei' |</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <font color="#2a00ff">authenticationFailureUrlValue</font> </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Per defecte   serà el mateix que 'loginFormUrlValue'. <br clear="all" />
+ <br clear="all" />
+Si l'autentificació falla es presentarà la   url indicada en el camp 'authenticationFailureUrValue'. Si és correcta, el   navegador serà redirigit a la url inicial protegida que va ser sol&#45; licitada   per l'usuari (per a definir quins recursos són protegits consultar l'apartat   'Configuració de les urls per rol d'usuari') </td>
+</tr>
+<tr>
+<td class='confluenceTd'> <font color="#2a00ff">filterProcessesUrl</font> </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Url del 'submit'   en el formulari de login. tal com es defineix en l'apartat 'Autentificació   per Formulari' de la secció 'Utilització del Servei' </td>
+</tr>
+<tr>
+<td class='confluenceTd'> <font color="#2a00ff">authenticationProvidersConfigurationList</font> </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Llista de beans   de configuració (BBDD o LDAP) que defineixen la seqüència de fonts de   l'autentificació.<br clear="all" />
+S'intentarà l'autentificació de l'usuari /   contrasenya en cadascun dels autentificadors definits en l'ordre tal i com   apareixen al fitxer de a dalt a baix. </td>
+</tr>
+</tbody></table>
+<p> </p>
+
+<p>Exemple:</p>
+
+<p> </p>
+
+<p>&nbsp;</p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"SACEAuthenticationConfiguration1"</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">...</font></p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">bean</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p>&nbsp;</p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"ldapAuthenticationConfiguration2"</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">...</font></p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">bean</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"databaseAuthenticationConfiguration3"</font></p>
+
+<p><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> ...<font color="black">&nbsp;&nbsp;&nbsp;</font></p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">bean</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"authenticationConfiguration"</font></p>
+
+<p><font color="#7f007f">class</font><font color="black">=</font><font color="#2a00ff">"net.opentrends.openframe.services.security.AuthenticationSecurityConfiguration"</font><font color="teal">&gt;</font></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#3f7f7f">&nbsp;&nbsp;</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"loginFormUrlValue"</font></p>
+
+<p><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">value</font><font color="black">=</font><font color="#2a00ff">"/login.jsp"</font> <font color="teal">/&gt;</font></p>
+
+<p> </p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#3f7f7f">&nbsp;&nbsp;</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"authenticationFailureUrlValue"</font><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#2a00ff">&nbsp;</font> <font color="#7f007f">value</font><font color="black">=</font><font color="#2a00ff">"/login.jsp"</font><font color="teal">/&gt;</font></p>
+
+<p> </p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#3f7f7f">&nbsp;&nbsp;</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"filterProcessesUrl"</font> <font color="#7f007f">value</font><font color="black">=</font><font color="#2a00ff">"/AppJava/acegiLogon"</font><font color="teal">/&gt;</font></p>
+
+<p> </p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#3f7f7f">&nbsp;&nbsp;</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"authenticationProvidersConfigurationList"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">list</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">ref</font> <font color="#7f007f">local</font><font color="black">=</font><font color="#2a00ff">"SACEAuthenticationConfiguration1"</font><font color="teal">/&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">ref</font> <font color="#7f007f">local</font><font color="black">=</font><font color="#2a00ff">"ldapAuthenticationConfiguration2"</font><font color="teal">/&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">ref</font> <font color="#7f007f">local</font><font color="black">=</font><font color="#2a00ff">"databaseAuthenticationConfiguration3"</font><font color="teal">/&gt;</font><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">list</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">property</font><font color="teal">&gt;</font></p>
+
+<p><font color="#3f7f7f">&lt;/bean&gt;</font><br/>
+ </p>
+
+<h3><a name="ServeideSeguretat-2.3.5.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BConfiguraci%C3%B3del%27Autoritzaci%C3%B3"></a>2.3.5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuració de l'Autorització</h3>
+
+<p><b><em>Fitxer de configuració:</em></b> <font color="black"><b><em>openFrame-services-security</em></b></font><b><em>.</em></b><font color="black"><b><em>xml</em></b></font></p>
+
+<p><em>Ubicació proposada: &lt;PROJECT_ROOT&gt;/src/main/_<font color="black"><em>resources</em></font></em>/spring_</p>
+
+<p> </p>
+
+<p>Podem definir l'autorització a 3 nivells:</p>
+
+<p> </p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuració de les Autoritzacions d'urls per rol d'usuari</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuració de les Autoritzacions a nivell de classe i mètode</p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuració de les Autoritzacions amb ACLs</p>
+
+<p> </p>
+
+<p>Configuració de les Autoritzacions d'<font color="black">urls</font> per rol d'usuari<br/>
+ </p>
+
+<p>L'exemple més normal i el que utilitzarem com a norma general en les nostres aplicacions, és donar accés segons els rols que té l'usuari. La configuració de les autoritzacions&nbsp; d'urls es fa per mitjà de la propietat <font color="#2a00ff">"secureUrls"</font><font color="#2a00ff">&nbsp;</font> del<font color="black">bean</font> d'<font color="black">openFrame</font>&nbsp;&nbsp; '<font color="#2a00ff">authorizationConfiguration'.</font></p>
+
+<p> <br/>
+PropietatRequeritDescripció| <font color="#2a00ff">secureUrls</font> | Sí | Per a cada <font color="black">url</font>&nbsp; que   volem&nbsp; restringir, afegirem una línia   amb el format següent: <br clear="all" />
+ <br clear="all" />
+&lt;Patró de URL&gt; = &lt;llista de   rols separada per ','&gt;<br clear="all" />
+ <br clear="all" />
+Exemples:<br clear="all" /> <br clear="all" />
+/**/&#42;<font color="black">view</font>&#42; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &nbsp;<font color="black">ROLE_GESTOR</font>, <font color="black">ROLE_USUARIO</font><br clear="all" />
+/**/&#42;<font color="black">delete</font>&#42;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp; <font color="black">ROLE_GESTOR</font><br clear="all" />
+/<font color="black">secure</font>/*&#42;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp; <font color="black">ROLE_GESTOR</font><br clear="all" />
+ <br clear="all" />
+En l'exemple, la primera&nbsp; línia significa que&nbsp; les <font color="black">urls</font> que contenen&nbsp; la paraula "<font color="black">view</font>" són autoritzades per als&nbsp; usuaris que tenen el rol GESTOR&nbsp; o el rol USUARI. |<br/>
+ </p>
+
+<p>Exemple:</p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#3f7f7f">&nbsp;&nbsp;</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"authorizationConfiguration"</font></p>
+
+<p><font color="#7f007f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">class</font><font color="black">=</font><font color="#2a00ff">"</font><font color="#2a00ff">net.opentrends.openframe.services.security.</font></p>
+
+<p><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#2a00ff">AuthorizationSecurityConfiguration</font><font color="#2a00ff">"</font><font color="teal">&gt;</font></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+<p><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="red">&lt;&#33;<del>&#45; Propietat opcional per les urls autoritzades &#45;</del>&gt;</font></p>
+
+<p><font color="teal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#3f7f7f">&nbsp;&nbsp;</font> <font color="#7f007f">name</font><font color="#7f007f">&nbsp;&nbsp;</font> <font color="black">=</font><font color="#2a00ff">"secureUrls"</font><font color="#3f7f7f">&gt;</font> <font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;value</font><font color="#3f7f7f">&gt;</font></p>
+
+<p><font color="#3f7f7f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="blue"><b>/</b>*/<b>read&#42;</b></font><font color="blue"><b>&nbsp;&nbsp;</b></font> <font color="blue"><b>=</b></font><font color="blue"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></font> <font color="blue"><b>ROLE_GESTOR, ROLE_USUARIO</b></font></p>
+
+<p><b>&nbsp;</b> <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> <font color="blue"><b>/</b>*/<b>delete&#42;</b></font> <font color="blue"><b>=</b></font><font color="blue"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></font> <font color="blue"><b>ROLE_GESTOR</b></font></p>
+
+<p><font color="blue"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></font> <font color="blue"><b>/secure/</b>&#42;*</font> <font color="blue"><b>&nbsp;</b></font> <font color="blue"><b>=</b></font> <font color="blue"><b>&nbsp;&nbsp;&nbsp;&nbsp;</b></font> <font color="blue"><b>ROLE_GESTOR</b></font></p>
+
+<p><font color="#3f7f7f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/value</font><font color="#3f7f7f">&gt;</font></p>
+
+<p><font color="teal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">property&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">bean</font><font color="teal">&gt;</font><br/>
+ </p>
+
+<p>Configuració de les Autoritzacions a nivell de classe i mètode<br/>
+ </p>
+
+<p>Per mitjà de <font color="black">proxies</font>dinàmics lligats a aspectes (programació orientada a aspectes) podem configurar que determinats rols no tinguin accés a determinats mètodes de determinades classes.</p>
+
+<p>La configuració de les autoritzacions&nbsp; a nivell de classe i mètode s'han de realitzar per mitjà de la propietat "<font color="black">secureBusinessObjects</font>" del <font color="black">bean</font> d'<font color="black">openFrame</font>&nbsp;&nbsp; "<font color="black">authorizationConfiguration</font>". Per a aquest <font color="black">bean</font> definirem les propietats següents:</p>
+
+<p> <br/>
+PropietatRequeritDescripció| <font color="#2a00ff">secureBusinessObjects</font> | Sí | Per a cada classe o mètode url que   vulguem&nbsp; restringir, afegirem una línia   amb el format següent: <br clear="all" /> <br clear="all" />
+&lt;Nom de classe full <font color="black">qualified</font> o <font color="black">nom</font>.mètode&gt; = &lt;llista rols separats per   ','&gt;<br clear="all" />
+ <br clear="all" />
+Exemple: <br clear="all" />
+ <br clear="all" />
+com.business.UsersManager&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp; ROLE_GESTOR<br clear="all" />
+com.business.CategoryManager.delete&nbsp;&nbsp; =&nbsp; ROLE_GESTOR<br clear="all" />
+com.business.CategoryManager.read&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp; ROLE_GESTOR, X<br clear="all" />
+ <br clear="all" />
+ <br clear="all" />
+En l'exemple, la primera&nbsp; línia   especifica que&nbsp; només els usuaris que   tenen el rol GESTOR&nbsp; estan   autoritzats&nbsp; a&nbsp; cridar els mètodes de la classe   "UserManager". |<br/>
+ </p>
+
+<p>Exemple:</p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#3f7f7f">&nbsp;&nbsp;</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"authorizationConfiguration"</font></p>
+
+<p><font color="#7f007f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">class</font><font color="black">=</font><font color="#2a00ff">"</font><font color="#2a00ff">net.opentrends.openframe.services.security.</font></p>
+
+<p><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#2a00ff">AuthorizationSecurityConfiguration</font><font color="#2a00ff">"</font><font color="teal">&gt;</font></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+<p><font color="red">&nbsp;</font> <font color="red">&lt;&#33;<del>&#45; Propietat opcional per les classes i mètodes autoritzats &#45;</del>&gt;</font></p>
+
+<p><font color="teal">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#3f7f7f">&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"secureBusinessObjects"</font><font color="#3f7f7f">&gt;</font> <font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;value</font><font color="#3f7f7f">&gt;</font></p>
+
+<p><font color="#3f7f7f">&nbsp;</font> <font color="blue"><b>com.business.UsersManager</b></font><font color="blue"><b>&nbsp;</b></font> <font color="blue"><b>= ROLE_GESTOR</b></font></p>
+
+<p><font color="blue"><b>&nbsp;</b></font> <font color="blue"><b>com.business.CategoryManager.delete = ROLE_GESTOR</b></font></p>
+
+<p><font color="blue"><b>&nbsp;</b></font> <font color="blue"><b>com.business.CategoryManager.read =</b></font> <font color="blue"><b>ROLE_GESTOR, ROLE_USUARIO</b></font></p>
+
+<p><font color="#3f7f7f">&nbsp;</font> <font color="teal">&lt;/value</font><font color="#3f7f7f">&gt;</font></p>
+
+<p><font color="teal">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">property&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">bean</font><font color="teal">&gt;</font></p>
+
+<p> <br/>
+ </p>
+
+<p>Configuració de les Autoritzacions amb <font color="black">ACLS</font><br/>
+ </p>
+
+<p>Hi ha casos en que la protecció de les <font color="black">crides</font> a mètodes no és suficient, necessitant protegir-se de diferent forma diferents instàncies d'una classe. En la majoria de casos, no fa falta cap configuració de fitxers XML.</p>
+
+<p> </p>
+
+<p>La protecció a les instàncies necessita conéixer quin és l'identificador de la instància. Per defecte es considerarà el<font color="black">mètode</font> '<font color="black">getId</font>()' de l'objecte. Si no existís aquest mètode podrem configurar quin és el mètode a utilitzar per a obtenir l'identificador de l'objecte.</p>
+
+<p> </p>
+
+<p>Aquesta configuració&nbsp; es fa en el <font color="black">bean</font>d'<font color="black">openFrame</font>&nbsp;&nbsp;'<font color="#2a00ff">authorizationConfiguration'</font> per mitjà de&nbsp; la propietat <font color="#2a00ff">"domainObjectsIdGetters":</font></p>
+
+<p> <br/>
+PropietatRequeritDescripció| <font color="#2a00ff">domainObjectsIdGetters</font> | Sí | Per a   definir el mètode d'obtenció de l'identificador usarem la sintaxi següent:<br clear="all" />
+ <br clear="all" />
+&lt;Nom de la classe&gt; = &lt;Nom del   métode&gt;<br clear="all" /> <br clear="all" />
+Exemple: <br clear="all" />
+ <br clear="all" />
+com.<font color="black">business</font>.<font color="black">ComplexDomainObject=</font>&nbsp; <font color="black">getDomainObjectId</font>() |<br/>
+ </p>
+
+<p>Exemple:</p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#3f7f7f">&nbsp;&nbsp;</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"authorizationConfiguration"</font></p>
+
+<p><font color="#7f007f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">class</font><font color="black">=</font><font color="#2a00ff">"</font><font color="#2a00ff">net.opentrends.openframe.services.security.</font></p>
+
+<p><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#2a00ff">AuthorizationSecurityConfiguration</font><font color="#2a00ff">"</font><font color="teal">&gt;</font></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+<p><font color="red">&nbsp;</font> <font color="red">&lt;&#33;<del>&#45; Propietat pels getters dels identificadors &#45;</del>&gt;</font></p>
+
+<p><font color="teal">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#7f007f">name</font><font color="#7f007f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="black">=</font><font color="#2a00ff">"domainObjectsIdGetters"</font><font color="#3f7f7f">&gt;</font> <font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#2a00ff">&nbsp;&nbsp;</font><font color="teal">&lt;value</font><font color="#3f7f7f">&gt;</font></p>
+
+<p><font color="#3f7f7f">&nbsp;</font> <font color="#3f7f7f">&nbsp;&nbsp;&nbsp;</font> <font color="blue"><b>com.business.ComplexDomainObject = getDomainObjectId</b></font></p>
+
+<p><font color="#3f7f7f">&nbsp;</font> <font color="#3f7f7f">&nbsp;</font> <font color="teal">&lt;/value</font><font color="#3f7f7f">&gt;</font></p>
+
+<p><font color="teal">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">property&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">bean</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<h3><a name="ServeideSeguretat-%C2%A0"></a> </h3>
+
+
+<h3><a name="ServeideSeguretat-2.3.6.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BConfiguraci%C3%B3delServeid%27Acc%C3%A9saInformaci%C3%B3General"></a>2.3.6.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuració del Servei d'Accés a Informació General</h3>
+
+<p>En casos concrets, des del codi voldrem obtenir informació relacionada amb l'usuari connectat. Per aquest objectiu s'ofereix una interfície 'SecurityService'. En l'actualitat s'ofereix una implementació basada en 'Acegi' que podrem utilitzar introduint la següetn configuració:</p>
+
+<p> </p>
+
+<p>&lt;bean id="securityService"&nbsp;&nbsp; &nbsp; class="net.opentrends.openframe.services.security.acegi.SecurityServiceAcegiImpl"/&gt;<br/>
+ </p>
+
+<p> </p>
+
+<p>En aquest moment, segons la configuració d'injecció de beans (tal i com s'exposa al document de Servei de Configuració) podrem usar el servei des de qualsevol classe de l'aplicació.</p>
+
+<h2><a name="ServeideSeguretat-2.4.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BUtilitzaci%C3%B3delServei"></a>2.4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utilització del Servei</h2>
+
+
+<h3><a name="ServeideSeguretat-2.4.1.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BAutentificaci%C3%B3perFormulari"></a>2.4.1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Autentificació per Formulari</h3>
+
+<p> </p>
+
+<p>Hi ha diverses possibilitats d'autentificació des de Web. En aquest apartat ens centrarem en l'autentificació amb formulari (per a més informació consultar la secció '1.10' del tutorial de '<font color="black">Acegi</font>').</p>
+
+<p> </p>
+
+<p>És necessari crear una pàgina en què s'introdueixi l'usuari i&nbsp; el <font color="black">password</font>.</p>
+
+<p> </p>
+
+<p><br clear="all" /></p>
+
+<p> </p>
+
+<p>Aquesta pàgina ha de complir els requisits següents:</p>
+
+<p> </p>
+
+<p>1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;El camp en que s'introdueix el nom d'usuari ha de tenir com a nom '<font color="black">j_username</font>'</p>
+
+<p>2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;El camp en que s'introdueixi el <font color="black">password</font> ha de tenir com a nom '<font color="black">j_password</font>'</p>
+
+<p>3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L'acció del formulari ha de ser la <font color="black">url</font> especificada en el filtre en la propietat '<font color="black">filterProcessesUrl</font>' (per defecte '/<font color="black">j_acegi_security_check</font>')</p>
+
+<p> <br clear="all" />
+ </p>
+
+<p>Podem adaptar el codi font següent en les nostres pàgines de <font color="black">Login</font>. <b>El text en negreta i marcat</b> &nbsp;és codi reutilitzable:</p>
+
+<p> </p>
+
+<p><font color="#bf5f3f">&lt;%@</font><font color="#3f7f7f">taglib</font> <font color="#7f007f">prefix</font><font color="black">=</font><font color="#2a00ff">'c'</font> <font color="#7f007f">uri</font><font color="black">=</font><font color="#2a00ff">'http://java.sun.com/jstl/core'</font><font color="#bf5f3f">%&gt;</font></p>
+
+<p><font color="#bf5f3f">&lt;%@</font><font color="#3f7f7f">page</font> <font color="#7f007f">import</font><font color="black">=</font><font color="#2a00ff">"net.sf.acegisecurity.ui.AbstractProcessingFilter"</font><font color="#bf5f3f">%&gt;</font></p>
+
+<p><font color="#bf5f3f">&lt;%@</font><font color="#3f7f7f">page</font></p>
+
+<p><font color="#7f007f">import</font><font color="black">=</font><font color="#2a00ff">"net.sf.acegisecurity.ui.webapp.AuthenticationProcessingFilter"</font><font color="#bf5f3f">%&gt;</font></p>
+
+<p><font color="#bf5f3f">&lt;%@</font><font color="#3f7f7f">page</font> <font color="#7f007f">import</font><font color="black">=</font><font color="#2a00ff">"net.sf.acegisecurity.AuthenticationException"</font><font color="#bf5f3f">%&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">html</font><font color="teal">&gt;</font></p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">head</font><font color="teal">&gt;</font></p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">title</font><font color="teal">&gt;</font><font color="black">Login</font><font color="teal">&lt;/</font><font color="#3f7f7f">title</font><font color="teal">&gt;</font></p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">head</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">body</font><font color="teal">&gt;</font></p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">h1</font><font color="teal">&gt;</font><font color="black">Login</font><font color="teal">&lt;/</font><font color="#3f7f7f">h1</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">p</font><font color="teal">&gt;</font><font color="#3f5fbf">&lt;%-&#45; this form-login-page form is also used as the</font></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;form-error-page to ask for a login again.</p>
+
+<p><font color="#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#3f5fbf">&#45;-%&gt;</font></p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">c:if</font> <font color="#7f007f">test</font><font color="black">=</font><font color="#2a00ff">"</font>$<div class="error"><span class="error">Unknown macro: {not empty param.login_error}</span> </div><font color="#2a00ff">"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">font</font> <font color="#7f007f">color</font><font color="black">=</font><font color="#2a00ff">"red"</font><font color="teal">&gt;</font> <font color="black">Your login attempt was not successful, try again.</font><font color="teal">&lt;</font><font color="#3f7f7f">BR</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">BR</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="black">Reason:</font></p>
+
+<p><font color="#bf5f3f">&lt;%=</font><font color="black">((AuthenticationException) session</font></p>
+
+<p>&nbsp; .getAttribute(AbstractProcessingFilter.ACEGI_SECURITY_LAST_EXCEPTION_KEY))</p>
+
+<p><font color="black">.getMessage()</font><font color="#bf5f3f">%&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">font</font><font color="teal">&gt;</font></p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">c:if</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal"><b>&lt;</b></font><font color="#3f7f7f"><b>form</b></font> <font color="#7f007f"><b>action</b></font><font color="black"><b>=</b></font>*"<b><font color="teal"><b>&lt;</b></font><font color="#3f7f7f"><b>c:url</b></font> <font color="#7f007f"><b>value</b></font><font color="black"><b>=</b></font><font color="#2a00ff"><b>'j_acegi_security_check'</b></font><font color="teal"><b>/&gt;</b></font></b>"* <font color="#7f007f"><b>method</b></font><font color="black"><b>=</b></font><font color="#2a00ff"><b>"POST"</b></font><font color="teal"><b>&gt;</b></font></p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">table</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">tr</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">td</font><font color="teal">&gt;</font><font color="black">User:</font><font color="teal">&lt;/</font><font color="#3f7f7f">td</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">td</font><font color="teal">&gt;</font></p>
+
+<p><font color="teal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">input</font> <font color="#7f007f">type</font><font color="black">=</font><font color="#2a00ff">'text'</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">'j_username'</font></p>
+
+<p><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">c:if</font> <font color="#7f007f">test</font><font color="black">=</font>"<font color="black">${</font><font color="#7f0055">not empty</font> <font color="black">param.login_error}</font>"<font color="teal">&gt;</font> <font color="black">value='</font><font color="#bf5f3f">&lt;%=</font><font color="black">session.getAttribute(AuthenticationProcessingFilter.ACEGI_SECURITY_LAST_USERNAME_KEY)</font><font color="#bf5f3f">%&gt;</font><font color="black">'</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">c:if</font><font color="teal">&gt;</font><font color="teal">&gt;</font></p>
+
+<p><font color="teal"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></font> <font color="teal">&lt;/</font><font color="#3f7f7f">td</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">tr</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">tr</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">td</font><font color="teal">&gt;</font><font color="black">Password:</font><font color="teal">&lt;/</font><font color="#3f7f7f">td</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">td</font><font color="teal">&gt;</font></p>
+
+<p><font color="teal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">input</font> <font color="#7f007f">type</font><font color="black">=</font><font color="#2a00ff">'password'</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">'j_password'</font><font color="teal">&gt;</font></p>
+
+<p><font color="teal"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></font> <font color="teal">&lt;/</font><font color="#3f7f7f">td</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">tr</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">tr</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">td</font> <font color="#7f007f">colspan</font><font color="black">=</font><font color="#2a00ff">'2'</font><font color="teal">&gt;&lt;</font><font color="#3f7f7f">input</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"submit"</font> <font color="#7f007f">type</font><font color="black">=</font><font color="#2a00ff">"submit"</font><font color="teal">&gt;&lt;/</font><font color="#3f7f7f">td</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">tr</font><font color="teal">&gt;</font></p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">table</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">form</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">body</font><font color="teal">&gt;</font></p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">html</font><font color="teal">&gt;</font><br/>
+ </p>
+
+<h3><a name="ServeideSeguretat-2.4.2.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BUtilitzaci%C3%B3del%27Autoritzaci%C3%B3enlesnostresp%C3%A0ginesJSP"></a>2.4.2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utilització de l'Autorització en les nostres pàgines JSP</h3>
+
+<p> </p>
+
+<p>En cas de voler presentar determinat contingut depenent dels rols de l'usuari podem fer ús dels tags proporcionats per Acegi. Per a això, seguirem els passos següents:</p>
+
+<p> </p>
+
+<p>1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Definició de la referència a la llibreria de tags</p>
+
+<p> </p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Des de la versió JSP 1.2 no és necessari configurar en el fitxer&nbsp;'web.xml'&nbsp; la referència &nbsp;&nbsp;&nbsp;&nbsp; a les llibreries. Podem referenciar directament per mitjà d'una url el jar, tal com&nbsp;es &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mostra a continuació:</p>
+
+<p> </p>
+
+<p><font color="#bf5f3f">&lt;%@</font> <font color="#3f7f7f">taglib</font> <font color="#7f007f">prefix</font>=<font color="#2a00ff">"authz"</font> <font color="#7f007f">uri</font>=<font color="#2a00ff">"</font><font color="#2a00ff"><a href="http://acegisecurity.sf.net/authz" title="Visit page outside Confluence">http://acegisecurity.sf.net/authz</a>"</font><font color="#bf5f3f">%&gt;</font><br/>
+ </p>
+
+<p>2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utilitzar el tag "authorize" en la pàgina JSP</p>
+
+<p> </p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Una vegada definida la referència a la llibreria i el seu prefix 'authz', podem incorporar &nbsp;&nbsp;&nbsp;&nbsp; el tag a la pàgina JSP per mitjà de '&lt;authz:authorize&gt;', en el que podrem definir els &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; atributs següents:</p>
+
+<p> </p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+PropietatRequeritValor| ifAllGranted | No | Llista de rols separats per coma. <br clear="all" />
+L'usuari ha de tenir tots els rols perquè   el&nbsp; contingut dins del tag (body)   sigui&nbsp; mostrat.<br clear="all" /> |</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> ifAnyGranted: </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Llista de rols separats per coma.<br clear="all" />
+L'usuari ha de tenir qualsevol dels rols   perquè el&nbsp; contingut dins del tag   (body) sigui&nbsp; mostrat.<br clear="all" /> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> ifNotGranted </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Llista de rols separats per coma.<br clear="all" />
+L'usuari no ha de tenir cap dels rols perquè   el&nbsp; contingut dins del tag (body)   sigui&nbsp; mostrat. </td>
+</tr>
+</tbody></table>
+<p> </p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exemple:</p>
+
+<p> </p>
+
+<p>&lt;authz:authorize ifAllGranted="ROLE_ADMIN"&gt;</p>
+
+<p>&nbsp; &lt;td&gt;</p>
+
+<p>&nbsp;&nbsp;&nbsp; &lt;A HREF="del.htm?id="123"&gt;Borrar&lt;/A&gt;</p>
+
+<p>&nbsp; &lt;/td&gt;</p>
+
+<p>&lt;/authz:authorize&gt;<br/>
+ </p>
+
+<p>Per a més informació sobre el <em>tag</em> "<font color="black">authorize</font>", consultar la pàgina <a href="http://acegisecurity.sourceforge.net/docbook/acegi.html#N10C28" title="Visit page outside Confluence">http://acegisecurity.sourceforge.net/docbook/acegi.html#N10C28</a></p>
+
+<p> </p>
+
+<h3><a name="ServeideSeguretat-2.4.3.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BObtenci%C3%B3d%27Informaci%C3%B3deSeguretatambAPI"></a>2.4.3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Obtenció d'Informació de Seguretat amb API</h3>
+
+<p> </p>
+
+<p>El servei de seguretat, definit amb el bean 'SecurityService' (tal i com s'explica en l'apartat de Configuració) conté una signatura d'operacions tal i com es mostra en el següent diagrama:</p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>public boolean isUserAuthenticated()</em></p>
+
+<p> </p>
+
+<p>Retorna "true" si l'usuari està autentificat.</p>
+
+<p> </p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>public UserLogin getUserLogin()</em></p>
+
+<p> </p>
+
+<p>Retorn la informació de l'usuari actual.</p>
+
+<p> </p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>public Boolean isUserInRole(String role)</em></p>
+
+<p> </p>
+
+<p>Comprova si l'usuari té el rol indicat com a paràmetre.</p>
+
+<p> </p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>public Boolean hasUserXXXPermission(Object instancia), XXX = Read, Write, Delete</em></p>
+
+<p> </p>
+
+<p>Comprova si l'usuari té un permí determinat sobre un objecte.</p>
+
+<p> <br clear="all" />
+ </p>
+
+<h3><a name="ServeideSeguretat-2.4.4.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BGesti%C3%B3delsACLsmitjan%C3%A7antlaAPI"></a>2.4.4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gestió dels ACLs mitjançant la API</h3>
+
+<p>Per a cada instància de la lògica de negoci&nbsp; podem afegir a la base de dades els permisos per mitjà de l'ús de la interfície '<font color="black">ACLsDAO</font>':</p>
+
+<p> </p>
+
+<p><br clear="all" /></p>
+
+<p> </p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>public void addReadPermission(String usuarioOrole, Object instancia)</em></p>
+
+<p> </p>
+
+<p>Afegeix el permís <em>READ</em> (llegir) a un rol o un usuari "<font color="black"><em>usuarioOrole</em></font>" i una instància de la lògica de negoci "<em>instància</em>"</p>
+
+<p> </p>
+
+<p>Altres mètodes públics de la classe tenen un funcionament semblant (<font color="black">Delete</font>, <font color="black">CREATE</font>,<font color="black">Write</font>). Per a més referència consultar el <font color="black">javadoc</font> de la interfície '<font color="black">ACLsDAO´</font>'.
+<br clear="all" /> <b>Eines de Suport</b></p>
+
+<h3><a name="ServeideSeguretat-2.5.1.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BServidorLDAPdeproves%3AopenLDAP"></a>2.5.1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Servidor LDAP de proves: openLDAP</h3>
+
+<p> </p>
+
+<p>Els diferents passos per a instal&#45; lar <font color="black">openLDAP</font> i importar un directori <font color="black">LDAP</font> d'exemple són:</p>
+
+<p> </p>
+
+<p><font color="black">&#45;</font> <font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>Baixar<font color="black">openLDAP</font> per a Windows <a href="http://lucas.bergmans.us/hacks/openldap/downloadi" title="Visit page outside Confluence">http://lucas.bergmans.us/hacks/openldap/downloadi</a> <font color="black">instal&#45; lar-ho (versió 2.2.19).</font></p>
+
+<p> </p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Canviar la configuració per defecte de openldap. Copiar les dades següents en un&nbsp; fitxer <font color="black">slapd</font>.conf.&nbsp; Copiarem&nbsp;el <font color="black">slapd.conf</font> en la mateixa carpeta que<font color="black">openLDAP</font>.</p>
+
+<p> </p>
+
+<p> </p>
+
+<p>&#35; See slapd.conf(5) for details on configuration options.</p>
+
+<p>&#35; This file should NOT be world readable.</p>
+
+<p>&#35;</p>
+
+<p>ucdata-path&nbsp;&nbsp;&nbsp;&nbsp; ./ucdata</p>
+
+<p>include&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ./etc/schema/core.schema</p>
+
+<p>include&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ./etc/schema/cosine.schema</p>
+
+<p>include&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ./etc/schema/inetorgperson.schema</p>
+
+<p> </p>
+
+<p>&#35; Define global ACLs to disable default read access.</p>
+
+<p> </p>
+
+<p>&#35; Do not enable referrals until AFTER you have a working directory</p>
+
+<p>&#35; service AND an understanding of referrals.</p>
+
+<p>&#35;referral&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ldap://root.openldap.org</p>
+
+<p> </p>
+
+<p>pidfile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ./var/run/slapd.pid</p>
+
+<p>argsfile ./var/run/slapd.args</p>
+
+<p> </p>
+
+<p>&#35; BDB database definitions</p>
+
+<p>&#35;######################################################################</p>
+
+<p> </p>
+
+<p>&#35;##database&nbsp;&nbsp;&nbsp;&nbsp; bdb</p>
+
+<p>&#35;##suffix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "dc=my-domain,dc=com"</p>
+
+<p>&#35;##rootdn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "cn=Manager,dc=my-domain,dc=com"</p>
+
+<p> </p>
+
+<p> </p>
+
+<p>database bdb</p>
+
+<p>suffix dc="mycompany",dc="com"</p>
+
+<p>rootdn "cn=Manager,dc=mycompany,dc=com"</p>
+
+<p> </p>
+
+<p>rootpw secret</p>
+
+<p> </p>
+
+<p>directory&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ./var/openldap-data</p>
+
+<p>index&nbsp;&nbsp;&nbsp; objectClass&nbsp; eq</p>
+
+<p> <br/>
+&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Obrir una pantalla "DOS <font color="black">command</font>",&nbsp; anar a la carpeta on hem instal&#45; lat el programa i arrancar <font color="black">openLDAP</font> amb la comanda</p>
+
+<p> </p>
+
+<p>.\slapd &#45;d 1<br/>
+ </p>
+
+<p>Si tot ha funcionat bé, hauríem de veure una sortida com la següent:</p>
+
+<p> </p>
+
+<p><br clear="all" /></p>
+
+<p> <br clear="all" />
+ </p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copiar les dades següents en un&nbsp; fitxer <font color="black">setup</font>.<font color="black">ldif</font>.&nbsp; Aquest fitxer conté un directori <font color="black">LDAP</font> de l'empresa "<font color="black">mycompany</font>.com" amb 2 persones: "<font color="black">gestoruser</font>" i "usuari". Copiarem&nbsp; el <font color="black">setup</font>.<font color="black">ldif</font> en la mateixa carpeta que <font color="black">openLDAP</font>.</p>
+
+<p> </p>
+
+<p>&#35;## Top level definition</p>
+
+<p>&#35;dn: dc=mycompany,dc=com</p>
+
+<p>&#35;objectClass: top</p>
+
+<p>&#35;objectClass: dcObject</p>
+
+<p>&#35;objectClass: domain</p>
+
+<p>&#35;dc: mycompany</p>
+
+<p> </p>
+
+<p>&#35;## organizationalUnit : PEOPLE</p>
+
+<p>&#35; Definition of people</p>
+
+<p>dn: ou=people,dc=mycompany,dc=com</p>
+
+<p>objectClass: top</p>
+
+<p>objectClass: organizationalUnit</p>
+
+<p>ou: people</p>
+
+<p> </p>
+
+<p>&#35; Gestor User</p>
+
+<p>dn: uid=gestoruser,ou=people,dc=mycompany,dc=com</p>
+
+<p>objectClass: person</p>
+
+<p>objectClass: inetOrgPerson</p>
+
+<p>cn: State App</p>
+
+<p>displayName: App Admin</p>
+
+<p>givenName: App</p>
+
+<p>mail: gestor@fake.org</p>
+
+<p>title: ROLE_ADMIN</p>
+
+<p>sn: Gestor</p>
+
+<p>uid: gestoruser</p>
+
+<p>userPassword: gestorpassword</p>
+
+<p> </p>
+
+<p>&#35; usuario normal</p>
+
+<p>dn: uid=usuario,ou=people,dc=mycompany,dc=com</p>
+
+<p>objectClass: person</p>
+
+<p>objectClass: inetOrgPerson</p>
+
+<p>cn: State App</p>
+
+<p>displayName: App Admin</p>
+
+<p>givenName: App</p>
+
+<p>mail: usuario@fake.org</p>
+
+<p>title: ROLE_USER</p>
+
+<p>sn: Usuario</p>
+
+<p>uid: usuario</p>
+
+<p>userPassword: usuariopassword</p>
+
+<p> </p>
+
+<p> <br/>
+ </p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Obrir una altra pantalla "DOS <font color="black">command</font>", anar a la carpeta on hem instal&#45; lat el programa i importar les dades amb la <font color="black">comanda</font>:</p>
+
+<p> </p>
+
+<p>ldapadd &#45;x &#45;D "cn=Manager,dc=mycompany,dc=com" &#45;W &#45;f setup.ldif<br/>
+La contrasenya per defecte és "secret".</p>
+
+<p> <br clear="all" />
+ </p>
+
+<h3><a name="ServeideSeguretat-.5.2.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbs..."></a>2.5.2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jxplorer</h3>
+
+<p>Comprovarem que la importació de dades ha funcionat amb <font color="black">Jxplorer</font>, un client <font color="black">LDAP</font>&nbsp; Java i <font color="black">opensource</font>.</p>
+
+<p> </p>
+
+<p><font color="black">&#45;</font> <font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>Baixar<font color="black">Jxplorer</font> a la <font color="black">url</font>http://sourceforge.net/projects/jxplorer/ i <font color="black">instal&#45; lar-ho</font></p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prémer el botó per a connectar-se&nbsp; al nostre directori <font color="black">LDAP</font>.</p>
+
+<p> </p>
+
+<p>La contrasenya per defecte és "secret". La pantalla següent mostra els valors de la diferents paràmetres:</p>
+
+<p> </p>
+
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <br clear="all" /> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> <br clear="all" /> </td>
+<td class='confluenceTd'>&nbsp;</td>
+</tr>
+</tbody></table>
+<p><br clear="all" /></p>
+
+<p>&#45; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Si tot ha funcionat bé, hauríem de veure la pantalla següent:</p>
+
+<p> </p>
+
+<h1><a name="ServeideSeguretat-3.%26nbsp%3B%26nbsp%3BExemples"></a>3.&nbsp;&nbsp; Exemples</h1>
+
+
+<h2><a name="ServeideSeguretat-3.1.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BExempledeconfiguraci%C3%B3d%27autentificaci%C3%B3ambBBDD%2CSACEiLDAP"></a>3.1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exemple de configuració d'autentificació amb BBDD, SACE i LDAP</h2>
+
+<p> </p>
+
+<p>En aquesta part es descriuen 2 dels exemples més comuns d'autentificació:</p>
+
+<p> </p>
+
+<p>&#45;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Autentificació per SACE</p>
+
+<p>&#45;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Autentificació per BBDD ja existent</p>
+
+<p> </p>
+
+<h3><a name="ServeideSeguretat-3.1.1.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BExempledeconfiguraci%C3%B3ambautentificaci%C3%B3SACE"></a>3.1.1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exemple de configuració amb autentificació SACE</h3>
+
+<p> </p>
+
+<p><font color="teal">&lt;?</font><font color="#3f7f7f">xml</font> <font color="#7f007f">version</font><font color="black">=</font><font color="#2a00ff">"1.0"</font> <font color="#7f007f">encoding</font><font color="black">=</font><font color="#2a00ff">"UTF-8"</font><font color="teal">?&gt;</font></p>
+
+<p><font color="teal">&lt;&#33;</font><font color="#3f7f7f">DOCTYPE</font> <font color="navy">beans</font> <font color="gray">PUBLIC</font> <font color="navy">"-//SPRING//DTD BEAN//EN"</font> <font color="#3f7f5f">"http://www.springframework.org/dtd/spring-beans.dtd"</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">beans</font><font color="teal">&gt;</font></p>
+
+<p>&nbsp;</p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"dataSource"</font> <font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">class</font><font color="black">=</font><font color="#2a00ff">"org.springframework.jndi.JndiObjectFactoryBean"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font><font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"jndiName"</font> <font color="#7f007f">value</font><font color="black">=</font><font color="#2a00ff">"${dataSource.jndiName}"</font><font color="teal">/&gt;</font></p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">bean</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p>&nbsp;</p>
+
+<p> </p>
+
+<p> </p>
+
+<p>&lt;bean id="SACEAuthenticationConfiguration"</p>
+
+<p>&nbsp; class="net.opentrends.openframe.services.security.SACEAuthenticationConfiguration"&gt;</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+<p>&nbsp; &lt;property name="urlSACE" value="https://sace.prepdc.gencat.intranet/SACE/SACE_Logon.aspx?XMLIn=" /&gt;</p>
+
+<p>&nbsp; &lt;property name="userNameFormat" value="NIF" /&gt;</p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">bean</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"authenticationConfiguration"</font></p>
+
+<p><font color="#7f007f">class</font><font color="black">=</font><font color="#2a00ff">"net.opentrends.openframe.services.security.AuthenticationSecurityConfiguration"</font><font color="teal">&gt;</font></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"loginFormUrlValue"</font> <font color="#7f007f">value</font><font color="black">=</font><font color="#2a00ff">"/login.jsp"</font> <font color="teal">/&gt;</font></p>
+
+<p><font color="black">&nbsp;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#3f7f7f">&nbsp;&nbsp;</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"authenticationFailureUrlValue"</font><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#2a00ff">&nbsp;</font> <font color="#7f007f">value</font><font color="black">=</font><font color="#2a00ff">"/login.jsp"</font><font color="teal">/&gt;</font></p>
+
+<p> </p>
+
+<p> </p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"filterProcessesUrl"</font> <font color="#7f007f">value</font><font color="black">=</font><font color="#2a00ff">"/AppJava/acegiLogin"</font> <font color="teal">/&gt;</font></p>
+
+<p><font color="black">&nbsp;</font></p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"authenticationProvidersConfigurationList"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">list</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">ref</font> <font color="#7f007f">local</font><font color="black">=</font><font color="#2a00ff">"</font>SACEAuthenticationConfiguration<font color="#2a00ff">"</font> <font color="teal">/&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">list</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">property</font><font color="teal">&gt;</font></p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">bean</font><font color="teal">&gt;</font></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+<p> </p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"authorizationConfiguration"</font></p>
+
+<p><font color="#7f007f">class</font><font color="black">=</font><font color="#2a00ff">"net.opentrends.openframe.services.security.AuthorizationSecurityConfiguration"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font><font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"rolesList"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">list</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font><font color="black">ROLE_ADMIN</font><font color="teal">&lt;/</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font><font color="black">ROLE_USER</font><font color="teal">&lt;/</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">list</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">property</font><font color="teal">&gt;</font></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font><font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"secureUrls"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*<b>/</b>.do&#42; =&nbsp; ROLE_USER,ROLE_ADMIN</p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">property</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">bean</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">import</font> <font color="#7f007f">resource</font><font color="black">=</font><font color="#2a00ff">"classpath:/spring/acegi-beans.xml"</font><font color="teal">/&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">beans</font><font color="teal">&gt;</font><br/>
+ </p>
+
+<p>Els beans openFrame que usen "Acegi" estan continguts en el jar del servei de seguretat, per la qual cosa haurem d'importar aquest recurs en el nostre "application context" de Spring amb la línia següent:</p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">import</font> <font color="#7f007f">resource</font><font color="black">=</font><font color="#2a00ff">"classpath:spring/acegi-beans.xml"</font><font color="teal">/&gt;</font></p>
+
+<p> <br/>
+ </p>
+
+<p> </p>
+
+<p> </p>
+
+<h3><a name="ServeideSeguretat-3.1.2.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BAutentificaci%C3%B3perBBDDambunaBBDDjaexistent"></a>3.1.2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Autentificació per BBDD amb una BBDD ja existent</h3>
+
+<p> </p>
+
+<p> </p>
+
+<p><font color="teal">&lt;?</font><font color="#3f7f7f">xml</font> <font color="#7f007f">version</font><font color="black">=</font><font color="#2a00ff">"1.0"</font> <font color="#7f007f">encoding</font><font color="black">=</font><font color="#2a00ff">"UTF-8"</font><font color="teal">?&gt;</font></p>
+
+<p><font color="teal">&lt;&#33;</font><font color="#3f7f7f">DOCTYPE</font> <font color="navy">beans</font> <font color="gray">PUBLIC</font> <font color="navy">"-//SPRING//DTD BEAN//EN"</font> <font color="#3f7f5f">"http://www.springframework.org/dtd/spring-beans.dtd"</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">beans</font><font color="teal">&gt;</font></p>
+
+<p>&nbsp;</p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"dataSource"</font> <font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#7f007f">class</font><font color="black">=</font><font color="#2a00ff">"org.springframework.jndi.JndiObjectFactoryBean"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font><font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"jndiName"</font> <font color="#7f007f">value</font><font color="black">=</font><font color="#2a00ff">"${dataSource.jndiName}"</font><font color="teal">/&gt;</font></p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">bean</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p>&nbsp;</p>
+
+<p> </p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;bean id="existingDatabaseAuthenticationConfiguration"</font></p>
+
+<p><font color="teal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">class="net.opentrends.openframe.services.security.DatabaseAuthenticationConfiguration"&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;property name="passwordEncoderClass"</font></p>
+
+<p><font color="teal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">value="net.sf.acegisecurity.providers.encoding.PlaintextPasswordEncoder" /&gt;</font></p>
+
+<p><font color="teal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></p>
+
+<p><font color="teal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;property name="usersByUserNameQuery" value="SELECT username,password FROM users WHERE username = ?" /&gt;</font></p>
+
+<p><font color="teal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;property name="authoritiesbyUserNameQuery" value="SELECT username, role FROM user_roles WHERE username =?" /&gt;</font></p>
+
+<p><font color="teal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></p>
+
+<p><font color="teal">&nbsp;</font> <font color="teal">&lt;/bean&gt;</font></p>
+
+<p> </p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"authenticationConfiguration"</font></p>
+
+<p><font color="#7f007f">class</font><font color="black">=</font><font color="#2a00ff">"net.opentrends.openframe.services.security.AuthenticationSecurityConfiguration"</font><font color="teal">&gt;</font></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"loginFormUrlValue"</font> <font color="#7f007f">value</font><font color="black">=</font><font color="#2a00ff">"/login.jsp"</font> <font color="teal">/&gt;</font></p>
+
+<p><font color="black">&nbsp;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#3f7f7f">&nbsp;&nbsp;</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"authenticationFailureUrlValue"</font><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="#2a00ff">&nbsp;</font> <font color="#7f007f">value</font><font color="black">=</font><font color="#2a00ff">"/login.jsp"</font><font color="teal">/&gt;</font></p>
+
+<p> </p>
+
+<p> </p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"filterProcessesUrl"</font> <font color="#7f007f">value</font><font color="black">=</font><font color="#2a00ff">"/AppJava/acegiLogin"</font> <font color="teal">/&gt;</font></p>
+
+<p><font color="black">&nbsp;</font></p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">property</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"authenticationProvidersConfigurationList"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">list</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">ref</font> <font color="#7f007f">local</font><font color="black">=</font><font color="#2a00ff">"</font><font color="teal">existingDatabaseAuthenticationConfiguration</font><font color="#2a00ff">"</font> <font color="teal">/&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">list</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">property</font><font color="teal">&gt;</font></p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">bean</font><font color="teal">&gt;</font></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+<p> </p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">bean</font> <font color="#7f007f">id</font><font color="black">=</font><font color="#2a00ff">"authorizationConfiguration"</font></p>
+
+<p><font color="#7f007f">class</font><font color="black">=</font><font color="#2a00ff">"net.opentrends.openframe.services.security.AuthorizationSecurityConfiguration"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font><font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"rolesList"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">list</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font><font color="black">ROLE_ADMIN</font><font color="teal">&lt;/</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font><font color="black">ROLE_USER</font><font color="teal">&lt;/</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">list</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">property</font><font color="teal">&gt;</font></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">property</font><font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">"secureUrls"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /*<b>/</b>.do&#42; =&nbsp; ROLE_USER,ROLE_ADMIN</p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">value</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">property</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">bean</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">import</font> <font color="#7f007f">resource</font><font color="black">=</font><font color="#2a00ff">"classpath:/spring/acegi-beans.xml"</font><font color="teal">/&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">beans</font><font color="teal">&gt;</font><br/>
+ </p>
+
+<p> </p>
+
+<p> </p>
+
+<h2><a name="ServeideSeguretat-3.2.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BExempledeformulari%26nbsp%3BdeloginambJSTLiStruts"></a>3.2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exemple de formulari&nbsp; de login amb JSTL i Struts</h2>
+
+<p> </p>
+
+<p> </p>
+
+<p><font color="#bf5f3f">&lt;%@</font> <font color="#3f7f7f">taglib</font> <font color="#7f007f">uri</font><font color="black">=</font><font color="#2a00ff">"http://jakarta.apache.org/struts/tags-bean"</font><font color="#7f007f">prefix</font><font color="black">=</font><font color="#2a00ff">"bean"</font> <font color="#bf5f3f">%&gt;</font></p>
+
+<p><font color="#bf5f3f">&lt;%@</font> <font color="#3f7f7f">taglib</font> <font color="#7f007f">uri</font><font color="black">=</font><font color="#2a00ff">"http://java.sun.com/jstl/core"</font><font color="#7f007f">prefix</font><font color="black">=</font><font color="#2a00ff">"c"</font> <font color="#bf5f3f">%&gt;</font></p>
+
+<p> </p>
+
+<p><font color="#bf5f3f">&lt;%@</font> <font color="#3f7f7f">page</font> <font color="#7f007f">import</font><font color="black">=</font><font color="#2a00ff">"net.sf.acegisecurity.ui.AbstractProcessingFilter"</font><font color="#bf5f3f">%&gt;</font></p>
+
+<p><font color="#bf5f3f">&lt;%@</font> <font color="#3f7f7f">page</font> <font color="#7f007f">import</font><font color="black">=</font><font color="#2a00ff">"net.sf.acegisecurity.ui.webapp.AuthenticationProcessingFilter"</font><font color="#bf5f3f">%&gt;</font></p>
+
+<p><font color="#bf5f3f">&lt;%@</font> <font color="#3f7f7f">page</font> <font color="#7f007f">import</font><font color="black">=</font><font color="#2a00ff">"net.sf.acegisecurity.AuthenticationException"</font><font color="#bf5f3f">%&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">style</font> <font color="#7f007f">type</font><font color="black">=</font><font color="#2a00ff">"text/css"</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p>&lt;%-&#45; this form-login-page form is also used as the</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;form-error-page to ask for a login again.</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#45;-%&gt;</p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">c:if</font> <font color="#7f007f">test</font><font color="black">=</font>"<font color="black">${</font><font color="#7f0055"><b>not empty</b></font> <font color="black">param.login_error}</font>"<font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;</font> <font color="black">&nbsp;</font><font color="teal">&lt;fmt</font><font color="#3f7f7f">:message</font> <font color="#7f007f">key</font><font color="black">=</font><font color="#2a00ff">"jsp.login.error"</font> <font color="teal">/&gt;</font></p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">c:if</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&lt;fmt</font><font color="#3f7f7f">:message</font> <font color="#7f007f">key</font><font color="black">=</font><font color="#2a00ff">"jsp.login.message"</font> <font color="teal">/&gt;</font></p>
+
+<p> </p>
+
+<p><font color="teal">&lt;</font><font color="#3f7f7f">form</font> <font color="#7f007f">action</font><font color="black">=</font>"<font color="teal">&lt;</font><font color="#3f7f7f">c:url</font> <font color="#7f007f">value</font><font color="black">=</font><font color="#2a00ff">'/AppJava/acegiLogin'</font><font color="teal">/&gt;</font>" <font color="#7f007f">method</font><font color="black">=</font><font color="#2a00ff">"post"</font><font color="teal">&gt;</font></p>
+
+<p> </p>
+
+<p><font color="black">&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">table</font> <font color="#7f007f">width</font><font color="black">=</font><font color="#2a00ff">"100%"</font> <font color="#7f007f">border</font><font color="black">=</font><font color="#2a00ff">"0"</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">tr</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">td</font><font color="teal">&gt;&lt;fmt</font><font color="#3f7f7f">:message</font> <font color="#7f007f">key</font><font color="black">=</font><font color="#2a00ff">"jsp.login.user"</font> <font color="teal">/&gt;</font><font color="black">:</font><font color="teal">&lt;/</font><font color="#3f7f7f">td</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">td</font><font color="teal">&gt;&lt;</font><font color="#3f7f7f">input</font> <font color="#7f007f">type</font><font color="black">=</font><font color="#2a00ff">'text'</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">'j_username'</font></p>
+
+<p><font color="#2a00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">c:if</font> <font color="#7f007f">test</font><font color="black">=</font>"<font color="black">${</font><font color="#7f0055"><b>not empty</b></font> <font color="black">param_error}</font>"<font color="teal">&gt;</font><font color="black">value='</font><font color="#bf5f3f">&lt;%=</font><font color="black">session.getAttribute(AuthenticationProcessingFilter.ACEGI_SECURITY_LAST_USERNAME_KEY)</font><font color="#bf5f3f">%&gt;</font><font color="black">'</font><font color="teal">&lt;/</font><font color="#3f7f7f">c:if</font><font color="teal">&gt;&gt;&lt;/</font><font color="#3f7f7f">td</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">tr</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">tr</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;</font> <font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="teal">&lt;</font><font color="#3f7f7f">td</font><font color="teal">&gt;&lt;fmt</font><font color="#3f7f7f">:message</font> <font color="#7f007f">key</font><font color="black">=</font><font color="#2a00ff">"jsp.login.password"</font> <font color="teal">/&gt;</font><font color="black">:</font><font color="teal">&lt;/</font><font color="#3f7f7f">td</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">td</font><font color="teal">&gt;&lt;</font><font color="#3f7f7f">input</font> <font color="#7f007f">type</font><font color="black">=</font><font color="#2a00ff">'password'</font> <font color="#7f007f">name</font><font color="black">=</font><font color="#2a00ff">'j_password'</font><font color="teal">&gt;&lt;/</font><font color="#3f7f7f">td</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">tr</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">tr</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;</font><font color="#3f7f7f">td</font> <font color="#7f007f">colspan</font><font color="black">=</font><font color="#2a00ff">"2"</font> <font color="#7f007f">align</font><font color="black">=</font><font color="#2a00ff">"right"</font><font color="teal">&gt;&lt;</font><font color="#3f7f7f">input</font> <font color="#7f007f">type</font><font color="black">=</font><font color="#2a00ff">"submit"</font> <font color="#7f007f">value</font><font color="black">=</font>"<font color="teal">&lt;fmt:</font><font color="#3f7f7f">message</font> <font color="#7f007f">key</font><font color="black">=</font><font color="#2a00ff">"jsp.includes.submit"</font><font color="teal">/&gt;</font><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> "<font color="teal">/&gt;&lt;/</font><font color="#3f7f7f">td</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">tr</font><font color="teal">&gt;</font></p>
+
+<p><font color="black">&nbsp;&nbsp;&nbsp;</font> <font color="teal">&lt;/</font><font color="#3f7f7f">table</font><font color="teal">&gt;</font></p>
+
+<p>&nbsp;</p>
+
+<p><font color="teal">&lt;/</font><font color="#3f7f7f">form</font><font color="teal">&gt;</font>
+<br clear="all" />  </p>
+
+<h2><a name="ServeideSeguretat-3.3.%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3BExempledeconfiguraci%C3%B3d%27ACLs"></a>3.3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exemple de configuració d'ACLs</h2>
+
+<p>Volem donar els permisos "llegir" i "escriure" (READ <font color="black">&#43;WRITE</font>) a un usuari "usuari1" per a la instància de la lògica de negoci "Categoria Papagais".</p>
+
+<p> </p>
+
+<p>Primer, recollim el DAO de seguretat d'<font color="black">openFrame</font>:</p>
+
+<p> <br/>
+// Get the DAO from the Spring context</p>
+
+<p>ACLsDAO securityDAO = (ACLsDAO) applicationContext.getBean("securityDao");</p>
+
+<p> <br/>
+ </p>
+
+<p>Segon,&nbsp;recollim la instància de la lògica de negoci "Categoria Papagais" , per mitjà d'un DAO:</p>
+
+<p> </p>
+
+<p>// Get the business object using a DAO</p>
+
+<p>Category papagayo = CategoryDAO.read("papagayo");<br/>
+ </p>
+
+<p>Finalment&nbsp;podem afegir&nbsp; els permisos per a aquesta instància per l'usuari "usuari1":</p>
+
+<p> </p>
+
+<p>// Add permissions for user "usuario1" for the papagayo</p>
+
+<p>securityDAO.addReadPermission("usuario1", papagayo);</p>
+
+<p>securityDAO.addWritePermission("usuario1", papagayo);<br/>
+ </p>
+
+<p> </p>
+
+<p> </p>
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="border/border_bottom.gif"><img src="border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Apr 14, 2015 11:50</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

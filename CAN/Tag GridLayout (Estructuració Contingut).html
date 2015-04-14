@@ -1,0 +1,212 @@
+<html>
+    <head>
+        <title>Canigó - Espai Privat : Tag GridLayout (Estructuració Contingut)</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+    <body>
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Canigó - Espai Privat : Tag GridLayout (Estructuració Contingut)
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 29, 2007 by <font color="#0050B2">xes</font>.
+				    </div>
+
+				    <p>El tag de GridBagLayout és un component que permet la creació de taules que ofereixen un fàcil control de les propietats dels elements que continguin. Mitjançant la definició d'aquest Tag podrem controlar les propietats de cada cel?la (TD) individualment o conjuntament (amb les propietats de cada línia &#45;TR&#45; o de tota la taula &#45;TABLE-).</p>
+
+<p>Per definir les propietats pròpies a la Taula, als TDs i als TRs, s'han de definir el el tag les propietats pròpies de les Taules, dels TDs i dels TRs:</p>
+
+<p>Les propietats referents al component taula es definiran amb el seu nom i el prefix 'grid'. Així, si volem definir la propietat 'style' de la taula, definirem la propietat gridStyle en el tag:</p>
+
+<p>gridStyle="border:1px solid black;"</p>
+
+<p>Les propietats referents als components de la taula (TD i TR) es definiran amb el seu nom habitual. Per especificar a quina o quines cel?les es vol aplicar la propietat, es farà de la següent manera:</p>
+
+<p>Si ens volem referir a una cel?la en concret, indicarem el número de fila i de columna que ocupa, separat pel caràcter ':'. Afegirem el valor de la propietat després el caràcter '=':</p>
+
+<p>style="2:1=border:1px solid black"</p>
+
+<p>Així, segons aquest exemple, la cel?la de la fila 2 columna 1 tindrà l'estil 'border:1px solid black'.</p>
+
+<p>Si volem definir una propietat per més d'una cel?la, ho farem separant les definicions amb el caràcter ',':</p>
+
+<p>style="2:1=border:1px solid black,2:2=background-color:blue"</p>
+
+<p>Si volem definir una propietat per tota una fila o tota una columna, ho farem mitjançant el caràcter '*':</p>
+
+<p>style="2:*=border:1px solid black "</p>
+
+<p>En l'exemple anterior, l'estil definit s'aplicarà a tota la fila 2. En aquest cas, però, s'aplicarà l'estil a totes les cel?les (TDs) de la fila, no a l'element fila (TR). Si volem aplicar la propietat al TR, ho farem mitjançant '**':</p>
+
+<p>style="2:**=border:1px solid black"</p>
+
+<p>En aquest cas, l'estil s'aplicarà al TR de la fila 2. Això només ho podrem fer amb les files, ja que compten amb l'element TR. Per les columnes, només podrem aplicar '*', i l'estil s'aplicarà a tots els TDs de la columna individualment.</p>
+
+<p>També podem definir alguna propietat per totes les cel?les de la taula mitjançant '<b>:</b>':</p>
+
+<p>style="<b>:</b>=background-color:blue"</p>
+
+<p>En aquest exemple s'aplica l'estil a tots els TDs de la taula. Si volem fer-ho amb tots els TRs, ho farem mitjançant '<b>:</b>&#42;':</p>
+
+<p>style="<b>:</b>&#42;=background-color:blue"</p>
+
+<p>La següent taula recull el diferents valors que hem definit per referir-nos a les cel.les:</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'><ul>
+	<li>Valor&#42;</li>
+</ul>
+</td>
+<td class='confluenceTd'> <b>Definició</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 1:1 </td>
+<td class='confluenceTd'> Fila 1 columna 1 </td>
+</tr>
+<tr>
+<td class='confluenceTd'> &#42;:1 </td>
+<td class='confluenceTd'> Tots els TDs de la columna 1 </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 1:&#42; </td>
+<td class='confluenceTd'> Tots els TDs de la fila 1 </td>
+</tr>
+<tr>
+<td class='confluenceTd'> 1:*&#42; </td>
+<td class='confluenceTd'> TR de la fila 1 </td>
+</tr>
+<tr>
+<td class='confluenceTd'> &#42;:&#42; </td>
+<td class='confluenceTd'> Tots els TDs de la taula </td>
+</tr>
+<tr>
+<td class='confluenceTd'> &#42;:*&#42; </td>
+<td class='confluenceTd'> Tots els TRs de la taula </td>
+</tr>
+</tbody></table>
+<p>A més de les propietats pròpies a les Taules,TDs i TRs s'han incorporat les següents propietats:</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Propietat</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Valor</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> size </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Defineix el nombre de files i columnes que tindrà el grid: <br clear="all" />
+Exemple: <br clear="all" />
+size="2,3" &#45;&gt; Crearà 2 files i 3 columnes. </td>
+</tr>
+</tbody></table>
+<p>El contingut de cada cel?la del grid el definirem en el cos del Tag GridBadLayout. Cada node que trobem serà el contingut de cada cel?la, tenint en compte l'ordre en que els anem trobant. Si volem que una cel?la contingui més d'un element, els haurem d'agrupar algun altre element (com, per exemple, un 'div' o un 'span'), ja que el tag parssejarà el seu contingut com si es tractés d'un document XML, posant en cada cel?la del grid el contingut de cada node de primer nivell:<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:gridBagLayout size=<span class="code-quote">"1,3"</span>
+
+gridBorder=<span class="code-quote">"1"</span>
+
+gridStyle=<span class="code-quote">"border:1px solid black;"</span>
+
+colspan=<span class="code-quote">"1:1=2"</span>
+
+rowspan=<span class="code-quote">"1:1=2"</span>&gt;
+
+&lt;span&gt;&lt;input type=<span class="code-quote">"text"</span> name=<span class="code-quote">"text1"</span> id=<span class="code-quote">"text1"</span> value=<span class="code-quote">"text1"</span>/&gt;&lt;/span&gt;
+
+&lt;input type=<span class="code-quote">"text"</span> name=<span class="code-quote">"gridText"</span> id=<span class="code-quote">"gridText"</span>/&gt;
+
+&lt;span&gt;&lt;input type=<span class="code-quote">"text"</span> name=<span class="code-quote">"gridT"</span> id=<span class="code-quote">"gridT"</span> value=<span class="code-quote">"gridT"</span>/&gt;&lt;/span&gt;
+
+&lt;/fwk:gridBagLayout&gt;</pre>
+</div></div><br clear="all" /></p>
+
+<p>En l'exemple anterior, es crearà una taula amb una fila i 3 columnes. En la primera cel?la hi posarà el contingut del primer node del cos del tag:</p>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;span&gt;&lt;input type=<span class="code-quote">"text"</span> name=<span class="code-quote">"text1"</span> id=<span class="code-quote">"text1"</span> value=<span class="code-quote">"text1"</span>/&gt;&lt;/span&gt;</pre>
+</div></div>
+<p>En la segona hi posarà el segon node:</p>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;input type=<span class="code-quote">"text"</span> name=<span class="code-quote">"gridText"</span> id=<span class="code-quote">"gridText"</span>/&gt;</pre>
+</div></div>
+<p>I, finalment, en la tercera, hi posarà el tercer i últim node:</p>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;span&gt;&lt;input type=<span class="code-quote">"text"</span> name=<span class="code-quote">"gridT"</span> id=<span class="code-quote">"gridT"</span> value=<span class="code-quote">"gridT"</span>/&gt;&lt;/span&gt;</pre>
+</div></div>
+<p>? Errors de construcció del grid</p>
+
+<p>Si en el contingut del tag hi tenim més elements que cel?les hem definit en l'atribut 'size', el tag llançarà una excepció. Si, en canvi, hi ha més cel?les que elements, el tag crearà les cel?les restants buides.</p>
+
+<p>El tag suporta també les propietats 'colspan' i 'rowspan'. Aquestes propietats es defineixen quan una cel?la ha d'ocupar més una fila o d'una columna. Amb aquestes propietats es poden definir incongruències. En aquests casos, el tag llançarà excepcions. Aquestes incongruències poden ser:</p>
+
+<p>&#42;? &#42;Definir una propietat fora de límits:<br/>
+Això succeeix quan definim una propietat 'colspan' o 'rowspan' amb un valor que està fora dels límits del grid:</p>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:gridBagLayout size=<span class="code-quote">"1,3"</span> colspan=<span class="code-quote">"1:3=2"</span>&gt;
+
+...</pre>
+</div></div>
+<p>En l'exemple anterior, definim la propietat 'colspan' de la tercera i última columna cel?la del grid amb valor 2. Això només podria ser si el grid tingués 4 columnes. Així, el tag llançarà una excepció indicant el motiu de l'error.</p>
+
+<p>&#42;?*Definir una propietat d'una cel?la que està solapada per la propietat 'colspan' o 'rowspan' d'una altra cel?la:</p>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:gridBagLayout size=<span class="code-quote">"1,3"</span> colspan=<span class="code-quote">"1:1=2"</span>
+
+style=<span class="code-quote">"1:2=border:1px solid black"</span>&gt;
+
+...</pre>
+</div></div>
+<p>En l'exemple anterior definim la propietat 'style' de la cel?la 1:2, però aquesta cel?la està solapada per la propietat 'colspan' de la cel.la 1:1. Així, el tag llançarà una excepció indicant l'error.</p>
+
+<p><b>Exemple complet de GridBagLayout</b><br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:gridBagLayout size=<span class="code-quote">"3,3"</span>
+
+gridBorder=<span class="code-quote">"1"</span>
+
+gridStyle=<span class="code-quote">"border:1px solid black;"</span>
+
+colspan=<span class="code-quote">"1:1=2"</span>
+
+rowspan=<span class="code-quote">"1:1=2"</span>
+
+style=<span class="code-quote">":=border:1px solid 								   black;,*:0=background-color:blue"</span>
+
+onmouseover=<span class="code-quote">":*=<span class="code-keyword">this</span>.className='selected';"</span>
+
+onmouseout=<span class="code-quote">":*=<span class="code-keyword">this</span>.className='zebra0';"</span>&gt;
+
+&lt;span&gt;&lt;input type=<span class="code-quote">"text"</span> name=<span class="code-quote">"span1"</span> id=<span class="code-quote">"span1"</span> value=<span class="code-quote">"span1"</span>/&gt;&lt;/span&gt;
+
+&lt;input type=<span class="code-quote">"text"</span> name=<span class="code-quote">"gridText"</span> id=<span class="code-quote">"gridText"</span>/&gt;
+
+&lt;span&gt;&lt;input type=<span class="code-quote">"text"</span> name=<span class="code-quote">"gridT"</span> id=<span class="code-quote">"gridT"</span> value=<span class="code-quote">" gridT "</span>/&gt;&lt;/span&gt;
+
+&lt;span&gt;&lt;input type=<span class="code-quote">"text"</span> name=<span class="code-quote">"span2"</span> id=<span class="code-quote">"span2"</span> value=<span class="code-quote">"span2"</span>/&gt;&lt;/span&gt;
+
+&lt;input type=<span class="code-quote">"text"</span> name=<span class="code-quote">"gridText"</span> id=<span class="code-quote">"gridText"</span> value=<span class="code-quote">"gridText"</span>/&gt;
+
+&lt;span&gt;&lt;input type=<span class="code-quote">"text"</span> name=<span class="code-quote">"gridT"</span> id=<span class="code-quote">"gridT"</span> value=<span class="code-quote">"gridT"</span>/&gt;&lt;/span&gt;
+
+&lt;/fwk:gridBagLayout&gt;</pre>
+</div></div><br clear="all" /></p>
+
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="border/border_bottom.gif"><img src="border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Apr 14, 2015 11:50</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

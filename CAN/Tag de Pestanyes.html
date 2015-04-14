@@ -1,0 +1,271 @@
+<html>
+    <head>
+        <title>Canigó - Espai Privat : Tag de Pestanyes</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+    <body>
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Canigó - Espai Privat : Tag de Pestanyes
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 29, 2007 by <font color="#0050B2">xes</font>.
+				    </div>
+
+				    <p>Aquest component està compost per dos tags que permeten la construcció de pestanyes (Tabs). <div align="center"><img src="Tag de Pestanyes_attachments/image035.jpg" border="0" /></div><br/>
+&nbsp;<br/>
+Dependències:</p>
+
+<p>ajaxtags-1.1.jar<br/>
+openFrame-ajaxtags-tabs.js</p>
+
+<p>Els tags són els següents:</p>
+
+<h4><a name="TagdePestanyes-TabPanelTag"></a>TabPanelTag</h4>
+
+<p>El tag TabPanelTag és el tag pare que s'encarrega de crear les pestanyes i divs ocults, on es guardarà el contingut de les pàgines de les diferents pestanyes. En el cos d'aquest tag és on definirem totes les pestanyes (TabPageTag).</p>
+
+<p>Les propietats d'aquest tag són les següents:</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Propietat</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Valor</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> panelStyleId </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Id del panell que contindrà totes les pestanyes. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> contentStyleId </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Part comú de l'id dels divs de les pestanyes. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> currentStyleId </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Id de la pestanya seleccionada. </td>
+</tr>
+</tbody></table>
+<ul>
+	<li><b>panelStyleId</b></li>
+</ul>
+
+
+<p>Aquesta propietat defineix l'id del panell pare contenidor dels divs de les pestanyes. Amb aquest id podrem canviar l'estil general dels tabs.</p>
+<ul>
+	<li><b>contentStyleId</b></li>
+</ul>
+
+
+<p>Part comú de l'id dels divs de les pestanyes. El tag pare crearà cada div amb un id diferent. Aquest id es formarà amb la propietat 'contentStyleId' + '_tab' + index. Aquest índex ve donat pel número de pestanya dins del tag pare (TabPanelTag).<br/>
+Si per exemple donem a 'contentStyleId' el valor 'content' i definim 3 pestanyes, es crearan 3 divs amb els següents ids:<br/>
+content_tab0<br/>
+content_tab1<br/>
+content_tab2</p>
+<ul>
+	<li><b>currentStyleId</b></li>
+</ul>
+
+
+<p>Aquesta propietat defineix l'id del la pestanya que està activa (la seleccionada). Amb aquest id podrem definir l'estil de la pestanya activa.</p>
+
+<p>Exemple:<br clear="all" /></p>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:tabPanel panelStyleId=<span class="code-quote">"pestanas"</span>
+
+contentStyleId=<span class="code-quote">"tabContent"</span> currentStyleId=<span class="code-quote">"active"</span>&gt;</pre>
+</div></div>
+
+<h4><a name="TagdePestanyes-TabPageTag"></a>TabPageTag</h4>
+
+<p>El tag TabPageTag defineix una pàgina de les pestanyes. Aquest tag no té sentit si no es troba dins d'un tag TabPanelTag.<br/>
+Les pestanyes poden ser, bàsicament, de dos tipus: client o servidor.</p>
+<ol>
+	<li>Els clients ja tenen el contingut en els divs quan es carrega la pàgina.</li>
+	<li>Els servidor tenen els divs buits, es carreguen mitjançant AJAX quan es selecciona&#42; &#42;la pestanya. Quan això succeeix, s'envia una petició al servidor i es carrega en contingut del div mitjançant Javascript i XmlHttpRequest, sense necessitat de recarregar la pàgina sencera.</li>
+</ol>
+
+
+<p>En Internet Explorer, no es suporta que un formulari contingui un altra formulari dins. Llavors si la pestanya servidor conté un formulari i la plana actual ja en té un de general, donarà un error.</p>
+
+<p>Les propietats d'aquest tag són les següents:</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Propietat</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Valor</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> linkStyleClass </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Classe de la pestanya (per aplicar estils a la pestanya). </td>
+</tr>
+<tr>
+<td class='confluenceTd'> isActive </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Indica si la pestanya és 'enabled' o no (disabled); </td>
+</tr>
+<tr>
+<td class='confluenceTd'> existingDivId </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Id del div on es troba el contingut de la pestanya. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> caption </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Títol de la pestanya. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> captionKey </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Clau que correspon al títol de la pestanya. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> defaultTab </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Indica el tab actiu per defecte. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> imageCaption </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Indica la ruta de la imatge que volem afegir a la pestanya. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> imagePosition </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Indica posició de la imatge que volem afegir a la pestanya. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> baseUrl </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Indica la url on trobem el contingut de la pestanya. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> parameters </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Paràmetres de la url. </td>
+</tr>
+</tbody></table>
+<ul>
+	<li><b>isActive</b></li>
+</ul>
+
+
+<p>Si el valor es 'false', la pestanya quedarà desactivada (disabled) i no es podrà seleccionar.</p>
+<ul>
+	<li><b>existingDivId</b></li>
+</ul>
+
+
+<p>Id del div on es troba el contingut de la pestanya. Això s'utilitza quan el contingut de la pestanya no es vol posar dins del cos (body) del tag de la pestanya (TabPageTag), sinó que es vol usar el contingut d'un altre div.</p>
+<ul>
+	<li><b>defaultTab</b></li>
+</ul>
+
+
+<p>Si el valor es 'true', la pestanya quedarà activada al carregar la pàgina. Només es pot definir una pestanya com a 'defaultTab'.</p>
+<ul>
+	<li><b>imageCaption</b></li>
+</ul>
+
+
+<p>Afegeix una imatge a la pestanya. Indica la ruta de la imatge que volem afegir. Per defecte posa la imatge a l'esquerra del títol(caption o captionKey) de la pestanya.</p>
+<ul>
+	<li><b>imagePosition</b></li>
+</ul>
+
+
+<p>Indica la posició de la imatge. Els possibles valors són: left, right<br/>
+Per defecte és 'left'.</p>
+<ul>
+	<li><b>baseUrl</b></li>
+</ul>
+
+
+<p>Només per pestanyes carregades mitjançant servidor. Indica la url on trobem el contingut de la pestanya. Aquesta url ha de retornar una jsp, que serà el contingut.</p>
+
+<p>Exemple pestanya client:<br clear="all" /></p>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:tab captionKey=<span class="code-quote">"tabs.account.pestanya2"</span>
+
+styleClass=<span class="code-quote">"contingut_tab"</span> linkStyleClass=<span class="code-quote">"pestanya2"</span> imageCaption=<span class="code-quote">"/openFrame-samples-jPetstore/images/ast.gif"</span>
+
+imagePosition=<span class="code-quote">"right"</span>&gt;
+
+ </pre>
+</div></div>
+<p>Exemple pestanya servidor:</p>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:tab captionKey=<span class="code-quote">"tabs.account.server"</span>
+
+styleClass=<span class="code-quote">"contingut_tab"</span>
+
+linkStyleClass=<span class="code-quote">"pestanya4"</span> baseUrl=<span class="code-quote">"accountList.<span class="code-keyword">do</span>?reqCode=addRowEditList"</span>/&gt;</pre>
+</div></div>
+<p>Exemple complet:</p>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:tabPanel panelStyleId=<span class="code-quote">"pestanas"</span>
+
+contentStyleId=<span class="code-quote">"tabContent"</span> currentStyleId=<span class="code-quote">"active"</span>&gt;
+
+&lt;fwk:tab captionKey=<span class="code-quote">"tabs.account.pestanya1"</span> defaultTab=<span class="code-quote">"<span class="code-keyword">true</span>"</span>
+
+styleClass=<span class="code-quote">"contingut_tab"</span> linkStyleClass=<span class="code-quote">"pestanya1"</span>
+
+imageCaption=<span class="code-quote">"/openFrame-samples-jPetstore/images/asc.gif"</span>&gt;
+
+&lt;fwk:text styleId=<span class="code-quote">"firstname"</span> styleClass=<span class="code-quote">"fieldtext"</span>
+
+property=<span class="code-quote">"firstname"</span>&gt;
+
+&lt;/fwk:tab&gt;
+
+&lt;fwk:tab captionKey=<span class="code-quote">"tabs.account.pestanya2"</span>
+
+styleClass=<span class="code-quote">"contingut_tab"</span> linkStyleClass=<span class="code-quote">"pestanya2"</span> imageCaption=<span class="code-quote">"/openFrame-samples-jPetstore/images/ast.gif"</span>
+
+imagePosition=<span class="code-quote">"right"</span>&gt;
+
+&lt;fwk:text styleId=<span class="code-quote">"country"</span> property=<span class="code-quote">"country"</span>&gt;
+
+&lt;/fwk:tab&gt;
+
+&lt;fwk:tab captionKey=<span class="code-quote">"tabs.account.server"</span>
+
+styleClass=<span class="code-quote">"contingut_tab"</span> linkStyleClass=<span class="code-quote">"pestanya4"</span> baseUrl=<span class="code-quote">"accountList.<span class="code-keyword">do</span>?reqCode=addRowEditList"</span>/&gt;
+
+&lt;/fwk:tabPanel&gt;</pre>
+</div></div>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Tag de Pestanyes_attachments/image035.jpg">image035.jpg</a> (image/jpeg)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="border/border_bottom.gif"><img src="border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Apr 14, 2015 11:50</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

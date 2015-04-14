@@ -1,0 +1,238 @@
+<html>
+    <head>
+        <title>Canigó - Espai Privat : Autocompletat de Valors</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+    <body>
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Canigó - Espai Privat : Autocompletat de Valors
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 29, 2007 by <font color="#0050B2">xes</font>.
+				    </div>
+
+				    <h3><a name="AutocompletatdeValors-Autocomplete"></a>Autocomplete</h3>
+
+<p>L'autocomplete permet a l'usuari mostrar una llista de suggeriments pel valor que ha escrit.<br/>
+L'usuari clickant una de les opcions mostrades li evita escriure i li corrobora que la dada és correcte.</p>
+
+<p>En el framework aquesta funcionalitat s'obté amb el tag autocomplete. Aquest autocomplete és importat de la llibreria ajaxtags 1.1 i s'ha adaptat perquè cridi al servei de cerques del framework i mostri correctament el resultat. Entre el servidor i client viatja una cadena json. <div align="center"><img src="Autocompletat de Valors_attachments/image029.jpg" border="0" /></div><br/>
+&nbsp;<br/>
+Dependències:</p>
+
+<p>ajaxtags-1.1.jar<br/>
+openFrame-ajaxtags-autocomplete.js</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Atributs</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Descripció</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> source </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Id del component gràfic que escolarà l'event onKeyUp per mostrar els suggeriments. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> target </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Camp de text que es copiarà el valor seleccionat </td>
+</tr>
+<tr>
+<td class='confluenceTd'> optionListName </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Query que executa el panell. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> className </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Estil CSS per aplicar al panell. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> indicator </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Identificador del div que es mostra al fer la petició a servidor. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> minimumCharacters </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Nombre de caràcters mínims per executar la query. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> errorFunction </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Funció a cridar en cas d'error </td>
+</tr>
+<tr>
+<td class='confluenceTd'> emptyFunction </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Funció a cridar en cas de no haver resultats </td>
+</tr>
+<tr>
+<td class='confluenceTd'> postFunction </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Funció a cridar després de rebre dades. </td>
+</tr>
+</tbody></table>
+<ul>
+	<li><b>source</b></li>
+</ul>
+
+
+<p>Component gràfic que es vol escoltar els events de teclat per tal de mostrar un autocomplete.</p>
+<ul>
+	<li><b>target</b></li>
+</ul>
+
+
+<p>Camp de text que es desitja copiar el valor seleccionat en l'autocomplete. Normalment serà igual que el source.</p>
+<ul>
+	<li><b>optionsListName</b></li>
+</ul>
+
+
+<p>Consulta definida en openFrame-services-web-options-list.xml</p>
+<ul>
+	<li><b>minimumCharacters</b></li>
+</ul>
+
+
+<p>Nombre de caràcters mínims en el camp de text origen per tal de disparar la consulta.</p>
+<ul>
+	<li><b>errorFunction</b></li>
+</ul>
+
+
+<p>Funció a executar en cas d'error de dades o de comunicació.</p>
+<ul>
+	<li><b>emptyFunction</b></li>
+</ul>
+
+
+<p>Funció a executar en cas d'element buit.</p>
+<ul>
+	<li><b>postFunction</b></li>
+</ul>
+
+
+<p>Funció a executar després de presentar les dades.</p>
+
+<p>Exemple:</p>
+
+<p>openFrame-services-web-options-list.xml
+<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;bean name=<span class="code-quote">"defaultOptionValueListHandler"</span>
+
+class=<span class="code-quote">"net.mlw.vlh.DefaultValueListHandlerImpl"</span>&gt;
+
+&lt;property name=<span class="code-quote">"config.adapters"</span>&gt;
+
+&lt;map&gt;
+
+&lt;entry key=<span class="code-quote">"animalsList"</span>&gt;
+
+&lt;bean parent=<span class="code-quote">"defaultOptionBaseHibernateAdapter"</span>&gt;
+
+&lt;property name=<span class="code-quote">"hql"</span>&gt;
+
+&lt;value&gt;
+
+FROM
+
+net.opentrends.openframe.samples.jpetstore.model.Product
+
+AS vo WHERE 1=1
+
+/~name: AND vo.name LIKE \{name\} ~/
+
+/~category: AND vo.category.id LIKE \{category\} ~/
+
+/~sortColumn: ORDER	BY vo.[sortColumn] [sortDirection]~/
+
+&lt;/value&gt;
+
+&lt;/property&gt;
+
+&lt;/bean&gt;
+
+&lt;/entry&gt;
+
+&lt;/map&gt;
+
+&lt;/property&gt;
+
+&lt;/bean&gt;
+
+&lt;bean id=<span class="code-quote">"animalsOptionListSource"</span> parent=<span class="code-quote">"defaultOptionListSource"</span>&gt;
+
+&lt;property name=<span class="code-quote">"optionListName"</span> value=<span class="code-quote">"animalsList"</span>/&gt;
+
+&lt;property name=<span class="code-quote">"optionLabelName"</span> value=<span class="code-quote">"name"</span>/&gt;
+
+&lt;property name=<span class="code-quote">"optionLabelProperty"</span> value=<span class="code-quote">"id"</span>/&gt;
+
+&lt;/bean&gt;
+
+&lt;bean id=<span class="code-quote">"optionsListService"</span> class=<span class="code-quote">"net.opentrends.openframe.services.web.taglib.util.options.OptionsListServiceBase"</span>&gt;
+
+&lt;property name=<span class="code-quote">"optionsListSources"</span>&gt;
+
+&lt;map&gt;
+
+&lt;entry key=<span class="code-quote">"animalsList"</span>&gt;&lt;ref bean=<span class="code-quote">"animalsOptionListSource"</span>/&gt;&lt;/entry&gt;	     &lt;/map&gt;
+
+&lt;/property&gt;
+
+&lt;/bean&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" /></p>
+
+<p>JSP:
+<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:text styleId=<span class="code-quote">"preferredProduct2.id"</span> styleClass=<span class="code-quote">"fieldtext"</span> property=<span class="code-quote">"preferredProduct2.id"</span> /&gt;
+
+&lt;fwk:autocomplete
+
+source=<span class="code-quote">"preferredProduct2.id"</span> target=<span class="code-quote">"preferredProduct2.id"</span>
+
+parameters=<span class="code-quote">"preferredProduct2.id"</span> className=<span class="code-quote">"autocomplete"</span>
+
+minimumCharacters=<span class="code-quote">"1"</span> indicator=<span class="code-quote">"indicator"</span>
+
+optionsListName=<span class="code-quote">"animalsList"</span> /&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" /></p>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Autocompletat de Valors_attachments/image029.jpg">image029.jpg</a> (image/jpeg)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="border/border_bottom.gif"><img src="border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Apr 14, 2015 11:50</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

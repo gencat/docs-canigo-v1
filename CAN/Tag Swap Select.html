@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <title>Canigó - Espai Privat : Tag Swap Select</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+    <body>
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Canigó - Espai Privat : Tag Swap Select
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 13, 2009 by <font color="#0050B2">otc</font>.
+				    </div>
+
+				    <p>Aquest component ofereix un tag que permet moure o copiar elements entre dos selects múltiples.  El seu ús es ben senzill. <div align="center"><img src="Tag Swap Select_attachments/image033.jpg" border="0" /></div><br/>
+&nbsp;<br/>
+Dependències:<br/>
+ajaxtags-1.1.jar<br/>
+openFrame-options-tag.js</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Atributs</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Descripció</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> source </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Id del component gràfic que escoltarà l'event onClick per fer l'acció configurada. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> action </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Acció, que pot ser MOVE o COPY </td>
+</tr>
+<tr>
+<td class='confluenceTd'> scope </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Àmbit de l'acció. Pot ser ALL o SELECTED. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> fromSelect </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Select origen </td>
+</tr>
+<tr>
+<td class='confluenceTd'> toSelect </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Select destí. </td>
+</tr>
+</tbody></table>
+<ul>
+	<li><b>source</b></li>
+</ul>
+
+
+<p>Component gràfic que se li associa a l'event de onClick l'acció configurada. Normalment serà un botó.</p>
+<ul>
+	<li><b>action</b></li>
+</ul>
+
+
+<p>La acció pot ser moure o copiar elements d'un select cap a un altre. Els possibles valors són COPY o MOVE.</p>
+<ul>
+	<li><b>scope</b></li>
+</ul>
+
+
+<p>Dades del select origen. Poden ser les dades seleccionades o totes. Els dos possibles valors són ALL o SELECTED</p>
+<ul>
+	<li><b>fromSelect</b></li>
+</ul>
+
+
+<p>Select origen de dades.</p>
+<ul>
+	<li><b>toSelect</b></li>
+</ul>
+
+
+<p>Select destí de dades.</p>
+
+<p>Exemple:</p>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;!-- Selects --&gt;
+&lt;fwk:select styleId=<span class="code-quote">"allAnimals"</span> property=<span class="code-quote">"allAnimals"</span> multiple=<span class="code-quote">"<span class="code-keyword">true</span>"</span> styleClass=<span class="code-quote">"multipleSelect"</span> /&gt;
+&lt;fwk:select styleId=<span class="code-quote">"hateAnimals"</span> property=<span class="code-quote">"hateAnimals"</span> multiple=<span class="code-quote">"<span class="code-keyword">true</span>"</span> styleClass=<span class="code-quote">"multipleSelect"</span> /&gt;</pre>
+</div></div>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;!-- Botons --&gt;
+&lt;input type=<span class="code-quote">"button"</span> id=<span class="code-quote">"moveAllRight"</span> value=<span class="code-quote">"&gt;&gt;"</span> class=<span class="code-quote">"botonsswap"</span> /&gt;
+&lt;input type=<span class="code-quote">"button"</span> id=<span class="code-quote">"moveRight"</span> value=<span class="code-quote">"&gt;"</span> class=<span class="code-quote">"botonsswap"</span> /&gt;
+&lt;input type=<span class="code-quote">"button"</span> id=<span class="code-quote">"moveLeft"</span> value=<span class="code-quote">"&lt;"</span> class=<span class="code-quote">"botonsswap"</span> /&gt;
+&lt;input type=<span class="code-quote">"button"</span> id=<span class="code-quote">"moveAllLeft"</span> value=<span class="code-quote">"&lt;&lt;"</span> class=<span class="code-quote">"botonsswap"</span> /&gt;</pre>
+</div></div>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;!-- decoradors de swap --&gt;
+&lt;fwk:swapTag source=<span class="code-quote">"moveAllRight"</span> scope=<span class="code-quote">"ALL"</span> action=<span class="code-quote">"MOVE"</span> fromSelect=<span class="code-quote">"allAnimals"</span> toSelect=<span class="code-quote">"hateAnimals"</span> /&gt;
+&lt;fwk:swapTag source=<span class="code-quote">"moveRight"</span> scope=<span class="code-quote">"SELECTED"</span> action=<span class="code-quote">"MOVE"</span> fromSelect=<span class="code-quote">"allAnimals"</span> toSelect=<span class="code-quote">"hateAnimals"</span> /&gt;
+&lt;fwk:swapTag source=<span class="code-quote">"moveAllLeft"</span> scope=<span class="code-quote">"ALL"</span> action=<span class="code-quote">"MOVE"</span> fromSelect=<span class="code-quote">"hateAnimals"</span> toSelect=<span class="code-quote">"allAnimals"</span> /&gt;
+&lt;fwk:swapTag source=<span class="code-quote">"moveLeft"</span> scope=<span class="code-quote">"SELECTED"</span> action=<span class="code-quote">"MOVE"</span> fromSelect=<span class="code-quote">"hateAnimals"</span> toSelect=<span class="code-quote">"allAnimals"</span> /&gt;</pre>
+</div></div>
+<p>L'exemple és la construcció de dos selects, amb quatre botons que permeten:</p>
+
+<p>&#45; moveAllRight: mou totes les dades del select allAnimals al hateAnimals.<br/>
+&#45; moveRight: mou les dades seleccionades del select allAnimals al hateAnimals.<br/>
+&#45; moveAllLeft: mou totes les dades del select hateAnimals al allAnimals.<br/>
+&#45; moveLeft: mou les dades seleccionades del select hateAnimals al allAnimals.</p>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Tag Swap Select_attachments/image033.jpg">image033.jpg</a> (image/jpeg)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="border/border_bottom.gif"><img src="border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Apr 14, 2015 11:50</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>

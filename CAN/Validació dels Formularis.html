@@ -1,0 +1,919 @@
+<html>
+    <head>
+        <title>Canigó - Espai Privat : Validació dels Formularis</title>
+	    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">	    
+    </head>
+
+    <body>
+	    <table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+		    <tr>
+			    <td valign="top" class="pagebody">
+				    <div class="pageheader">
+					    <span class="pagetitle">
+                            Canigó - Espai Privat : Validació dels Formularis
+                                                    </span>
+				    </div>
+				    <div class="pagesubheading">
+					    This page last changed on Jan 29, 2007 by <font color="#0050B2">xes</font>.
+				    </div>
+
+				    <h1><a name="Validaci%C3%B3delsFormularis-Definici%C3%B3delavalidaci%C3%B3alap%C3%A0ginaJSP"></a>Definició de la validació a la pàgina JSP</h1>
+
+
+<h1><a name="Validaci%C3%B3delsFormularis-Definici%C3%B3delavalidaci%C3%B3mitjan%C3%A7antfitxersdeconfiguraci%C3%B3"></a>Definició de la validació mitjançant fitxers de configuració</h1>
+
+
+<h2><a name="Validaci%C3%B3delsFormularis-Definici%C3%B3delformulari"></a>Definició del formulari</h2>
+
+<p>Definir una propietat al fitxer de configuració anomenada 'validationProperties'.</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> validationProperties </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Mitjançant aquesta propietat de tipus 'Properties' podem especificar com es farà la validació de les dades entrades al formulari. </td>
+</tr>
+</tbody></table>
+<ol>
+	<li>Configuració de l'atribut 'validationProperties'</li>
+</ol>
+
+
+<p>Dins el tag &lt;props&gt; podem definir les següents propietats:</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Atribut</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Valor</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> validationType </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Es permeten els valors: </td>
+</tr>
+</tbody></table>
+<ol>
+	<li>SERVER. La validació es realitzarà mitjançant Ajax contra el Servei de Validació en el servidor. El resultat de la validació apareixerà a la mateixa pàgina HTML del client</li>
+	<li>CLIENT. La validació es realitza mitjançant Javascript generat al client&#124;
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> validatorName </td>
+<td class='confluenceTd'> Depén validationType </td>
+<td class='confluenceTd'> Especifica quin és el nom de validador definit al fitxer 'validation.xml' del servidor que es farà servir per validar els camps entrats (veure 'Servei de Validació' per més referència) </td>
+</tr>
+</tbody></table></li>
+</ol>
+
+
+<p>En el cas que s'hagi usat 'SERVER' com a 'validatorType', no cal indicar 'validatorName' si es vol usar com a nom de validador el 'pojoClass' configurat a 	l'acció associada al formulari.</p>
+
+<p>Exemple segons validationType 'SERVER':</p>
+
+<p><div class="code"><div class="codeContent">
+<pre class="code-java">&lt;property name=<span class="code-quote">"validationProperties"</span>&gt;
+
+&lt;props&gt;
+
+&lt;prop key=<span class="code-quote">"validationType"</span>&gt;SERVER&lt;/prop&gt;
+
+&lt;/props&gt;
+
+&lt;/property&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />  <div align="center"><img src="Validació dels Formularis_attachments/image011.png" border="0" /></div><br clear="all" />
+<br clear="all" />
+<br clear="all" />
+<br clear="all" /></p>
+
+<p>Exemple segons validationType 'CLIENT':
+<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;bean parent=<span class="code-quote">"formTag"</span>&gt;
+
+&lt;property name=<span class="code-quote">"styleId"</span> value=<span class="code-quote">"actionForm"</span>/&gt;				&lt;property name=<span class="code-quote">"validationProperties"</span>&gt;
+
+&lt;props&gt;
+
+&lt;prop key=<span class="code-quote">"validationType"</span>&gt;CLIENT&lt;/prop&gt;
+
+&lt;prop key=<span class="code-quote">"validatorName"</span>&gt;account&lt;/prop&gt;
+
+&lt;/props&gt;
+
+...
+
+&lt;/bean&gt;</pre>
+</div></div><br clear="all" /> <br clear="all" />
+<br clear="all" />  <div align="center"><img src="Validació dels Formularis_attachments/image013.png" border="0" /></div><br clear="all" />
+<br clear="all" />
+<br clear="all" />
+<br clear="all" /></p>
+
+<h2><a name="Validaci%C3%B3delsFormularis-Serveidevalidacionseneljsp"></a>Servei de validacions en el jsp</h2>
+
+<p>El dividirem en dos gran àrees. La primera serà el motor de regles, i la segona el servei de presentació de missatges d'error.</p>
+
+<h3><a name="Validaci%C3%B3delsFormularis-Motorderegles"></a>Motor de regles</h3>
+
+<p>El motor de regles és el conjunt de mètodes que permeten validar si les dades són correctes.<br/>
+Aquestes s'han de poder executar tant en client com en servidor.</p>
+
+<h4><a name="Validaci%C3%B3delsFormularis-Definici%C3%B3deregles"></a>Definició de regles</h4>
+
+<p>Per definir les regles de validació és fa servir el framework commons-validator 1.3.0 d'Apache.<br/>
+En el framework es poden veure definides en el fitxer validations-rules.xml.<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;validator name=<span class="code-quote">"maxlength"</span>
+
+classname=<span class="code-quote">"org.springmodules.validation.commons.FieldChecks"</span>
+
+method=<span class="code-quote">"validateMaxLength"</span>
+
+methodParams="java.lang.<span class="code-object">Object</span>,
+
+org.apache.commons.validator.ValidatorAction,
+
+org.apache.commons.validator.Field,
+
+org.springframework.validation.Errors"
+
+depends=""
+
+msg=<span class="code-quote">"errors.maxlength"</span>&gt;
+
+&lt;javascript&gt;&lt;![CDATA[
+
+function validateMaxLength(form) \{
+
+<span class="code-keyword">var</span> isValid = <span class="code-keyword">true</span>;
+
+<span class="code-keyword">var</span> focusField = <span class="code-keyword">null</span>;
+
+<span class="code-keyword">var</span> i = 0;
+
+<span class="code-keyword">var</span> fields = <span class="code-keyword">new</span> Array();
+
+oMaxLength = <span class="code-keyword">new</span> maxlength();
+
+<span class="code-keyword">for</span> (x in oMaxLength) \{
+
+<span class="code-keyword">var</span> field = form[oMaxLength[x][0]];
+
+<span class="code-comment">// openFrame modification. Added <span class="code-keyword">if</span>. In some cases, a 'extend'
+</span>
+<span class="code-comment">// field appears that is not a field.
+</span>
+<span class="code-keyword">if</span> (field) \{
+
+<span class="code-keyword">if</span> (field.type == 'text' ||
+
+field.type == 'textarea') \{
+
+<span class="code-keyword">var</span> iMax = parseInt(oMaxLength[x][2](<span class="code-quote">"maxlength"</span>));
+
+<span class="code-keyword">if</span> (field.value.length &gt; iMax) \{
+
+<span class="code-keyword">if</span> (i == 0) \{
+
+focusField = field;
+
+\}
+
+fields[i++] = oMaxLength[x][1];
+
+isValid = <span class="code-keyword">false</span>;
+
+\}
+
+\}
+
+\}
+
+\}
+
+<span class="code-keyword">if</span> (fields.length &gt; 0) \{
+
+focusField.focus();
+
+alert(fields.join('\n'));
+
+\}
+
+<span class="code-keyword">return</span> isValid;
+
+\}]]&gt;
+
+&lt;/javascript&gt;
+
+&lt;/validator&gt;</pre>
+</div></div><br clear="all" /></p>
+
+<p>Les regles que tenen definida la funció javascript permeten l'execució en client, però sempre han de tenir la implementació en java per garantir l'execució en servidor.</p>
+
+<p>Les regles poden dependre d'un o més camps. Aquelles que necessiten més d'un camps per validar en direm que són regles amb camps dependents. Per tant se li ha d'indicar d'alguna manera aquesta necessitat. Amb el commons-validator és fa mitjançant passant-li els valors dels camps com argument, en canvi amb el nou tag de validacions s'indica amb un atribut a mida.</p>
+
+<h4><a name="Validaci%C3%B3delsFormularis-Eventsdevalidaci%C3%B3"></a>Events de validació</h4>
+
+<p>Els events que llencen el sistema de validació són els següents:</p>
+
+<p><b>&#45; onSubmit del formulari:</b></p>
+
+<p>Quan es fa un submit del formulari és llença una petició de validació via AJAX cap a servidor o s' executa regles de javascipt si es validació client . Si aquesta és correcta es fa el submit.</p>
+
+<p>Per qüestions de seguretat, quan es fa el submit en servidor es torna a validar les dades que són les que entraran a l'action. Per exemple si es desactivés el javascript les validacions AJAX no funcionarien, però al baixar les dades és validaran per les validacions obligatòries de submit.</p>
+
+<p>Aquestes validacions de submit obligatòries són configurables i pots establir quin mètodes han de tenir validacions obligatòries.</p>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;bean name=<span class="code-quote">"/accountList"</span> parent=<span class="code-quote">"accountListBaseDefinition"</span>&gt;
+
+&lt;property name=<span class="code-quote">"webValidationSubmit"</span> ref=<span class="code-quote">"webValidationSubmit"</span>/&gt;
+
+&lt;property name=<span class="code-quote">"metodosList"</span>&gt;
+
+&lt;list&gt;
+
+&lt;value&gt;save&lt;/value&gt;
+
+&lt;/list&gt;
+
+&lt;/property&gt;
+
+&lt;/bean&gt;</pre>
+</div></div>
+<p>En l''action accountList s'ha definit que hi ha validacions obligatòries de submit pel mètode save de l'action.</p>
+
+<p>Les regles a executar per un formulari és defineixen en el validation.xml<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;form name=<span class="code-quote">"accountList"</span>&gt;
+
+&lt;field property=<span class="code-quote">"firstname"</span> depends=<span class="code-quote">"required"</span>&gt;
+
+&lt;arg0 key=<span class="code-quote">"forms.accountForm.field.firstname"</span>/&gt;
+
+&lt;/field&gt;
+
+&lt;field property=<span class="code-quote">"lastname"</span> depends=<span class="code-quote">"required"</span>&gt;
+
+&lt;arg0 key=<span class="code-quote">"forms.accountForm.field.firstname"</span>/&gt;
+
+&lt;/field&gt;
+
+&lt;/form&gt;</pre>
+</div></div><br clear="all" /></p>
+
+<p>El conjunt de regles anomenades accountList obliguen ha tenir el camp firstname i lastname informats.</p>
+
+<p>Altrament aquesta seria la manera antiga. Amb la nova versió és permet definir les validacions de submit d'un camp en el mateix tag del jsp. Aquesta manera és més flexible i es poden veure fàcilment les validacions d'una pàgina.</p>
+
+<p>Un exemple és :<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:text styleId=<span class="code-quote">"firstname"</span> styleClass=<span class="code-quote">"fieldtext"</span>
+
+property=<span class="code-quote">"firstname"</span> validations=<span class="code-quote">"ONSUBMIT(required)"</span> /&gt;
+
+&lt;fwk:text styleId=<span class="code-quote">"lastname"</span> styleClass=<span class="code-quote">"fieldtext"</span>
+
+property=<span class="code-quote">"lastname"</span>	  validations=<span class="code-quote">"ONSUBMIT(required)"</span>/&gt;</pre>
+</div></div><br clear="all" /></p>
+
+<p>Aquest exemple és sinònim de l'anterior.</p>
+
+<p>A l'atribut validations es posa ONSUBMIT( &lt; regla de validació &gt;, &lt; regla de validació &gt; ..) on les regles de validacions han d'estar definides en el validation-rules.xml.</p>
+
+<p><b>&#45; onChange d'un camp de text:</b></p>
+
+<p>Aquest event permet validar el contingut d'un camp un cop ha canviat. Són el que s'anomenen les validacions de camp.</p>
+
+<p>Aquestes validacions només permeten execució de regles en servidor, mitjançant petició AJAX.<br/>
+Al produir-se l'event onChange del camp, es llença petició a servidor indicant quin camp s'ha de validar i les regles de validació a aplicar.<br/>
+En el cas que tingués camps dependents, s'enviarà el valor d'aquests camps.</p>
+
+<p>La manera d'expressar aquestes validacions és:</p>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:text styleId=<span class="code-quote">"lastname"</span> styleClass=<span class="code-quote">"fieldtext"</span>
+
+property=<span class="code-quote">"lastname"</span> validationFieldMessageMode=<span class="code-quote">"ICON,TEXTERROR"</span>
+
+validations=<span class="code-quote">"ONCHANGE(required) "</span>
+
+errorClass=<span class="code-quote">"errorNew"</span> errorKey=<span class="code-quote">"forms.accountForm.field.lastname"</span>
+
+iconStyleId=<span class="code-quote">"lastnameIconError"</span>
+
+textErrorStyleId=<span class="code-quote">"lastnameTextError"</span> /&gt;</pre>
+</div></div>
+<p>Escrivint ONCHANGE(..&lt;regla de validació&gt;, &lt;regla de validació&gt;) en l'atribut validations és defineix les validacions camp a camp. Aquestes regles de validació han d'estar definides en el fitxer validation-rules.xml.</p>
+
+<p>Els altres atributs serveixen per mostrar l'avís d'error que seguidament s'explicarà en el següent apartat.</p>
+
+<h3><a name="Validaci%C3%B3delsFormularis-Presentaci%C3%B3demissatges"></a>Presentació de missatges</h3>
+
+<p>Principalment són quatre tags, dos per validacions camp a camp i els altres dos per validacions de formulari.</p>
+
+<h4><a name="Validaci%C3%B3delsFormularis-FormiFormValidator"></a>Form i FormValidator</h4>
+
+<p>El FormValidator és un decorador que permet associar a un formulari validacions. Els atributs dels dos són bastant semblants per tant s'explicaran junts.</p>
+
+<p><b>fwk:Form</b>: Només s'exposen atributs de validació.</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Atributs</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Descripció</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> validationFormMessageMode </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Pot ser PANEL, FIELDS, WINDOW </td>
+</tr>
+<tr>
+<td class='confluenceTd'> validationMessageFunction </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Funció de presentació. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> indicator </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Div que es mostra quan es fa petició AJAX </td>
+</tr>
+<tr>
+<td class='confluenceTd'> mode </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> CLIENT  o SERVIDOR </td>
+</tr>
+<tr>
+<td class='confluenceTd'> generateId </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Id del formulari intern. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> errorPanelStyleId </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Id del panell d'errors. </td>
+</tr>
+</tbody></table>
+<p><b>fwk:FormValidator:</b></p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Atributs</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Descripció</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> source </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Formulari a associar-li validacions. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> validationFormMessageMode </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Pot ser PANEL, FIELDS, WINDOW </td>
+</tr>
+<tr>
+<td class='confluenceTd'> validationMessageFunction </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Funció de presentació. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> indicator </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Div que es mostra quan es fa petició AJAX </td>
+</tr>
+<tr>
+<td class='confluenceTd'> mode </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> CLIENT  o SERVIDOR </td>
+</tr>
+<tr>
+<td class='confluenceTd'> errorPanelStyleId </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Id del panell d'errors. </td>
+</tr>
+</tbody></table>
+<ul>
+	<li><b>validationFormMessageMode</b></li>
+</ul>
+
+
+<p>Indica  les maneres de mostrar els errors de formulari. Hi ha 3 maneres possibles.<br/>
+PANEL: Panell incrustat en la pàgina.<br/>
+WINDOW: Mostra un alert amb els missatge d'error<br/>
+FIELDS: Mostra els errors com si fos un validació camp a camp.</p>
+
+<p>Es poden combinar els tres elements, encara que PANEL i WINDOW poden semblar contradictori, com per exemple PANEL,FIELDS;WINDOW o PANEL,FIELDS.</p>
+<ul>
+	<li>&#42;validationMessageFuncti*on</li>
+</ul>
+
+
+<p>Funció javascript que s'encarrega de fer la presentació del errors. Aquest és pels usuaris que volguessin fer un presentació d'errors a mida.</p>
+<ul>
+	<li><b>indicator</b></li>
+</ul>
+
+
+<p>Div que es mostra mentre s'està fent petició a servidor via AJAX.</p>
+<ul>
+	<li><b>mode</b></li>
+</ul>
+
+
+<p>Aquest atribut és necessari per quan no estant configurades les validacions del commons validator i només hi ha validacions dels tags.</p>
+
+<p>El seu valor pot ser CLIENT o SERVER, i indica on s'executaran les validacions.<br/>
+En el cas que estiguessin configurades les validacions del commons-validator, agafarà el mode de  l'atribut validationType.</p>
+
+<p>Si l'atribut mode i el validationType no fossin iguals saltarà una excepció avisant del conflicte.</p>
+<ul>
+	<li><b>errorPanelStyleId</b></li>
+</ul>
+
+
+<p>Identificador del panell incrustat. Si no s'identifica fa servir el per defecte.</p>
+
+<h4><a name="Validaci%C3%B3delsFormularis-TextiFieldValidator"></a>Text i FieldValidator</h4>
+
+<p>&#42;fwk:text: &#42;Només es mostren els atributs referents a validacions.</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Atributs</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Descripció</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> styleId </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Id d'enllaç amb la configuració XML. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> validations </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> validacions pel camp, </td>
+</tr>
+<tr>
+<td class='confluenceTd'> validationFieldMessageMode </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> ICON,TOOLTIP,CHANGESTYLE,TEXTERROR, </td>
+</tr>
+<tr>
+<td class='confluenceTd'> sourceErrorTooltip </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Pot ser ICON, TEXT </td>
+</tr>
+<tr>
+<td class='confluenceTd'> iconStyleId </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Identificador de l' icona </td>
+</tr>
+<tr>
+<td class='confluenceTd'> textErrorStyleId </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Div amb el text d'error. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> errorClass </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Estil de la classe quan està en error. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> validationMessageFunction </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Funció de presentació </td>
+</tr>
+<tr>
+<td class='confluenceTd'> dependentFields </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Camps dependents </td>
+</tr>
+<tr>
+<td class='confluenceTd'> errorKey </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Nom del camp internacionalitzat. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> Indicator </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Div a mostrar quan es fa petició AJAX. </td>
+</tr>
+</tbody></table>
+<p>f*wk:fieldValidator*: permet que a qualsevol camp de text  se li puguin associar validacions</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Atributs</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Descripció</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> styleId </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Usar el valor  'configurationTag' </td>
+</tr>
+<tr>
+<td class='confluenceTd'> Source </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Component a associar les validacions. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> validations </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> validacions pel camp, </td>
+</tr>
+<tr>
+<td class='confluenceTd'> validationFieldMessageMode </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> ICON,TOOLTIP,CHANGESTYLE,TEXTERROR, </td>
+</tr>
+<tr>
+<td class='confluenceTd'> sourceErrorTooltip </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Pot ser ICON, TEXT </td>
+</tr>
+<tr>
+<td class='confluenceTd'> iconStyleId </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Identificador de l' icona </td>
+</tr>
+<tr>
+<td class='confluenceTd'> textErrorStyleId </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Div amb el text d'error. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> errorClass </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Estil de la classe quan està en error. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> validationMessageFunction </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Funció de presentació </td>
+</tr>
+<tr>
+<td class='confluenceTd'> dependentFields </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Camps dependents </td>
+</tr>
+<tr>
+<td class='confluenceTd'> errorKey </td>
+<td class='confluenceTd'> Si </td>
+<td class='confluenceTd'> Nom del camp internacionalitzat. </td>
+</tr>
+<tr>
+<td class='confluenceTd'> indicator </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Div a mostrar quan es fa petició AJAX. </td>
+</tr>
+</tbody></table>
+<ul>
+	<li><b>validations</b></li>
+</ul>
+
+
+<p>Cadena que indica les validacions d'un camp. La cadena permesa és:<br/>
+ONCHANGE(r1,r2,...), ONSUBMIT(r3,r4,..)<br/>
+Les regles de validació r1 i r2 s'executaran amb l'event onChange, i les regles r3 i r4 s'executaran en l'onSubmit del formulari.</p>
+
+<p>r1,r2,r3,r4 han d'estar definides en el validation-rules.xml.</p>
+<ul>
+	<li><b>validationFieldMessageMode</b></li>
+</ul>
+
+
+<p>Els valors permesos és un combinació separada per comes dels següents valors.</p>
+
+<p>TOOLTIP: És mostra un tooltip amb el missatge d'error en el camp o en l' icona.<br/>
+ICON: Icona d'avís que el camp té un error. Cal informar iconStyleId.<br/>
+TEXTERROR: Mostra el missatge en un div. Cal informar textErrorStyleId.<br/>
+CHANGESTYLE: Canvi l'aspecte del component. Cal informar errorClass.</p>
+
+<p>Per exemple, si fos TOOLTIP, ICON, mostra un tooltip i una icona.</p>
+<ul>
+	<li><b>sourceErrorTooltip</b></li>
+</ul>
+
+
+<p>Indica on és vol mostrar el tooltip. Els valors possibles són dos:<br/>
+ICON: Mostrar tooltip en l' icona<br/>
+TEXT: Mostrar tooltip en el camp.</p>
+<ul>
+	<li><b>iconStyleId</b></li>
+</ul>
+
+
+<p>Identificador del div que conté l' icona. El tag iconError és un tag fet a mida per mostrar icones.</p>
+<ul>
+	<li><b>textErrorStyleId</b></li>
+</ul>
+
+
+<p>Identificador del div que mostra el missatge d'error incrustat. El tag textError ajuda en aquesta tasca.</p>
+<ul>
+	<li><b>errorClass</b></li>
+</ul>
+
+
+<p>Nom de classe CSS que s'aplica en cas d'error en el camp. Normalment posa el marc en vermell del camp i canvia el color de fons.</p>
+<ul>
+	<li><b>validationMessageFunction</b></li>
+</ul>
+
+
+<p>Funció javascript que permet la presentació del missatge d'error a mida.</p>
+<ul>
+	<li><b>dependentFields</b></li>
+</ul>
+
+
+<p>Llista de camps dependents. Per exemple pot ser</p>
+
+<p><em>&lt;fwk:text property="age" dependentFields="currentDate,birdhDate" /&gt;</em></p>
+
+<p>Els camps són les properties dels camps de text.</p>
+<ul>
+	<li><b>errorKey</b></li>
+</ul>
+
+
+<p>Argument que es s'envia per construir el missatge d'error.<br/>
+Generalment els missatges d'error es construeixen amb una variable<br/>
+Per exemple:<br/>
+El camp {0} es obligatori.</p>
+
+<p>Suposem  errorKey = ' ciutat'<br/>
+Llavors el missatge d'error serà El camp ciutat es obligatori.</p>
+
+<p>Si hi ha les validacions activades aquest camp es obligatori.</p>
+<ul>
+	<li><b>indicator</b></li>
+</ul>
+
+
+<p>Identificador del div que es mostra quan hi ha petició a servidor.</p>
+
+<h4><a name="Validaci%C3%B3delsFormularis-IconErroriTextError"></a>IconError i TextError</h4>
+
+<p>Aquests dos tags són d'ajuda per tal de facilitar la mostra d'errors del sistema de validació.<br/>
+Mostren molt clarament la funcionalitat dels divs. Són molt aconsellables ja que ajuden es veu clarament la funcionalitat de cada tag.</p>
+
+<p>L'IconError s'encarrega d'encapsular la imatge d'avís d'error.</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Atributs</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Descripció</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> styleId </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Id del div </td>
+</tr>
+<tr>
+<td class='confluenceTd'> styleClass </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> CSS del div </td>
+</tr>
+<tr>
+<td class='confluenceTd'> style </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Style del div </td>
+</tr>
+<tr>
+<td class='confluenceTd'> services </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Permet injectar serveis del contenidor d' spring. </td>
+</tr>
+</tbody></table>
+<p>Exemple</p>
+
+<p>El TextError és un div que permet afegir-hi el missatge d'error.</p>
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Atributs</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Descripció</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> styleId </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Id del div </td>
+</tr>
+<tr>
+<td class='confluenceTd'> styleClass </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> CSS del div </td>
+</tr>
+<tr>
+<td class='confluenceTd'> style </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Style del div </td>
+</tr>
+<tr>
+<td class='confluenceTd'> services </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Permet injectar serveis del contenidor d' spring. </td>
+</tr>
+</tbody></table>
+<p>Exemples:</p>
+
+<p>&#42;? &#42;ICON &amp; TEXTERROR <div align="center"><img src="Validació dels Formularis_attachments/image045.jpg" border="0" /></div><br/>
+&nbsp;</p>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;td&gt;&lt;fwk:text styleId=<span class="code-quote">"lastname"</span> styleClass=<span class="code-quote">"fieldtext"</span>
+
+property=<span class="code-quote">"lastname"</span> validationFieldMessageMode=<span class="code-quote">"ICON,TEXTERROR"</span>
+
+validations=<span class="code-quote">"ONCHANGE(required),ONSUBMIT(required)"</span>
+
+sourceErrorTooltip=<span class="code-quote">"TEXT"</span> dependentFields=<span class="code-quote">"firstname"</span>
+
+errorClass=<span class="code-quote">"errorNew"</span> errorKey=<span class="code-quote">"forms.accountForm.field.lastname"</span>
+
+iconStyleId=<span class="code-quote">"lastnameIconError"</span>
+
+textErrorStyleId=<span class="code-quote">"lastnameTextError"</span> /&gt;&lt;/td&gt;
+
+&lt;td&gt;&lt;fwk:iconError styleId=<span class="code-quote">"lastnameIconError"</span>
+
+style=<span class="code-quote">"display:none"</span> styleClass=<span class="code-quote">"iconError"</span>&gt;
+
+&lt;img src=<span class="code-quote">"&lt;c:url value="</span>/images/iconWarning.gif<span class="code-quote">"/&gt;"</span>
+
+id=<span class="code-quote">"imagen"</span> class=<span class="code-quote">"icon"</span> /&gt;
+
+&lt;/fwk:iconError&gt;&lt;/td&gt;
+
+&lt;td&gt;&lt;fwk:textError styleId=<span class="code-quote">"lastnameTextError"</span>
+
+styleClass=<span class="code-quote">"errorText"</span> /&gt;&lt;/td&gt;</pre>
+</div></div>
+<p>&#42;? &#42;ICON, TOOLTIP &amp; CHANGESTYLE <div align="center"><img src="Validació dels Formularis_attachments/image047.jpg" border="0" /></div><br/>
+&nbsp;</p>
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;td&gt;&lt;fwk:text styleId=<span class="code-quote">"state"</span> property=<span class="code-quote">"state"</span>
+
+styleClass=<span class="code-quote">"fieldtext"</span>
+
+validationFieldMessageMode=<span class="code-quote">"ICON,TOOLTIP,CHANGESTYLE"</span>
+
+validations=<span class="code-quote">"ONCHANGE(required),ONSUBMIT(required)"</span>
+
+sourceErrorTooltip=<span class="code-quote">"TEXT"</span> dependentFields=<span class="code-quote">"firstname"</span>
+
+errorClass=<span class="code-quote">"errorNew"</span> errorKey=<span class="code-quote">"forms.accountForm.field.state"</span>
+
+iconStyleId=<span class="code-quote">"stateIconError"</span> textErrorStyleId=<span class="code-quote">"stateTextError"</span> /&gt;
+
+&lt;/td&gt;
+
+&lt;td&gt;&lt;fwk:iconError styleId=<span class="code-quote">"stateIconError"</span> style=<span class="code-quote">"display:none"</span>
+
+styleClass=<span class="code-quote">"iconError"</span>&gt;
+
+&lt;img src=<span class="code-quote">"&lt;c:url value="</span>/images/iconWarning.gif<span class="code-quote">"/&gt;"</span>
+
+id=<span class="code-quote">"imagen"</span> class=<span class="code-quote">"icon"</span> /&gt;
+
+&lt;/fwk:iconError&gt;&lt;/td&gt;
+
+&lt;td&gt;&lt;fwk:textError styleId=<span class="code-quote">"stateTextError"</span> styleClass=<span class="code-quote">"errorText"</span> /&gt;
+
+&lt;/td&gt;</pre>
+</div></div>
+
+<h3><a name="Validaci%C3%B3delsFormularis-Validacionsenllistatseditables"></a>Validacions en llistats editables</h3>
+
+<p>Les validacions en llistats editables és el suport a propietats indexades. És a dir poder validar camps amb els noms de propietats a[1].id o a.b[2].name,etc. Els [] denoten propietats indexades i són pròpies de llistats editables.</p>
+
+<p>Seguidament és mostra un exemple de validació en propietats indexades.</p>
+
+<p>&lt;fwk:text styleId="city" property="accounts[0].city" size="20" validationFieldMessageMode="ICON,TOOLTIP,CHANGESTYLE" validations="ONCHANGE(required),ONSUBMIT(required)" sourceErrorTooltip="TEXT" iconStyleId="iconErrorCity${count}" errorKey="forms.accountForm.field.city" errorClass="errorNew"/&gt;</p>
+
+<p>Seguidament s'explicarà les peculiaritats segons el mètode de validació.</p>
+
+<p>&#42;-onChange: *</p>
+
+<p>Per aquest sistema no hi ha absolutament cap problema ja que el camp és un etiqueta per aquest sistema de validació i li és igual com s'escrigui.</p>
+
+<p><b>&#45;onSubmit per commons validator:</b></p>
+
+<p><ins>No s'aconsella pel motius seguidament explicats</ins>.</p>
+
+<p>Les propietats indexades s'han d'especificar amb l'atribut indexedListProperty i s'ha d'especificar el nom de la propietat que és una llista.<br clear="all" />
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;form name=<span class="code-quote">"accountList"</span>&gt;
+
+&lt;field property=<span class="code-quote">"firstname"</span> indexedListProperty=<span class="code-quote">"accounts"</span> depends=<span class="code-quote">"required"</span>&gt;
+
+&lt;arg0 key=<span class="code-quote">"forms.accountForm.field.firstname"</span>/&gt;
+
+&lt;/field&gt;
+
+&lt;field property=<span class="code-quote">"lastname"</span> indexedListProperty=<span class="code-quote">"accounts"</span> depends=<span class="code-quote">"required"</span>&gt;
+
+&lt;arg0 key=<span class="code-quote">"forms.accountForm.field.firstname"</span>/&gt;
+
+&lt;/field&gt;
+
+&lt;/form&gt;</pre>
+</div></div><br clear="all" /></p>
+
+<p>El problema d'aquest sistema és que el sistema de presentació d'errors rep el camp erroni però no s'indica la fila errònia i per tant no es pot saber quin camp està malament.</p>
+
+<p>Per exemple en el cas anterior, es rebria com error accounts[].city.</p>
+
+<p><b>&#45;onSubmit per tags</b>.</p>
+
+<p>Si es defineix l'event onSubmit en els tags el problema sorgeix en el mecanisme d'afegir files noves.</p>
+
+<p>Aquest mecanisme dispara un única petició a servidor en busca de la plantilla nova d' afegir. Un cop la té el navegador reemplaça el nomCollecció[0], pel número nomColecció[ultimIndex].<br/>
+Aquest últim pas es va repetint tants cops com addRows es facin.</p>
+
+<p>El problema d'aquest mecanisme es que les validacions de submit s'associen a un identificador intern de formulari i es queden a sessió, i per tant per les noves files no hi ha associades validacions de submit.<br/>
+Llavors s'ha de fer dos passes.<br clear="all" /></p>
+<ul>
+	<li>La primera es indicar-li al servidor que tenim una propietat indexada i que totes les validacions de submit de la posició X, generalment la 0, es propaguin a totes les files de la col?lecció. Això és fa amb el tag validateCollection.</li>
+</ul>
+
+
+<ol>
+	<li>&nbsp;</li>
+</ol>
+
+
+<table class='confluenceTable'><tbody>
+<tr>
+<td class='confluenceTd'> <b>Atributs</b> </td>
+<td class='confluenceTd'> <b>Requerit</b> </td>
+<td class='confluenceTd'> <b>Descripció</b> </td>
+</tr>
+<tr>
+<td class='confluenceTd'> property </td>
+<td class='confluenceTd'> Sí </td>
+<td class='confluenceTd'> Nom de la propietat que és col?lecció </td>
+</tr>
+<tr>
+<td class='confluenceTd'> indexReference </td>
+<td class='confluenceTd'> No </td>
+<td class='confluenceTd'> Numero de fila referència per a propagar les validacions de submit. Si no s'informa s'assumeix 0. </td>
+</tr>
+</tbody></table>
+<p>Exemple:</p>
+
+<p>&lt;fwk:validateCollection property="accounts" indexReference="0"/&gt;</p>
+<ul>
+	<li>Si en la plantilla de files noves (addRow.jsp) és tenen tags del fwk, segurament caldrà un formulari. En el cas de definir validacions de submit en aquesta plantilla, s'haurà d'informar en el formulari l'atribut generateId.</li>
+</ul>
+
+
+<ol>
+	<li>&nbsp;</li>
+</ol>
+
+
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;fwk:form styleId=<span class="code-quote">"actionForm11"</span>
+
+action=<span class="code-quote">"accountList.<span class="code-keyword">do</span>"</span> 	reqCode=<span class="code-quote">"save"</span>
+
+generateId=<span class="code-quote">"&lt;%=request.getParameter("</span>formIdent<span class="code-quote">")%&gt;"</span> 		services=<span class="code-quote">"logService:loggingService"</span> &gt;</pre>
+</div></div>
+
+				    					    <br/>
+                        <div class="tabletitle">
+                            <a name="attachments">Attachments:</a>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Validació dels Formularis_attachments/image011.jpg">image011.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Validació dels Formularis_attachments/image011.jpg">image011.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Validació dels Formularis_attachments/image011.png">image011.png</a> (image/png)
+                                <br/>
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Validació dels Formularis_attachments/image013.png">image013.png</a> (image/png)
+                                <br/>
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Validació dels Formularis_attachments/image045.jpg">image045.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="Validació dels Formularis_attachments/image047.jpg">image047.jpg</a> (image/jpeg)
+                                <br/>
+                                                    </div>
+				    
+                    			    </td>
+		    </tr>
+	    </table>
+	    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td height="12" background="border/border_bottom.gif"><img src="border/spacer.gif" width="1" height="1" border="0"/></td>
+			</tr>
+		    <tr>
+			    <td align="center"><font color="grey">Document generated by Confluence on Apr 14, 2015 11:50</font></td>
+		    </tr>
+	    </table>
+    </body>
+</html>
